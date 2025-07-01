@@ -25,10 +25,10 @@ npm install pm2 -g
 apt install git curl -y
 ```
 ```bash
-git clone https://github.com/alijayanet/donasi-masjid
+git clone https://github.com/alijayanet/genieacs-mikrotik
 ```
 ```
-cd donasi-masjid
+cd genieacs-mikrotik
 ```
 ### 1. Install Dependensi
 
