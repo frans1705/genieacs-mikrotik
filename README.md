@@ -1,6 +1,6 @@
-# 🌐 Alijaya Web Interface
-Rekening Donasi Untuk Pembanguanan Masjid
-# 4206 0101 2214 534 an DKM BAITUR ROHMAN
+
+# Rekening Donasi Untuk Pembanguanan Masjid
+# 4206 0101 2214 534 BRI an DKM BAITUR ROHMAN
 
 Web interface modern dan responsive untuk sistem monitoring jaringan yang terintegrasi dengan WhatsApp Bot, GenieACS, dan MikroTik.
 
