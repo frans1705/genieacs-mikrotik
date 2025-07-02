@@ -1,0 +1,109 @@
+<%- include('../partials/header') %>
+<div class="main-content">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2"><i class="bi bi-gear"></i> Pengaturan Sistem</h1>
+    </div>
+    <div class="row mb-4">
+        <div class="col-lg-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <i class="bi bi-qr-code"></i> QRCode WhatsApp
+                </div>
+                <div class="card-body text-center">
+                    <div id="wa-qrcode-wrapper" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 250px;">
+                        <img id="wa-qrcode" src="/admin/api/wa/qrcode" alt="QR Code" style="max-width:200px; margin:auto; display:none;" onload="this.style.display='block'" onerror="this.style.display='none';document.getElementById('wa-qrcode-message').style.display='block';">
+                        <div id="wa-status-info" style="display:none;"></div>
+                        <div id="wa-qrcode-message" style="display:none;" class="alert alert-warning mt-2">QR Code WhatsApp belum tersedia atau belum terkoneksi.</div>
+                    </div>
+                    <div class="mt-3">
+                        <button class="btn btn-success me-2" onclick="refreshWAQRCode()"><i class="bi bi-arrow-clockwise"></i> Refresh QRCode</button>
+                        <button class="btn btn-danger" onclick="deleteWASession()"><i class="bi bi-trash"></i> Hapus Session</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-secondary text-white">
+                    <i class="bi bi-sliders"></i> Semua Pengaturan (settings.json)
+                </div>
+                <div class="card-body">
+                    <form id="settings-form"></form>
+                    <div class="mt-3">
+                        <button type="button" class="btn btn-primary" onclick="saveSettings()"><i class="bi bi-save"></i> Simpan Semua Pengaturan</button>
+                        <button type="button" class="btn btn-secondary ms-2" onclick="loadSettings()"><i class="bi bi-arrow-repeat"></i> Muat Ulang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/admin-settings.js"></script>
+<script>
+// Dinamis generate form dari settings.json
+function createInputField(key, value) {
+    let html = '';
+    const type = typeof value;
+    if (Array.isArray(value)) {
+        html += `<div class='mb-3'><label class='form-label'>${key}</label>`;
+        html += `<textarea class='form-control' name='${key}' id='${key}' rows='2'>${value.join(',')}</textarea></div>`;
+    } else if (type === 'boolean') {
+        html += `<div class='form-check mb-3'>`;
+        html += `<input class='form-check-input' type='checkbox' id='${key}' name='${key}' ${value ? 'checked' : ''}>`;
+        html += `<label class='form-check-label' for='${key}'>${key}</label></div>`;
+    } else if (type === 'number') {
+        html += `<div class='mb-3'><label class='form-label'>${key}</label>`;
+        html += `<input type='number' class='form-control' id='${key}' name='${key}' value='${value}'></div>`;
+    } else {
+        html += `<div class='mb-3'><label class='form-label'>${key}</label>`;
+        html += `<input type='text' class='form-control' id='${key}' name='${key}' value='${value}'> </div>`;
+    }
+    return html;
+}
+
+function loadSettings() {
+    fetch('/admin/api/settings')
+        .then(res => res.json())
+        .then(data => {
+            let formHtml = '';
+            for (const key in data) {
+                formHtml += createInputField(key, data[key]);
+            }
+            document.getElementById('settings-form').innerHTML = formHtml;
+        });
+}
+
+function saveSettings() {
+    const form = document.getElementById('settings-form');
+    const formData = new FormData(form);
+    let payload = {};
+    for (const [key, value] of formData.entries()) {
+        // Cek tipe input dari DOM
+        const input = document.getElementById(key);
+        if (!input) continue;
+        if (input.type === 'checkbox') {
+            payload[key] = input.checked;
+        } else if (input.tagName === 'TEXTAREA') {
+            payload[key] = value.split(',').map(s => s.trim()).filter(Boolean);
+        } else if (input.type === 'number') {
+            payload[key] = Number(value);
+        } else {
+            payload[key] = value;
+        }
+    }
+    fetch('/admin/api/settings', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload)
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert('Pengaturan berhasil disimpan!');
+        loadSettings();
+    });
+}
+
+document.addEventListener('DOMContentLoaded', loadSettings);
+</script>
+<%- include('../partials/footer') %>

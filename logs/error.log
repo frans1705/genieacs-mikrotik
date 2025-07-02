@@ -1,0 +1,368 @@
+2025-05-30 10:05:16 error: Error getting inactive PPPoE users: activeConnections.map is not a function
+2025-06-04 08:08:04 error: Error checking customer: No device found with phone number: 6281947215703
+2025-06-04 08:09:52 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:09:52 error: Web interface error: E:\Whatsapp-Only\web\views\admin\dashboard.ejs:1
+ >> 1| <%- include('../layouts/main', { 
+    2|     title: title,
+    3|     content: `
+    4|         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+
+E:\Whatsapp-Only\web\views\layouts\main.ejs:202
+    200|                     
+    201|                     <ul class="nav flex-column">
+ >> 202|                         <%- include('../partials/sidebar') %>
+    203|                     </ul>
+    204|                     
+    205|                     <!-- Logout -->
+
+E:\Whatsapp-Only\web\views\partials\sidebar.ejs:4
+    2|     <!-- Admin Sidebar -->
+    3|     <li class="nav-item">
+ >> 4|         <a class="nav-link <%= req.path === '/admin/dashboard' ? 'active' : '' %>" href="/admin/dashboard">
+    5|             <i class="bi bi-speedometer2"></i> Dashboard
+    6|         </a>
+    7|     </li>
+
+req is not defined
+2025-06-04 08:10:07 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:10:07 error: Web interface error: E:\Whatsapp-Only\web\views\admin\dashboard.ejs:1
+ >> 1| <%- include('../layouts/main', { 
+    2|     title: title,
+    3|     content: `
+    4|         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+
+E:\Whatsapp-Only\web\views\layouts\main.ejs:202
+    200|                     
+    201|                     <ul class="nav flex-column">
+ >> 202|                         <%- include('../partials/sidebar') %>
+    203|                     </ul>
+    204|                     
+    205|                     <!-- Logout -->
+
+E:\Whatsapp-Only\web\views\partials\sidebar.ejs:4
+    2|     <!-- Admin Sidebar -->
+    3|     <li class="nav-item">
+ >> 4|         <a class="nav-link <%= req.path === '/admin/dashboard' ? 'active' : '' %>" href="/admin/dashboard">
+    5|             <i class="bi bi-speedometer2"></i> Dashboard
+    6|         </a>
+    7|     </li>
+
+req is not defined
+2025-06-04 08:13:42 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:14:09 error: Admin devices error: genieacsApi.getAllDevices is not a function
+2025-06-04 08:14:09 error: Web interface error: Failed to lookup view "admin/devices" in views directory "E:\Whatsapp-Only\web\views"
+2025-06-04 08:14:23 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:14:24 error: Web interface error: Failed to lookup view "admin/network" in views directory "E:\Whatsapp-Only\web\views"
+2025-06-04 08:14:28 error: Web interface error: Failed to lookup view "admin/pppoe" in views directory "E:\Whatsapp-Only\web\views"
+2025-06-04 08:14:40 error: Admin devices error: genieacsApi.getAllDevices is not a function
+2025-06-04 08:14:40 error: Web interface error: Failed to lookup view "admin/devices" in views directory "E:\Whatsapp-Only\web\views"
+2025-06-04 08:15:46 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:15:56 error: Admin devices error: genieacsApi.getAllDevices is not a function
+2025-06-04 08:15:56 error: Web interface error: Failed to lookup view "admin/devices" in views directory "E:\Whatsapp-Only\web\views"
+2025-06-04 08:16:01 error: Web interface error: Failed to lookup view "admin/network" in views directory "E:\Whatsapp-Only\web\views"
+2025-06-04 08:16:12 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:16:42 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:17:12 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:17:42 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:18:12 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:18:42 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:19:12 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:19:42 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:19:56 error: Admin devices error: genieacsApi.getAllDevices is not a function
+2025-06-04 08:20:07 error: Admin devices error: genieacsApi.getAllDevices is not a function
+2025-06-04 08:20:12 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:20:18 error: Admin devices error: genieacsApi.getAllDevices is not a function
+2025-06-04 08:20:23 error: Admin devices error: genieacsApi.getAllDevices is not a function
+2025-06-04 08:20:49 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:20:50 error: Admin devices error: genieacsApi.getAllDevices is not a function
+2025-06-04 08:21:02 error: Admin devices error: genieacsApi.getAllDevices is not a function
+2025-06-04 08:22:31 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:23:01 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:23:31 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:24:01 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:24:31 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:25:01 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:25:31 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:26:01 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:26:31 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:27:01 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:27:31 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:28:01 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:28:31 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:29:01 error: Error getting system stats: genieacsApi.getAllDevices is not a function
+2025-06-04 08:29:30 error: Admin devices error: genieacsApi.getAllDevices is not a function
+2025-06-04 08:30:22 error: Error getting all devices: genieacsApi.getAllDevices is not a function
+2025-06-04 08:30:27 error: Error getting all devices: genieacsApi.getAllDevices is not a function
+2025-06-04 08:30:39 error: Error getting all devices: genieacsApi.getAllDevices is not a function
+2025-06-04 08:30:42 error: Error getting all devices: genieacsApi.getAllDevices is not a function
+2025-06-04 08:31:12 error: Error getting all devices: genieacsApi.getAllDevices is not a function
+2025-06-04 08:31:42 error: Error getting all devices: genieacsApi.getAllDevices is not a function
+2025-06-04 08:32:12 error: Error getting all devices: genieacsApi.getAllDevices is not a function
+2025-06-04 08:32:42 error: Error getting all devices: genieacsApi.getAllDevices is not a function
+2025-06-04 08:33:12 error: Error getting all devices: genieacsApi.getAllDevices is not a function
+2025-06-04 08:33:42 error: Error getting all devices: genieacsApi.getAllDevices is not a function
+2025-06-04 08:37:38 error: Web interface error: Failed to lookup view "admin/device-detail" in views directory "E:\Whatsapp-Only\web\views"
+2025-06-04 08:38:18 error: Web interface error: Failed to lookup view "admin/device-detail" in views directory "E:\Whatsapp-Only\web\views"
+2025-06-04 08:38:28 error: Web interface error: Failed to lookup view "admin/device-detail" in views directory "E:\Whatsapp-Only\web\views"
+2025-06-04 08:59:43 error: Error getting PPPoE connections: mikrotikCommands.getPPPoEConnections is not a function
+2025-06-04 09:00:06 error: Error getting PPPoE connections: mikrotikCommands.getPPPoEConnections is not a function
+2025-06-04 09:00:41 error: Error getting PPPoE connections: mikrotikCommands.getPPPoEConnections is not a function
+2025-06-04 09:00:47 error: Error getting PPPoE connections: mikrotikCommands.getPPPoEConnections is not a function
+2025-06-04 09:01:27 error: Error getting PPPoE connections: mikrotikCommands.getPPPoEConnections is not a function
+2025-06-04 09:01:46 error: Error getting PPPoE connections: mikrotikCommands.getPPPoEConnections is not a function
+2025-06-04 09:07:40 error: Error getting PPPoE connections: mikrotikCommands.getPPPoEConnections is not a function
+2025-06-04 09:07:43 error: Error getting PPPoE connections: mikrotikCommands.getPPPoEConnections is not a function
+2025-06-04 09:07:59 error: Error getting PPPoE connections: mikrotikCommands.getPPPoEConnections is not a function
+2025-06-04 09:08:14 error: Error getting PPPoE connections: mikrotikCommands.getPPPoEConnections is not a function
+2025-06-04 09:08:44 error: Error getting PPPoE connections: mikrotikCommands.getPPPoEConnections is not a function
+2025-06-04 09:09:14 error: Error getting PPPoE connections: mikrotikCommands.getPPPoEConnections is not a function
+2025-06-04 09:09:30 error: Error getting PPPoE connections: mikrotikCommands.getPPPoEConnections is not a function
+2025-06-04 09:10:52 error: Error getting PPPoE connections: mikrotikCommands.getPPPoEConnections is not a function
+2025-06-04 09:30:16 error: Error getting all hotspot users: mikrotikGetAllUsers is not a function
+2025-06-04 09:30:16 error: Web interface error: Could not find matching close tag for "<%-".
+2025-06-04 09:34:56 error: Error getting all hotspot users: mikrotikGetAllUsers is not a function
+2025-06-04 09:34:57 error: Error getting all hotspot users: mikrotikGetAllUsers is not a function
+2025-06-04 09:35:12 error: Error getting all hotspot users: mikrotikGetAllUsers is not a function
+2025-06-04 09:35:12 error: Error getting all hotspot users: mikrotikGetAllUsers is not a function
+2025-06-04 09:35:24 error: Error getting all hotspot users: mikrotikGetAllUsers is not a function
+2025-06-04 09:35:24 error: Error getting all hotspot users: mikrotikGetAllUsers is not a function
+2025-06-04 09:35:54 error: Error getting all hotspot users: mikrotikGetAllUsers is not a function
+2025-06-04 09:36:53 error: Get PPPoE user error: getAllPPPoESecrets is not a function
+2025-06-04 09:37:30 error: Error getting all hotspot users: mikrotikGetAllUsers is not a function
+2025-06-04 09:37:30 error: Error getting all hotspot users: mikrotikGetAllUsers is not a function
+2025-06-04 10:29:50 error: Get PPPoE user error: pppoeUsers.find is not a function
+2025-06-04 10:58:14 error: Get PPPoE user error: pppoeUsers.find is not a function
+2025-06-04 10:58:40 error: Get PPPoE user error: pppoeUsers.find is not a function
+2025-06-04 11:33:45 error: Failed to load settings from E:\settings.json: ENOENT: no such file or directory, open 'E:\settings.json'
+2025-06-04 11:33:52 error: Failed to load settings from E:\settings.json: ENOENT: no such file or directory, open 'E:\settings.json'
+2025-06-04 13:00:44 error: Web interface error: Could not find matching close tag for "<%-".
+2025-06-04 13:01:10 error: Web interface error: Could not find matching close tag for "<%-".
+2025-06-04 13:01:21 error: Web interface error: Could not find matching close tag for "<%-".
+2025-06-04 21:10:27 error: Error sending OTP to 081321960111: Connection Closed
+2025-06-04 21:15:30 error: Error sending OTP to 081321960111: Connection Closed
+2025-06-04 21:15:40 error: Error finding device with phone number 087824972048: No device found with phone number: 087824972048
+2025-06-04 21:33:01 error: Error getting traffic stats: mikrotikCommands.getResourceInfo is not a function
+2025-06-04 21:33:05 error: Error getting traffic stats: mikrotikCommands.getResourceInfo is not a function
+2025-06-04 21:33:21 error: Error getting traffic stats: mikrotikCommands.getResourceInfo is not a function
+2025-06-04 21:33:51 error: Error getting traffic stats: mikrotikCommands.getResourceInfo is not a function
+2025-06-04 21:34:21 error: Error getting traffic stats: mikrotikCommands.getResourceInfo is not a function
+2025-06-04 21:34:51 error: Error getting traffic stats: mikrotikCommands.getResourceInfo is not a function
+2025-06-04 21:35:21 error: Error getting traffic stats: mikrotikCommands.getResourceInfo is not a function
+2025-06-04 21:35:51 error: Error getting traffic stats: mikrotikCommands.getResourceInfo is not a function
+2025-06-04 21:36:21 error: Error getting traffic stats: mikrotikCommands.getResourceInfo is not a function
+2025-06-04 21:36:51 error: Error getting traffic stats: mikrotikCommands.getResourceInfo is not a function
+2025-06-04 21:37:21 error: Error getting traffic stats: mikrotikCommands.getResourceInfo is not a function
+2025-06-04 21:37:51 error: Error getting traffic stats: mikrotikCommands.getResourceInfo is not a function
+2025-06-04 21:39:43 error: Error getting traffic stats: mikrotikCommands.getResourceInfo is not a function
+2025-06-04 21:39:51 error: Error getting traffic stats: mikrotikCommands.getResourceInfo is not a function
+2025-06-04 21:40:21 error: Error getting traffic stats: mikrotikCommands.getResourceInfo is not a function
+2025-06-04 21:44:18 error: ❌ Port 3100 is already in use!
+2025-06-04 22:32:44 error: ❌ Port 3100 is already in use!
+2025-06-05 08:11:32 error: Error finding device with phone number 083893116880: No device found with phone number: 083893116880
+2025-06-05 08:15:50 error: Error getting all devices: Invalid URL
+2025-06-05 08:15:51 error: Error getting all devices: Invalid URL
+2025-06-05 08:15:52 error: Error getting all devices: Invalid URL
+2025-06-05 08:15:53 error: Error connecting to Mikrotik: 
+2025-06-05 08:15:53 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:16:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:16:15 error: No Mikrotik connection available
+2025-06-05 08:16:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:16:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:16:27 error: Error getting all devices: Invalid URL
+2025-06-05 08:17:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:17:15 error: No Mikrotik connection available
+2025-06-05 08:17:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:17:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:17:28 error: Error getting all devices: Invalid URL
+2025-06-05 08:18:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:18:15 error: No Mikrotik connection available
+2025-06-05 08:18:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:18:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:18:29 error: Error getting all devices: Invalid URL
+2025-06-05 08:19:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:19:15 error: No Mikrotik connection available
+2025-06-05 08:19:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:19:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:19:30 error: Error getting all devices: Invalid URL
+2025-06-05 08:20:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:20:15 error: No Mikrotik connection available
+2025-06-05 08:20:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:20:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:20:31 error: Error getting all devices: Invalid URL
+2025-06-05 08:21:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:21:15 error: No Mikrotik connection available
+2025-06-05 08:21:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:21:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:21:31 error: Error getting all devices: Invalid URL
+2025-06-05 08:22:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:22:15 error: No Mikrotik connection available
+2025-06-05 08:22:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:22:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:22:31 error: Error getting all devices: Invalid URL
+2025-06-05 08:23:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:23:15 error: No Mikrotik connection available
+2025-06-05 08:23:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:23:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:23:31 error: Error getting all devices: Invalid URL
+2025-06-05 08:24:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:24:15 error: No Mikrotik connection available
+2025-06-05 08:24:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:24:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:24:31 error: Error getting all devices: Invalid URL
+2025-06-05 08:24:40 error: Error getting all devices: Invalid URL
+2025-06-05 08:24:40 error: Error getting all devices: Invalid URL
+2025-06-05 08:24:42 error: Error connecting to Mikrotik: 
+2025-06-05 08:24:42 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:24:52 error: Error getting all devices: Invalid URL
+2025-06-05 08:24:57 error: Error getting all devices: Invalid URL
+2025-06-05 08:24:59 error: Error getting all devices: Invalid URL
+2025-06-05 08:25:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:25:15 error: No Mikrotik connection available
+2025-06-05 08:25:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:25:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:26:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:26:15 error: No Mikrotik connection available
+2025-06-05 08:26:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:26:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:27:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:27:15 error: No Mikrotik connection available
+2025-06-05 08:27:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:27:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:28:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:28:15 error: No Mikrotik connection available
+2025-06-05 08:28:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:28:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:28:47 error: ❌ Port 3100 is already in use!
+2025-06-05 08:29:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:29:15 error: No Mikrotik connection available
+2025-06-05 08:29:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:29:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:29:49 error: Error connecting to Mikrotik: 
+2025-06-05 08:29:49 error: No Mikrotik connection available
+2025-06-05 08:29:49 error: Error connecting to Mikrotik: 
+2025-06-05 08:29:49 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:30:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:30:15 error: No Mikrotik connection available
+2025-06-05 08:30:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:30:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:30:49 error: Error connecting to Mikrotik: 
+2025-06-05 08:30:49 error: No Mikrotik connection available
+2025-06-05 08:30:49 error: Error connecting to Mikrotik: 
+2025-06-05 08:30:49 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:31:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:31:15 error: No Mikrotik connection available
+2025-06-05 08:31:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:31:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:32:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:32:15 error: No Mikrotik connection available
+2025-06-05 08:32:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:32:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:32:46 error: Error connecting to Mikrotik: 
+2025-06-05 08:32:48 error: Error connecting to Mikrotik: 
+2025-06-05 08:32:48 error: No Mikrotik connection available
+2025-06-05 08:32:50 error: Error connecting to Mikrotik: 
+2025-06-05 08:32:50 error: No Mikrotik connection available
+2025-06-05 08:32:52 error: Error connecting to Mikrotik: 
+2025-06-05 08:32:52 error: No Mikrotik connection available
+2025-06-05 08:32:55 error: Error connecting to Mikrotik: 
+2025-06-05 08:32:55 error: No Mikrotik connection available
+2025-06-05 08:32:55 error: Error getting all devices: Invalid URL
+2025-06-05 08:33:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:33:15 error: No Mikrotik connection available
+2025-06-05 08:33:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:33:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:33:25 error: Error getting all devices: Invalid URL
+2025-06-05 08:33:55 error: Error getting all devices: Invalid URL
+2025-06-05 08:34:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:34:15 error: No Mikrotik connection available
+2025-06-05 08:34:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:34:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:34:25 error: Error getting all devices: Invalid URL
+2025-06-05 08:34:55 error: Error getting all devices: Invalid URL
+2025-06-05 08:35:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:35:15 error: No Mikrotik connection available
+2025-06-05 08:35:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:35:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:35:25 error: Error getting all devices: Invalid URL
+2025-06-05 08:35:55 error: Error getting all devices: Invalid URL
+2025-06-05 08:36:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:36:15 error: No Mikrotik connection available
+2025-06-05 08:36:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:36:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:36:25 error: Error getting all devices: Invalid URL
+2025-06-05 08:36:55 error: Error getting all devices: Invalid URL
+2025-06-05 08:37:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:37:15 error: No Mikrotik connection available
+2025-06-05 08:37:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:37:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:37:25 error: Error getting all devices: Invalid URL
+2025-06-05 08:37:56 error: Error getting all devices: Invalid URL
+2025-06-05 08:38:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:38:15 error: No Mikrotik connection available
+2025-06-05 08:38:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:38:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:38:26 error: Error getting all devices: Invalid URL
+2025-06-05 08:38:26 error: ❌ Port 3100 is already in use!
+2025-06-05 08:39:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:39:15 error: No Mikrotik connection available
+2025-06-05 08:39:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:39:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:39:16 error: Error getting all devices: Invalid URL
+2025-06-05 08:39:20 error: Error connecting to Mikrotik: 
+2025-06-05 08:39:22 error: Error connecting to Mikrotik: 
+2025-06-05 08:39:22 error: No Mikrotik connection available
+2025-06-05 08:39:24 error: Error connecting to Mikrotik: 
+2025-06-05 08:39:24 error: No Mikrotik connection available
+2025-06-05 08:39:25 error: Error getting all devices: Invalid URL
+2025-06-05 08:39:26 error: Error connecting to Mikrotik: 
+2025-06-05 08:39:26 error: No Mikrotik connection available
+2025-06-05 08:39:28 error: Error connecting to Mikrotik: 
+2025-06-05 08:39:28 error: No Mikrotik connection available
+2025-06-05 08:39:28 error: Error getting all devices: Invalid URL
+2025-06-05 08:39:34 error: Error getting all devices: Invalid URL
+2025-06-05 08:39:34 error: Error getting all devices: Invalid URL
+2025-06-05 08:39:36 error: Error connecting to Mikrotik: 
+2025-06-05 08:39:36 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:39:37 error: Error getting all devices: Invalid URL
+2025-06-05 08:39:41 error: Error connecting to Mikrotik: 
+2025-06-05 08:39:43 error: Error connecting to Mikrotik: 
+2025-06-05 08:39:43 error: No Mikrotik connection available
+2025-06-05 08:39:45 error: Error connecting to Mikrotik: 
+2025-06-05 08:39:45 error: No Mikrotik connection available
+2025-06-05 08:39:47 error: Error connecting to Mikrotik: 
+2025-06-05 08:39:47 error: No Mikrotik connection available
+2025-06-05 08:39:49 error: Error connecting to Mikrotik: 
+2025-06-05 08:39:49 error: No Mikrotik connection available
+2025-06-05 08:39:49 error: Error getting all devices: Invalid URL
+2025-06-05 08:40:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:40:15 error: No Mikrotik connection available
+2025-06-05 08:40:15 error: Error connecting to Mikrotik: 
+2025-06-05 08:40:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 08:52:06 error: ❌ Port 3100 is already in use!
+2025-06-05 10:38:17 error: ❌ Port 3100 is already in use!
+2025-06-05 10:49:25 error: Error adding hotspot user: failure: already have user with this name for this server
+2025-06-05 10:49:25 error: Error adding hotspot user: failure: already have user with this name for this server
+2025-06-05 10:57:51 error: Error adding hotspot user: failure: already have user with this name for this server
+2025-06-05 10:57:51 error: Error adding hotspot user: failure: already have user with this name for this server
+2025-06-05 14:40:19 error: Mikrotik connection error: 
+2025-06-05 14:40:19 error: Error connecting to Mikrotik: 
+2025-06-05 14:40:19 error: No Mikrotik connection available
+2025-06-05 14:40:19 error: Error connecting to Mikrotik: 
+2025-06-05 14:40:19 error: No Mikrotik connection available for PPPoE monitoring
+2025-06-05 14:40:21 error: Error connecting to Mikrotik: 
+2025-06-05 14:40:21 error: No Mikrotik connection available
+2025-06-05 14:40:21 error: Error connecting to Mikrotik: 
+2025-06-05 14:40:21 error: No Mikrotik connection available
+2025-06-05 14:40:23 error: Error getting all devices: connect EHOSTUNREACH 192.168.8.89:7557
+2025-06-05 14:40:23 error: Error connecting to Mikrotik: 
+2025-06-05 14:40:23 error: No Mikrotik connection available
+2025-06-05 14:40:23 error: Error connecting to Mikrotik: 
+2025-06-05 14:40:23 error: Error connecting to Mikrotik: 
+2025-06-05 14:40:23 error: No Mikrotik connection available
+2025-07-01 05:32:42 error: Web interface error: E:\bot-acs-main\web\views\admin\settings.ejs:1
+ >> 1| <%- include('../partials/header') %>
+    2| <div class="container mt-4">
+    3|     <h2>Pengaturan Sistem (settings.json)</h2>
+    4|     <div class="row">
+
+Could not find the include file "../partials/header"
