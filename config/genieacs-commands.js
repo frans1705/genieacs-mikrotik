@@ -2,6 +2,8 @@
 const { logger } = require('./logger');
 const genieacsApi = require('./genieacs');
 const responses = require('./responses');
+const { getAppSettings } = require('./settings');
+const axios = require('axios');
 
 // Store the WhatsApp socket instance
 let sock = null;
@@ -730,7 +732,7 @@ async function handleAdminDeviceDetail(remoteJid, phoneNumber) {
         message += `🆔 *Device ID:* ${device._id}\n`;
         message += `📟 *Serial Number:* ${serialNumber}\n`;
         message += `🏭 *Manufacturer:* ${manufacturer}\n`;
-        message += `📦 *Model:* ${model}\n`;
+        message += `🏭 *Model:* ${model}\n`;
         message += `🔧 *Hardware Version:* ${hardwareVersion}\n`;
         message += `💾 *Firmware:* ${firmware}\n\n`;
 
@@ -738,7 +740,7 @@ async function handleAdminDeviceDetail(remoteJid, phoneNumber) {
         message += `• Status: ${isOnline ? '🟢 Online' : '🔴 Offline'}\n`;
         message += `• Last Inform: ${new Date(lastInform).toLocaleString()}\n`;
         message += `• Device Uptime: ${uptime}\n`;
-        message += `• PPP Uptime: ${pppUptime}\n`;
+        message += `• PPPoE Uptime: ${pppUptime}\n`;
         message += `• PPPoE IP: ${pppoeIP}\n`;
         message += `• PPP Username: ${pppUsername}\n\n`;
 
@@ -1138,12 +1140,11 @@ function formatBytes(bytes) {
 
 // Web interface specific functions
 async function getAllDevices() {
-    try {
-        return await genieacsApi.getDevices();
-    } catch (error) {
-        logger.error(`Error getting all devices: ${error.message}`);
-        return [];
-    }
+    const settings = getAppSettings();
+    const genieacsUrl = settings.genieacs_url || settings.genieacsUrl;
+    // Gunakan genieacsUrl untuk request
+    const res = await axios.get(`http://${genieacsUrl}/devices`);
+    return res.data;
 }
 
 async function getDeviceById(deviceId) {
@@ -1264,6 +1265,18 @@ async function factoryResetDevice(deviceId) {
     }
 }
 
+function getGenieAcsUrl() {
+    const settings = getAppSettings();
+    return settings.genieacs_url || settings.genieacsUrl;
+}
+
+async function someGenieAcsCommand() {
+    const url = getGenieAcsUrl();
+    // lakukan request ke url
+    const res = await axios.get(url + '/some-api');
+    return res.data;
+}
+
 module.exports = {
     setSock,
     handleWifiInfo,
@@ -1289,5 +1302,6 @@ module.exports = {
     restartDevice,
     editSSID,
     editPassword,
-    factoryResetDevice
+    factoryResetDevice,
+    someGenieAcsCommand
 };

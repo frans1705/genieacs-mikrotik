@@ -124,10 +124,9 @@ router.get('/api/wa/status', (req, res) => {
 // Admin Dashboard
 router.get('/dashboard', async (req, res) => {
     try {
-        // Get system statistics and settings
         const stats = await getSystemStats();
         const settings = loadSettings();
-
+        console.log('DEBUG settings for dashboard:', settings);
         res.render('admin/dashboard', {
             title: 'Admin Dashboard',
             stats,

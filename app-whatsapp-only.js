@@ -6,6 +6,7 @@ const { logger } = require('./config/logger');
 const whatsapp = require('./config/whatsapp');
 const { monitorPPPoEConnections } = require('./config/mikrotik');
 const fs = require('fs');
+const { getAppSettings } = require('./config/settings');
 
 // Inisialisasi aplikasi Express minimal (hanya untuk health check)
 const app = express();
@@ -49,50 +50,61 @@ function loadSettings() {
     }
 }
 
+// Fungsi untuk fallback setting
+function getSetting(settingFileValue, envValue, defaultValue) {
+    if (settingFileValue !== undefined && settingFileValue !== null && settingFileValue !== '') {
+        return settingFileValue;
+    }
+    if (envValue !== undefined && envValue !== null && envValue !== '') {
+        return envValue;
+    }
+    return defaultValue;
+}
+
 // Load settings dari settings.json
 const settingsFromFile = loadSettings();
 
 // Variabel global untuk menyimpan semua pengaturan (prioritas: settings.json > .env > default)
 global.appSettings = {
   // Server
-  port: settingsFromFile.web_port || process.env.PORT || '3501',
-  host: settingsFromFile.web_host || process.env.HOST || 'localhost',
+  port: getSetting(settingsFromFile.web_port, process.env.PORT, '3501'),
+  host: getSetting(settingsFromFile.web_host, process.env.HOST, 'localhost'),
 
   // Admin
-  adminUsername: settingsFromFile.admin_username || process.env.ADMIN_USERNAME || 'admin',
-  adminPassword: settingsFromFile.admin_password || process.env.ADMIN_PASSWORD || 'admin',
+  adminUsername: getSetting(settingsFromFile.admin_username, process.env.ADMIN_USERNAME, 'admin'),
+  adminPassword: getSetting(settingsFromFile.admin_password, process.env.ADMIN_PASSWORD, 'admin'),
 
   // GenieACS
-  genieacsHost: settingsFromFile.genieacs_host || process.env.GENIEACS_HOST || '192.168.8.89',
-  genieacsPort: settingsFromFile.genieacs_port || process.env.GENIEACS_PORT || '7557',
-  genieacsUrl: settingsFromFile.genieacs_url || process.env.GENIEACS_URL || `http://${settingsFromFile.genieacs_host || '192.168.8.89'}:${settingsFromFile.genieacs_port || '7557'}`,
-  genieacsUsername: settingsFromFile.genieacs_username || process.env.GENIEACS_USERNAME || '',
-  genieacsPassword: settingsFromFile.genieacs_password || process.env.GENIEACS_PASSWORD || '',
-  genieApiUrl: settingsFromFile.genie_api_url || process.env.GENIE_API_URL || '',
+  genieacsHost: getSetting(settingsFromFile.genieacs_host, process.env.GENIEACS_HOST, '192.168.8.89'),
+  genieacsPort: getSetting(settingsFromFile.genieacs_port, process.env.GENIEACS_PORT, '7557'),
+  genieacsUrl: getSetting(settingsFromFile.genieacs_url, process.env.GENIEACS_URL, `http://${settingsFromFile.genieacs_host || '192.168.8.89'}:${settingsFromFile.genieacs_port || '7557'}`),
+  genieacsUsername: getSetting(settingsFromFile.genieacs_username, process.env.GENIEACS_USERNAME, ''),
+  genieacsPassword: getSetting(settingsFromFile.genieacs_password, process.env.GENIEACS_PASSWORD, ''),
+  genieApiUrl: getSetting(settingsFromFile.genie_api_url, process.env.GENIE_API_URL, ''),
 
   // Mikrotik
-  mikrotikHost: settingsFromFile.mikrotik_host || process.env.MIKROTIK_HOST || '192.168.8.1',
-  mikrotikPort: settingsFromFile.mikrotik_port || process.env.MIKROTIK_PORT || '8700',
-  mikrotikUser: settingsFromFile.mikrotik_user || process.env.MIKROTIK_USER || 'admin',
-  mikrotikPassword: settingsFromFile.mikrotik_password || process.env.MIKROTIK_PASSWORD || '',
+  mikrotikHost: getSetting(settingsFromFile.mikrotik_host, process.env.MIKROTIK_HOST, '192.168.8.1'),
+  mikrotikPort: getSetting(settingsFromFile.mikrotik_port, process.env.MIKROTIK_PORT, '8700'),
+  mikrotikUser: getSetting(settingsFromFile.mikrotik_user, process.env.MIKROTIK_USER, 'admin'),
+  mikrotikPassword: getSetting(settingsFromFile.mikrotik_password, process.env.MIKROTIK_PASSWORD, ''),
 
   // WhatsApp
-  adminNumber: settingsFromFile.admin_number || process.env.ADMIN_NUMBER || '',
-  technicianNumbers: settingsFromFile.technician_numbers || process.env.TECHNICIAN_NUMBERS || '',
-  reconnectInterval: settingsFromFile.reconnect_interval || process.env.RECONNECT_INTERVAL || '5000',
-  maxReconnectRetries: settingsFromFile.max_reconnect_retries || process.env.MAX_RECONNECT_RETRIES || '5',
-  whatsappSessionPath: settingsFromFile.whatsapp_session_path || process.env.WHATSAPP_SESSION_PATH || './whatsapp-session',
+  adminNumber: getSetting(settingsFromFile.admin_number, process.env.ADMIN_NUMBER, ''),
+  technicianNumbers: getSetting(settingsFromFile.technician_numbers, process.env.TECHNICIAN_NUMBERS, ''),
+  reconnectInterval: getSetting(settingsFromFile.reconnect_interval, process.env.RECONNECT_INTERVAL, '5000'),
+  maxReconnectRetries: getSetting(settingsFromFile.max_reconnect_retries, process.env.MAX_RECONNECT_RETRIES, '5'),
+  whatsappSessionPath: getSetting(settingsFromFile.whatsapp_session_path, process.env.WHATSAPP_SESSION_PATH, './whatsapp-session'),
   whatsappKeepAlive: settingsFromFile.whatsapp_keep_alive !== undefined ? settingsFromFile.whatsapp_keep_alive : (process.env.WHATSAPP_KEEP_ALIVE === 'true'),
   whatsappRestartOnError: settingsFromFile.whatsapp_restart_on_error !== undefined ? settingsFromFile.whatsapp_restart_on_error : (process.env.WHATSAPP_RESTART_ON_ERROR === 'true'),
 
   // Monitoring
-  pppoeMonitorInterval: settingsFromFile.pppoe_monitor_interval || process.env.PPPOE_MONITOR_INTERVAL || '60000',
-  rxPowerWarning: settingsFromFile.rx_power_warning || process.env.RX_POWER_WARNING || '-25',
-  rxPowerCritical: settingsFromFile.rx_power_critical || process.env.RX_POWER_CRITICAL || '-27',
+  pppoeMonitorInterval: getSetting(settingsFromFile.pppoe_monitor_interval, process.env.PPPOE_MONITOR_INTERVAL, '60000'),
+  rxPowerWarning: getSetting(settingsFromFile.rx_power_warning, process.env.RX_POWER_WARNING, '-25'),
+  rxPowerCritical: getSetting(settingsFromFile.rx_power_critical, process.env.RX_POWER_CRITICAL, '-27'),
 
   // Company Info
-  companyHeader: settingsFromFile.company_header || process.env.COMPANY_HEADER || 'ISP Monitor',
-  footerInfo: settingsFromFile.footer_info || process.env.FOOTER_INFO || '',
+  companyHeader: getSetting(settingsFromFile.company_header, process.env.COMPANY_HEADER, 'ISP Monitor'),
+  footerInfo: getSetting(settingsFromFile.footer_info, process.env.FOOTER_INFO, ''),
 };
 
 console.log('Global settings initialized:');
@@ -109,10 +121,13 @@ if (!fs.existsSync(sessionDir)) {
 
 // Route untuk health check
 app.get('/health', (req, res) => {
+    const settings = getAppSettings();
     res.json({
         status: 'ok',
         version: VERSION,
-        whatsapp: global.whatsappStatus.status
+        whatsapp: global.whatsappStatus.status,
+        mikrotik: settings.mikrotikHost,
+        genieacs: settings.genieacsUrl
     });
 });
 
