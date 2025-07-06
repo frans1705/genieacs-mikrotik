@@ -32,23 +32,12 @@ const {
     getRouterClock,
     getAllUsers
 } = require('./mikrotik');
-const { getAppSettings } = require('./settings');
 
 let sock = null;
 
 // Fungsi untuk set instance sock
 function setSock(sockInstance) {
     sock = sockInstance;
-}
-
-function getMikrotikConfig() {
-    const settings = getAppSettings();
-    return {
-        host: settings.mikrotik_host || settings.mikrotikHost,
-        port: settings.mikrotik_port || settings.mikrotikPort,
-        user: settings.mikrotik_user || settings.mikrotikUser,
-        password: settings.mikrotik_password || settings.mikrotikPassword,
-    };
 }
 
 // Handler untuk menambah user hotspot

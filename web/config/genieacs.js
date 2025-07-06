@@ -278,33 +278,92 @@ function getDeviceStatus(device) {
 // Get device basic info
 function getDeviceBasicInfo(device) {
     if (!device) return null;
-    
+
+    // Try multiple paths for each parameter using array format
+    // Prioritize common ZTE/Fiberhome paths first
     const serialPaths = [
-        'VirtualParameters.getSerialNumber',
         'InternetGatewayDevice.DeviceInfo.SerialNumber',
-        'Device.DeviceInfo.SerialNumber'
+        'Device.DeviceInfo.SerialNumber',
+        'VirtualParameters.getSerialNumber',
+        'DeviceID.SerialNumber'
     ];
-    
+
     const modelPaths = [
         'InternetGatewayDevice.DeviceInfo.ModelName',
-        'Device.DeviceInfo.ModelName'
+        'InternetGatewayDevice.DeviceInfo.ProductClass',
+        'Device.DeviceInfo.ModelName',
+        'DeviceID.ProductClass'
     ];
-    
+
     const manufacturerPaths = [
         'InternetGatewayDevice.DeviceInfo.Manufacturer',
-        'Device.DeviceInfo.Manufacturer'
+        'InternetGatewayDevice.DeviceInfo.ManufacturerOUI',
+        'Device.DeviceInfo.Manufacturer',
+        'DeviceID.Manufacturer'
     ];
-    
+
     const firmwarePaths = [
         'InternetGatewayDevice.DeviceInfo.SoftwareVersion',
-        'Device.DeviceInfo.SoftwareVersion'
+        'Device.DeviceInfo.SoftwareVersion',
+        'InternetGatewayDevice.DeviceInfo.HardwareVersion'
     ];
-    
+
+    // Extract values with fallbacks
+    let serialNumber = getParameterValue(device, serialPaths);
+    let model = getParameterValue(device, modelPaths);
+    let manufacturer = getParameterValue(device, manufacturerPaths);
+    let firmware = getParameterValue(device, firmwarePaths);
+
+    // Additional fallbacks for common device structures
+    if (!serialNumber && device._id) {
+        const idParts = device._id.split('-');
+        if (idParts.length >= 3) {
+            serialNumber = idParts[2];
+        }
+    }
+
+    if (!model && device._id) {
+        const idParts = device._id.split('-');
+        if (idParts.length >= 2) {
+            model = idParts[1];
+        }
+    }
+
+    // For ZTE/Fiberhome devices, try specific detection
+    if (!manufacturer && firmware) {
+        if (firmware.includes('V3R') || firmware.includes('V5R')) {
+            manufacturer = 'ZTE'; // Common for V3R/V5R firmware
+        } else if (firmware.includes('RP') || firmware.includes('AN')) {
+            manufacturer = 'Fiberhome'; // Common for Fiberhome firmware
+        }
+    }
+
+    // For ZTE devices, try to extract model from device ID
+    if (!model && device._id && manufacturer === 'ZTE') {
+        const idParts = device._id.split('-');
+        if (idParts.length >= 2) {
+            // ZTE device IDs often have format like "00259E-HG8245H-SERIAL"
+            model = idParts[1];
+        }
+    }
+
+    // For devices with specific OUI patterns
+    if (!manufacturer && device._id) {
+        const oui = device._id.split('-')[0];
+        if (oui === '00259E') {
+            manufacturer = 'Huawei';
+        } else if (oui === 'F8DFA8' || oui === 'F4B5AA') {
+            manufacturer = 'ZTE';
+        } else if (oui === '1C25E1') {
+            manufacturer = 'Fiberhome';
+        }
+    }
+
     return {
-        serialNumber: getParameterValue(device, serialPaths) || 'N/A',
-        model: getParameterValue(device, modelPaths) || 'N/A',
-        manufacturer: getParameterValue(device, manufacturerPaths) || 'N/A',
-        firmware: getParameterValue(device, firmwarePaths) || 'N/A',
+        serialNumber: serialNumber || 'N/A',
+        model: model || 'N/A',
+        manufacturer: manufacturer || 'N/A',
+        firmware: firmware || 'N/A',
         ...getDeviceStatus(device)
     };
 }

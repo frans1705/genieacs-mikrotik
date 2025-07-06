@@ -12,67 +12,60 @@ function setSock(sockInstance) {
     sock = sockInstance;
 }
 
-// Fungsi untuk koneksi ke Mikrotik
+// Fungsi untuk mendapatkan konfigurasi MikroTik dari settings.json
+function getMikrotikConfig() {
+    // Prioritaskan settings.json, fallback ke environment variables
+    return {
+        host: global.appSettings?.mikrotikHost || process.env.MIKROTIK_HOST,
+        user: global.appSettings?.mikrotikUser || process.env.MIKROTIK_USER,
+        password: global.appSettings?.mikrotikPassword || process.env.MIKROTIK_PASSWORD,
+        port: global.appSettings?.mikrotikPort || process.env.MIKROTIK_PORT || 8728
+    };
+}
+
+// Perbaiki fungsi connectToMikrotik
 async function connectToMikrotik() {
     try {
-        // Dapatkan konfigurasi Mikrotik
-        const host = global.appSettings.mikrotikHost || process.env.MIKROTIK_HOST;
-        const port = parseInt(global.appSettings.mikrotikPort || process.env.MIKROTIK_PORT || '8728');
-        const user = global.appSettings.mikrotikUser || process.env.MIKROTIK_USER;
-        const password = global.appSettings.mikrotikPassword || process.env.MIKROTIK_PASSWORD;
-
-        // Debug logging
-        logger.info(`Mikrotik config debug:`);
-        logger.info(`- global.appSettings.mikrotikHost: ${global.appSettings?.mikrotikHost}`);
-        logger.info(`- global.appSettings.mikrotikPort: ${global.appSettings?.mikrotikPort}`);
-        logger.info(`- global.appSettings.mikrotikUser: ${global.appSettings?.mikrotikUser}`);
-        logger.info(`- process.env.MIKROTIK_HOST: ${process.env.MIKROTIK_HOST}`);
-        logger.info(`- process.env.MIKROTIK_PORT: ${process.env.MIKROTIK_PORT}`);
-        logger.info(`- Final values: host=${host}, port=${port}, user=${user}`);
-
-        if (!host || !user || !password) {
-            logger.error('Mikrotik configuration is incomplete');
-            logger.error(`Host: ${host}, User: ${user}, Password: ${password ? '[SET]' : '[NOT SET]'}, Port: ${port}`);
-            return null;
+        const config = getMikrotikConfig();
+        
+        if (!config.host || !config.user || !config.password) {
+            throw new Error('MikroTik configuration not available');
         }
 
-        logger.info(`Attempting to connect to Mikrotik at ${host}:${port} with user: ${user}`);
-
-        // Buat koneksi ke Mikrotik
-        const conn = new RouterOSAPI({
-            host,
-            port,
-            user,
-            password,
-            keepalive: true,
-            timeout: 10000 // 10 second timeout
+        console.log(`Connecting to Mikrotik at ${config.host}:${config.port}`);
+        
+        const connection = new RouterOSAPI({
+            host: config.host,
+            user: config.user,
+            password: config.password,
+            port: config.port
         });
 
         // Connect ke Mikrotik dengan timeout
         await Promise.race([
-            conn.connect(),
+            connection.connect(),
             new Promise((_, reject) =>
                 setTimeout(() => reject(new Error('Connection timeout')), 10000)
             )
         ]);
 
-        logger.info(`Connected to Mikrotik at ${host}:${port}`);
+        console.log(`Connected to Mikrotik at ${config.host}:${config.port}`);
 
         // Set global connection
-        mikrotikConnection = conn;
+        mikrotikConnection = connection;
 
         // Handle connection errors
-        conn.on('error', (error) => {
+        connection.on('error', (error) => {
             logger.error(`Mikrotik connection error: ${error.message}`);
             mikrotikConnection = null;
         });
 
-        conn.on('close', () => {
+        connection.on('close', () => {
             logger.warn('Mikrotik connection closed');
             mikrotikConnection = null;
         });
 
-        return conn;
+        return connection;
     } catch (error) {
         logger.error(`Error connecting to Mikrotik: ${error.message}`);
         mikrotikConnection = null;

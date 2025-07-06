@@ -3,55 +3,33 @@ require('dotenv').config();
 const { sendTechnicianMessage } = require('./sendMessage');
 const mikrotik = require('./mikrotik');
 const { getMikrotikConnection } = require('./mikrotik');
-const fs = require('fs');
-const path = require('path');
 
-// Tambahkan helper untuk load settings.json terbaru
-function getAppSettings() {
-    try {
-        const settingsPath = path.join(__dirname, '../settings.json');
-        if (fs.existsSync(settingsPath)) {
-            const data = fs.readFileSync(settingsPath, 'utf8');
-            return JSON.parse(data);
-        }
-        return {};
-    } catch (e) {
-        return {};
+// Konfigurasi GenieACS API
+const GENIEACS_HOST = process.env.GENIEACS_HOST || global.appSettings?.genieacsHost || '192.168.8.89';
+const GENIEACS_PORT = process.env.GENIEACS_PORT || global.appSettings?.genieacsPort || '7557';
+const GENIEACS_URL = `http://${GENIEACS_HOST}:${GENIEACS_PORT}`;
+const GENIEACS_USERNAME = process.env.GENIEACS_USERNAME || global.appSettings?.genieacsUsername || '';
+const GENIEACS_PASSWORD = process.env.GENIEACS_PASSWORD || global.appSettings?.genieacsPassword || '';
+
+console.log(`GenieACS configuration: ${GENIEACS_URL}`);
+
+// Buat instance axios dengan konfigurasi default
+const axiosInstance = axios.create({
+    baseURL: GENIEACS_URL,
+    auth: {
+        username: GENIEACS_USERNAME,
+        password: GENIEACS_PASSWORD
+    },
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
     }
-}
-
-// Helper untuk mendapatkan konfigurasi GenieACS terbaru
-function getGenieAcsConfig() {
-    const settings = getAppSettings();
-    const host = settings.genieacs_host || process.env.GENIEACS_HOST || '192.168.8.89';
-    const port = settings.genieacs_port || process.env.GENIEACS_PORT || '7557';
-    const url = settings.genieacs_url || process.env.GENIEACS_URL || `http://${host}:${port}`;
-    const username = settings.genieacs_username || process.env.GENIEACS_USERNAME || '';
-    const password = settings.genieacs_password || process.env.GENIEACS_PASSWORD || '';
-    return { url, username, password };
-}
-
-// Helper untuk membuat axios instance dinamis
-function createAxiosInstance() {
-    const { url, username, password } = getGenieAcsConfig();
-    return axios.create({
-        baseURL: url.startsWith('http') ? url : `http://${url}`,
-        auth: {
-            username,
-            password
-        },
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    });
-}
+});
 
 // GenieACS API wrapper
 const genieacsApi = {
     async getDevices() {
         try {
-            const axiosInstance = createAxiosInstance();
             console.log('Getting all devices...');
             const response = await axiosInstance.get('/devices');
             console.log(`Found ${response.data?.length || 0} devices`);
@@ -64,13 +42,23 @@ const genieacsApi = {
 
     async findDeviceByPhoneNumber(phoneNumber) {
         try {
-            const axiosInstance = createAxiosInstance();
-            const query = JSON.stringify({ '_tags': phoneNumber });
-            const response = await axiosInstance.get('/devices/', { params: { query } });
+            // Mencari device berdasarkan tag yang berisi nomor telepon
+            // Menggunakan format query sesuai dokumentasi API GenieACS
+            const query = JSON.stringify({
+                '_tags': phoneNumber
+            });
+
+            const response = await axiosInstance.get('/devices/', {
+                params: {
+                    query: query
+                }
+            });
+
             if (!response.data || response.data.length === 0) {
                 throw new Error(`No device found with phone number: ${phoneNumber}`);
             }
-            return response.data[0];
+
+            return response.data[0]; // Mengembalikan device pertama yang ditemukan
         } catch (error) {
             console.error(`Error finding device with phone number ${phoneNumber}:`, error.response?.data || error.message);
             throw error;
@@ -89,12 +77,21 @@ const genieacsApi = {
 
     async getDevice(deviceId) {
         try {
-            const axiosInstance = createAxiosInstance();
-            const query = JSON.stringify({ '_id': deviceId });
-            const response = await axiosInstance.get('/devices/', { params: { query } });
+            // Menggunakan query parameter sesuai dokumentasi API GenieACS
+            const query = JSON.stringify({
+                '_id': deviceId
+            });
+
+            const response = await axiosInstance.get('/devices/', {
+                params: {
+                    query: query
+                }
+            });
+
             if (!response.data || response.data.length === 0) {
                 throw new Error(`Device not found: ${deviceId}`);
             }
+
             return response.data[0];
         } catch (error) {
             console.error(`Error getting device ${deviceId}:`, error.response?.data || error.message);
@@ -189,7 +186,6 @@ const genieacsApi = {
 
     async reboot(deviceId) {
         try {
-            const axiosInstance = createAxiosInstance();
             const task = {
                 name: "reboot"
             };
@@ -206,7 +202,6 @@ const genieacsApi = {
 
     async factoryReset(deviceId) {
         try {
-            const axiosInstance = createAxiosInstance();
             const task = {
                 name: "factoryReset"
             };
@@ -223,7 +218,6 @@ const genieacsApi = {
 
     async getDeviceParameters(deviceId, parameterNames) {
         try {
-            const axiosInstance = createAxiosInstance();
             // Menggunakan task getParameterValues sesuai dokumentasi API GenieACS
             const task = {
                 name: "getParameterValues",

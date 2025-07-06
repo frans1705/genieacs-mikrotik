@@ -258,18 +258,20 @@
                     <% } %>
 
                     <% if (device) { %>
-                        <% 
+                        <%
                             const lastInform = new Date(device._lastInform);
                             const now = new Date();
                             const diffMinutes = Math.floor((now - lastInform) / (1000 * 60));
                             const isOnline = diffMinutes < 15;
                             const tags = device._tags || [];
                             const customerInfo = tags.length > 0 ? tags[0] : 'No Tag';
-                            const serialNumber = device.InternetGatewayDevice?.DeviceInfo?.SerialNumber?._value || 'Unknown';
-                            const model = device.InternetGatewayDevice?.DeviceInfo?.ModelName?._value || 'Unknown';
-                            const manufacturer = device.InternetGatewayDevice?.DeviceInfo?.Manufacturer?._value || 'Unknown';
-                            const firmware = device.InternetGatewayDevice?.DeviceInfo?.SoftwareVersion?._value || 'Unknown';
-                            const hardwareVersion = device.InternetGatewayDevice?.DeviceInfo?.HardwareVersion?._value || 'Unknown';
+
+                            // Use deviceInfo if available, otherwise fallback to direct extraction
+                            const serialNumber = deviceInfo ? deviceInfo.serialNumber : (device.InternetGatewayDevice?.DeviceInfo?.SerialNumber?._value || 'N/A');
+                            const model = deviceInfo ? deviceInfo.model : (device.InternetGatewayDevice?.DeviceInfo?.ModelName?._value || 'N/A');
+                            const manufacturer = deviceInfo ? deviceInfo.manufacturer : (device.InternetGatewayDevice?.DeviceInfo?.Manufacturer?._value || 'N/A');
+                            const firmware = deviceInfo ? deviceInfo.firmware : (device.InternetGatewayDevice?.DeviceInfo?.SoftwareVersion?._value || 'N/A');
+                            const hardwareVersion = device.InternetGatewayDevice?.DeviceInfo?.HardwareVersion?._value || 'N/A';
                         %>
 
                         <!-- Device Status Header -->
@@ -367,13 +369,34 @@
                                             <tr>
                                                 <th>Customer Tag</th>
                                                 <td>
-                                                    <% if (tags.length > 0) { %>
-                                                        <% tags.forEach(tag => { %>
-                                                            <span class="badge bg-info me-1"><%= tag %></span>
-                                                        <% }); %>
-                                                    <% } else { %>
-                                                        <span class="text-muted">No tags</span>
-                                                    <% } %>
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <% if (tags.length > 0) { %>
+                                                            <div class="d-flex flex-wrap gap-1">
+                                                                <% tags.forEach((tag, index) => { %>
+                                                                    <div class="badge bg-info d-flex align-items-center gap-1">
+                                                                        <span><%= tag %></span>
+                                                                        <button type="button" class="btn btn-sm btn-outline-light p-0 ms-1" 
+                                                                                data-tag="<%= tag %>" data-index="<%= index %>"
+                                                                                onclick="editTagFromData(this)" 
+                                                                                title="Edit tag">
+                                                                            <i class="bi bi-pencil" style="font-size: 0.7rem;"></i>
+                                                                        </button>
+                                                                        <button type="button" class="btn btn-sm btn-outline-light p-0 ms-1" 
+                                                                                data-tag="<%= tag %>" data-index="<%= index %>"
+                                                                                onclick="deleteTagFromData(this)" 
+                                                                                title="Hapus tag">
+                                                                            <i class="bi bi-x" style="font-size: 0.7rem;"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                <% }); %>
+                                                            </div>
+                                                        <% } else { %>
+                                                            <span class="text-muted">No tags</span>
+                                                        <% } %>
+                                                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addNewTag()">
+                                                            <i class="bi bi-plus"></i> Add Tag
+                                                        </button>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -713,6 +736,154 @@
         setInterval(() => {
             updateSystemInfo();
         }, 30000);
+
+        let currentTagIndex = -1;
+        let currentTagValue = '';
+        let isEditMode = false;
+
+        // Function untuk menambah tag baru
+        function addNewTag() {
+            isEditMode = false;
+            currentTagIndex = -1;
+            currentTagValue = '';
+            document.getElementById('tagModalTitle').textContent = 'Add Customer Tag';
+            document.getElementById('tagValue').value = '';
+            document.getElementById('tagValue').placeholder = 'Masukkan nomor pelanggan atau tag';
+            
+            const modal = new bootstrap.Modal(document.getElementById('tagModal'));
+            modal.show();
+        }
+
+        // Function untuk edit tag
+        function editTag(tag, index) {
+            isEditMode = true;
+            currentTagIndex = index;
+            currentTagValue = tag;
+            document.getElementById('tagModalTitle').textContent = 'Edit Customer Tag';
+            document.getElementById('tagValue').value = tag;
+            document.getElementById('tagValue').placeholder = 'Masukkan nomor pelanggan atau tag';
+            
+            const modal = new bootstrap.Modal(document.getElementById('tagModal'));
+            modal.show();
+        }
+
+        // Function untuk hapus tag
+        function deleteTag(tag, index) {
+            if (confirm(`Apakah Anda yakin ingin menghapus tag "${tag}"?`)) {
+                AlijayaWeb.showToast('Menghapus tag...', 'info');
+                
+                const deviceId = '<%= device._id %>';
+                
+                fetch('/admin/api/devices/' + encodeURIComponent(deviceId) + '/tags/' + encodeURIComponent(tag), {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        AlijayaWeb.showToast('Tag berhasil dihapus', 'success');
+                        setTimeout(() => {
+                            location.reload();
+                        }, 1000);
+                    } else {
+                        AlijayaWeb.showToast('Gagal menghapus tag: ' + (data.error || 'Error tidak diketahui'), 'error');
+                    }
+                })
+                .catch(error => {
+                    AlijayaWeb.showToast('Error menghapus tag: ' + error.message, 'error');
+                });
+            }
+        }
+
+        // Function untuk menyimpan tag
+        function saveTag() {
+            const tagValue = document.getElementById('tagValue').value.trim();
+            
+            if (!tagValue) {
+                AlijayaWeb.showToast('Tag tidak boleh kosong', 'error');
+                return;
+            }
+
+            const deviceId = '<%= device._id %>';
+            const action = isEditMode ? 'mengubah' : 'menambahkan';
+            
+            AlijayaWeb.showToast(`${action} tag...`, 'info');
+            
+            const url = isEditMode 
+                ? `/admin/api/devices/${encodeURIComponent(deviceId)}/tags/${encodeURIComponent(currentTagValue)}`
+                : `/admin/api/devices/${encodeURIComponent(deviceId)}/tags`;
+            
+            const method = isEditMode ? 'PUT' : 'POST';
+            
+            fetch(url, {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    tag: tagValue
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    AlijayaWeb.showToast(`Tag berhasil ${isEditMode ? 'diubah' : 'ditambahkan'}`, 'success');
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('tagModal'));
+                    modal.hide();
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1000);
+                } else {
+                    AlijayaWeb.showToast(`Gagal ${action} tag: ` + (data.error || 'Error tidak diketahui'), 'error');
+                }
+            })
+            .catch(error => {
+                AlijayaWeb.showToast(`Error ${action} tag: ` + error.message, 'error');
+            });
+        }
+
+        function editTagFromData(button) {
+            const tag = button.getAttribute('data-tag');
+            const index = parseInt(button.getAttribute('data-index'));
+            editTag(tag, index);
+        }
+
+        function deleteTagFromData(button) {
+            const tag = button.getAttribute('data-tag');
+            const index = parseInt(button.getAttribute('data-index'));
+            deleteTag(tag, index);
+        }
     </script>
+
+    <!-- Modal untuk Add/Edit Tag -->
+    <div class="modal fade" id="tagModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tagModalTitle">Add Customer Tag</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="tagForm">
+                        <div class="mb-3">
+                            <label for="tagValue" class="form-label">Customer Tag</label>
+                            <input type="text" class="form-control" id="tagValue" 
+                                   placeholder="Masukkan nomor pelanggan atau tag" required>
+                            <div class="form-text">
+                                <i class="bi bi-info-circle"></i> 
+                                Masukkan nomor telepon pelanggan (contoh: 6281234567890) atau tag kustom
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="saveTag()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

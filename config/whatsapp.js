@@ -110,19 +110,21 @@ let FOOTER_INFO = FOOTER_SEPARATOR + (process.env.FOOTER_INFO || "Powered by Ali
 
 // Helper untuk menambahkan header dan footer pada pesan
 function formatWithHeaderFooter(message) {
-    const appSettings = getAppSettings();
-    // Tambahkan icon dan bold pada header/footer
-    const headerIcon = "📢";
-    const footerIcon = "🏢";
-    const header = `${headerIcon} *${appSettings.company_header || "ALIJAYA DIGITAL NETWORK"}*\n\n`;
-    const footerSeparator = "\n\n━━━━━━━━━━━━━━━━━━━━━━\n";
-    const footer = `${footerSeparator}${footerIcon} *${appSettings.footer_info || "Powered by Alijaya Digital Network"}*`;
-
-    // Jika pesan sudah dimulai dengan emoji 📱, berarti sudah ada header
-    if (message.startsWith('📱')) {
-        return `${message}${footer}`;
-    }
-    return `${header}${message}${footer}`;
+    // Prioritaskan settings dari global.appSettings, fallback ke environment variables, lalu default
+    const header = global.appSettings?.whatsapp_header || 
+                   process.env.WHATSAPP_HEADER || 
+                   '🏢 *ALIJAYA GENIEACS MIKROTIK*\n\n';
+    
+    const footer = global.appSettings?.whatsapp_footer || 
+                   process.env.WHATSAPP_FOOTER || 
+                   '\n\n_Management RTRW-Net_';
+    
+    const separator = global.appSettings?.whatsapp_separator || 
+                      process.env.WHATSAPP_SEPARATOR || 
+                      '━━━━━━━━━━━━━━━━━━━━━━━━';
+    
+    // Format pesan dengan header, separator, dan footer
+    return `${header}${message}\n\n${separator}${footer}`;
 }
 
 // Helper untuk mengirim pesan dengan header dan footer
@@ -151,6 +153,24 @@ async function sendGenieACSDisabledMessage(remoteJid) {
 // Fungsi untuk memperbarui konfigurasi WhatsApp
 function updateConfig(newConfig) {
     try {
+        // Update WhatsApp header jika ada
+        if (newConfig.whatsapp_header !== undefined) {
+            global.appSettings.whatsapp_header = newConfig.whatsapp_header;
+            console.log('WhatsApp header updated:', newConfig.whatsapp_header);
+        }
+        
+        // Update WhatsApp footer jika ada
+        if (newConfig.whatsapp_footer !== undefined) {
+            global.appSettings.whatsapp_footer = newConfig.whatsapp_footer;
+            console.log('WhatsApp footer updated:', newConfig.whatsapp_footer);
+        }
+        
+        // Update WhatsApp separator jika ada
+        if (newConfig.whatsapp_separator !== undefined) {
+            global.appSettings.whatsapp_separator = newConfig.whatsapp_separator;
+            console.log('WhatsApp separator updated:', newConfig.whatsapp_separator);
+        }
+        
         // Update company header jika ada
         if (newConfig.companyHeader !== undefined) {
             COMPANY_HEADER = newConfig.companyHeader + "\n\n";
@@ -1451,81 +1471,49 @@ async function findDeviceByTag(tag) {
     try {
         console.log(`Searching for device with tag: ${tag}`);
         
-        // Coba cari dengan query langsung
-        try {
-            // Pertama coba dengan query exact match
-            const exactResponse = await axios.get(`${process.env.GENIEACS_URL}/devices/?query={"_tags":"${tag}"}`, {
-                auth: {
-                    username: process.env.GENIEACS_USERNAME,
-                    password: process.env.GENIEACS_PASSWORD
-                }
-            });
-            
-            if (exactResponse.data && exactResponse.data.length > 0) {
-                console.log(`Device found with exact tag match: ${tag}`);
-                return exactResponse.data[0];
-            }
-            
-            // Jika tidak ditemukan dengan exact match, coba dengan partial match
-            console.log(`No exact match found for tag ${tag}, trying partial match...`);
-            const partialResponse = await axios.get(`${process.env.GENIEACS_URL}/devices`, {
-                auth: {
-                    username: process.env.GENIEACS_USERNAME,
-                    password: process.env.GENIEACS_PASSWORD
-                }
-            });
-            
-            // Cari perangkat dengan tag yang cocok sebagian
-            if (partialResponse.data && partialResponse.data.length > 0) {
-                for (const device of partialResponse.data) {
-                    if (device._tags && Array.isArray(device._tags)) {
-                        // Cek apakah ada tag yang berisi nomor yang dicari
-                        const matchingTag = device._tags.find(t => 
-                            t === tag || // Exact match
-                            t.includes(tag) || // Tag berisi nomor
-                            tag.includes(t) // Nomor berisi tag (jika tag adalah nomor parsial)
-                        );
-                        
-                        if (matchingTag) {
-                            console.log(`Device found with partial tag match: ${matchingTag}`);
-                            return device;
-                        }
-                    }
-                }
-            }
-            
-            console.log(`No device found with tag containing: ${tag}`);
+        // Dapatkan URL GenieACS dengan protokol
+        const genieacsUrl = global.appSettings.genieacsUrl || process.env.GENIEACS_URL;
+        if (!genieacsUrl) {
+            console.error('GenieACS URL not configured');
             return null;
-            
-        } catch (queryError) {
-            console.error('Error with tag query:', queryError.message);
-            
-            // Jika gagal, coba cara alternatif dengan mengambil semua perangkat
-            console.log('Trying alternative method: fetching all devices');
-            const allDevicesResponse = await axios.get(`${process.env.GENIEACS_URL}/devices`, {
-                auth: {
-                    username: process.env.GENIEACS_USERNAME,
-                    password: process.env.GENIEACS_PASSWORD
-                }
-            });
-            
-            // Cari perangkat dengan tag yang sesuai
-            const device = allDevicesResponse.data.find(d => {
-                if (!d._tags) return false;
-                
-                // Cek apakah ada tag yang cocok
-                return d._tags.some(t => 
-                    t === tag || // Exact match
-                    t.includes(tag) || // Tag berisi nomor
-                    tag.includes(t) // Nomor berisi tag
-                );
-            });
-            
-            return device || null;
         }
+        
+        // Pastikan URL memiliki protokol
+        let baseUrl = genieacsUrl;
+        if (!baseUrl.startsWith('http://') && !baseUrl.startsWith('https://')) {
+            baseUrl = `http://${baseUrl}`;
+        }
+        
+        // Buat query untuk mencari perangkat berdasarkan tag
+        const query = JSON.stringify({
+            '_tags': tag
+        });
+        
+        const encodedQuery = encodeURIComponent(query);
+        const url = `${baseUrl}/devices/?query=${encodedQuery}`;
+        
+        console.log(`Making request to: ${url}`);
+        
+        const response = await axios.get(url, {
+            auth: {
+                username: global.appSettings.genieacsUsername || process.env.GENIEACS_USERNAME,
+                password: global.appSettings.genieacsPassword || process.env.GENIEACS_PASSWORD
+            },
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        
+        if (response.data && response.data.length > 0) {
+            console.log(`Found device with tag ${tag}:`, response.data[0]._id);
+            return response.data[0];
+        }
+        
+        console.log(`No device found with tag: ${tag}`);
+        return null;
     } catch (error) {
-        console.error('Error finding device by tag:', error);
-        throw error;
+        console.error(`Error finding device by tag: ${error.message}`);
+        return null;
     }
 }
 
@@ -1583,9 +1571,14 @@ Mohon tunggu sebentar.${FOOTER_INFO}`
         // Encode deviceId untuk URL
         const encodedDeviceId = encodeURIComponent(device._id);
         
+        // Dapatkan konfigurasi dari settings.json
+        const genieacsUrl = global.appSettings?.genieacsUrl || process.env.GENIEACS_URL;
+        const genieacsUsername = global.appSettings?.genieacsUsername || process.env.GENIEACS_USERNAME;
+        const genieacsPassword = global.appSettings?.genieacsPassword || process.env.GENIEACS_PASSWORD;
+        
         // Update SSID 2.4GHz hanya di index 1
         await axios.post(
-            `${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`,
+            `${genieacsUrl}/devices/${encodedDeviceId}/tasks`,
             {
                 name: "setParameterValues",
                 parameterValues: [
@@ -1594,17 +1587,18 @@ Mohon tunggu sebentar.${FOOTER_INFO}`
             },
             {
                 auth: {
-                    username: process.env.GENIEACS_USERNAME,
-                    password: process.env.GENIEACS_PASSWORD
+                    username: genieacsUsername,
+                    password: genieacsPassword
                 }
             }
         );
         
         // Update SSID 5GHz hanya di index 5
+        let wifi5GFound = false; // DEKLARASI VARIABEL
         try {
             console.log(`Updating 5GHz SSID using config index 5`);
             await axios.post(
-                `${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`,
+                `${genieacsUrl}/devices/${encodedDeviceId}/tasks`,
                 {
                     name: "setParameterValues",
                     parameterValues: [
@@ -1613,15 +1607,18 @@ Mohon tunggu sebentar.${FOOTER_INFO}`
                 },
                 {
                     auth: {
-                        username: process.env.GENIEACS_USERNAME,
-                        password: process.env.GENIEACS_PASSWORD
+                        username: genieacsUsername,
+                        password: genieacsPassword
                     }
                 }
             );
             console.log(`Successfully updated 5GHz SSID using config index 5`);
+            wifi5GFound = true; // SET KE TRUE JIKA BERHASIL
         } catch (error) {
             console.error(`Error updating 5GHz SSID with index 5:`, error.message);
+            wifi5GFound = false; // SET KE FALSE JIKA GAGAL
         }
+        
         if (!wifi5GFound) {
             console.warn('Tidak ada konfigurasi SSID 5GHz yang valid ditemukan. SSID 5GHz tidak diubah.');
         }
@@ -1629,15 +1626,15 @@ Mohon tunggu sebentar.${FOOTER_INFO}`
         // Tambahkan task refresh
         try {
             await axios.post(
-                `${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`,
+                `${genieacsUrl}/devices/${encodedDeviceId}/tasks`,
                 {
                     name: "refreshObject",
                     objectName: "InternetGatewayDevice.LANDevice.1.WLANConfiguration"
                 },
                 {
                     auth: {
-                        username: process.env.GENIEACS_USERNAME,
-                        password: process.env.GENIEACS_PASSWORD
+                        username: genieacsUsername,
+                        password: genieacsPassword
                     }
                 }
             );
@@ -1649,14 +1646,14 @@ Mohon tunggu sebentar.${FOOTER_INFO}`
         // Reboot perangkat untuk menerapkan perubahan
         try {
             await axios.post(
-                `${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`,
+                `${genieacsUrl}/devices/${encodedDeviceId}/tasks`,
                 {
                     name: "reboot"
                 },
                 {
                     auth: {
-                        username: process.env.GENIEACS_USERNAME,
-                        password: process.env.GENIEACS_PASSWORD
+                        username: genieacsUsername,
+                        password: genieacsPassword
                     }
                 }
             );
@@ -1705,7 +1702,7 @@ Coba lagi nanti ya!${FOOTER_INFO}`
 }
 
 // Handler untuk admin mengubah password WiFi pelanggan
-async function handleAdminEditPassword(adminJid, customerNumber, newPassword) {
+async function handleAdminEditPassword(remoteJid, customerNumber, newPassword) {
     try {
         console.log(`Admin mengubah password WiFi untuk pelanggan ${customerNumber}`);
         
@@ -1851,128 +1848,131 @@ _Perubahan selesai pada: ${new Date().toLocaleString()}_${FOOTER_INFO}`;
 
         await sock.sendMessage(adminJid, { text: adminResponseMessage });
         
-        // Kirim notifikasi ke pelanggan tentang perubahan password WiFi
-        try {
-            // Format nomor pelanggan untuk WhatsApp
-            let customerJid;
-            if (customerNumber.includes('@')) {
-                customerJid = customerNumber; // Sudah dalam format JID
-            } else {
-                // Format nomor untuk WhatsApp
-                const cleanNumber = customerNumber.replace(/\D/g, '');
-                customerJid = `${cleanNumber}@s.whatsapp.net`;
+        // Coba kirim notifikasi ke pelanggan
+        let notificationSent = false;
+        if (customerNumber.match(/^\d+$/) && customerNumber.length >= 10) {
+            try {
+                console.log(`Sending password change notification to customer: ${customerNumber}`);
+                
+                // Format nomor telepon
+                const formattedNumber = formatPhoneNumber(customerNumber);
+                
+                // Buat pesan notifikasi untuk pelanggan dengan format dari settings
+                const notificationMessage = `📢 *INFORMASI PERUBAHAN PASSWORD WIFI*
+
+Halo Pelanggan yang terhormat,
+
+Password WiFi Anda telah diubah oleh administrator sistem. Berikut detail perubahannya:
+
+📶 *Nama WiFi:* ${ssid24G}
+🔐 *Password Baru:* ${newPassword}
+
+Silakan gunakan password baru ini untuk terhubung ke jaringan WiFi Anda.
+Perubahan akan diterapkan dalam beberapa menit.`;
+
+                // Kirim pesan menggunakan sock dengan format dari settings
+                await sock.sendMessage(`${formattedNumber}@s.whatsapp.net`, { 
+                    text: formatWithHeaderFooter(notificationMessage)
+                });
+                
+                console.log(`Password change notification sent to customer: ${customerNumber}`);
+                notificationSent = true;
+                
+                adminResponseMessage += `\nNotifikasi sudah dikirim ke pelanggan.`;
+            } catch (notificationError) {
+                console.error(`Failed to send notification to customer: ${customerNumber}`, notificationError);
+                adminResponseMessage += `\n\n⚠️ *Peringatan:* Gagal mengirim notifikasi ke pelanggan.\n` +
+                                  `Error: ${notificationError.message}`;
             }
-            
-            // Pesan notifikasi untuk pelanggan
-            const customerNotificationMessage = `${COMPANY_HEADER}
-📢 *PEMBERITAHUAN PERUBAHAN PASSWORD WIFI*
-
-Halo Pelanggan Setia,
-
-Kami informasikan bahwa password WiFi Anda telah diubah oleh admin:
-
-🔐 *Password WiFi Baru:* ${newPassword}
-
-⏳ Perangkat Anda akan melakukan restart untuk menerapkan perubahan.
-📱 Perangkat yang terhubung akan terputus dan perlu menghubungkan ulang dengan password baru.
-
-_Catatan: Simpan informasi ini sebagai dokumentasi jika Anda lupa password WiFi di kemudian hari._${FOOTER_INFO}`;
-            
-            await sock.sendMessage(customerJid, { text: customerNotificationMessage });
-            console.log(`Notification sent to customer ${customerNumber} about WiFi password change`);
-        } catch (notificationError) {
-            console.error(`Failed to send notification to customer ${customerNumber}:`, notificationError.message);
-            // Kirim pesan ke admin bahwa notifikasi ke pelanggan gagal
-            await sock.sendMessage(adminJid, { 
-                text: `${COMPANY_HEADER}
-⚠️ *INFO*
-
-Password WiFi pelanggan berhasil diubah, tetapi gagal mengirim notifikasi ke pelanggan.
-Error: ${notificationError.message}${FOOTER_INFO}` 
-            });
         }
+
+        // Kirim respons ke admin
+        await sock.sendMessage(adminJid, { text: adminResponseMessage });
         
     } catch (error) {
-        console.error('Error handling admin edit password:', error);
+        console.error('Error in handleAdminEditPassword:', error);
         await sock.sendMessage(adminJid, { 
-            text: `${COMPANY_HEADER}
-❌ *GAGAL MENGUBAH PASSWORD WIFI PELANGGAN*
-
-Oops! Ada kendala teknis saat mengubah password WiFi pelanggan.
-Beberapa kemungkinan penyebabnya:
-• Router pelanggan sedang offline
-• Masalah koneksi ke server
-• Format password tidak didukung
-
-Pesan error: ${error.message}
-
-Coba lagi nanti ya!${FOOTER_INFO}` 
+            text: `❌ *ERROR*\n\nTerjadi kesalahan saat mengubah password:\n${error.message}`
         });
     }
 }
 
 // Handler untuk admin mengubah SSID pelanggan
-async function handleAdminEditSSID(adminJid, customerNumber, newSSID) {
+async function handleAdminEditSSID(remoteJid, params) {
     try {
-        console.log(`Admin mengubah SSID untuk pelanggan ${customerNumber} menjadi ${newSSID}`);
+        console.log(`Processing adminssid command with params:`, params);
         
-        // Format nomor pelanggan untuk mencari di GenieACS
-        const formattedNumber = formatPhoneNumber(customerNumber);
-        console.log(`Mencari perangkat untuk nomor: ${formattedNumber}`);
-        
-        // Cari perangkat pelanggan
-        const device = await getDeviceByNumber(formattedNumber);
-        if (!device) {
-            await sock.sendMessage(adminJid, { 
-                text: `${COMPANY_HEADER}
-❌ *NOMOR PELANGGAN TIDAK DITEMUKAN*
-
-Nomor ${customerNumber} tidak terdaftar di sistem.
-Periksa kembali nomor pelanggan.${FOOTER_INFO}` 
+        if (params.length < 2) {
+            await sock.sendMessage(remoteJid, { 
+                text: `❌ *FORMAT Salah!*\n\n` +
+                      `Format yang benar:\n` +
+                      `editssid [nomor_pelanggan] [ssid_baru]\n\n` +
+                      `Contoh:\n` +
+                      `editssid 123456 RumahKu`
             });
             return;
         }
+        
+        const customerNumber = params[0];
+        const newSSID = params.slice(1).join(' ');
+        
+        console.log(`Attempting to change SSID for customer ${customerNumber} to "${newSSID}"`);
+        
+        // Cari perangkat berdasarkan tag nomor pelanggan
+        const device = await findDeviceByTag(customerNumber);
+        if (!device) {
+            await sock.sendMessage(remoteJid, { 
+                text: `❌ *Perangkat tidak ditemukan!*\n\n` +
+                      `Nomor pelanggan "${customerNumber}" tidak terdaftar di sistem.`
+            });
+            return;
+        }
+        
+        console.log(`Device found for customer ${customerNumber}: ${device._id}`);
+        
+        // Dapatkan SSID saat ini untuk perbandingan
+        const currentSSID = getSSIDValue(device, '1') || 'N/A';
+        console.log(`Current SSID: ${currentSSID}`);
         
         // Buat nama SSID 5G berdasarkan SSID 2.4G
         const newSSID5G = `${newSSID}-5G`;
         
         // Kirim pesan ke admin bahwa permintaan sedang diproses
-        await sock.sendMessage(adminJid, { 
-            text: `${COMPANY_HEADER}
-⏳ *PERMINTAAN DIPROSES*
-
-Sedang mengubah nama WiFi pelanggan ${customerNumber}...
-• WiFi 2.4GHz: ${newSSID}
-• WiFi 5GHz: ${newSSID5G}
-
-Mohon tunggu sebentar.${FOOTER_INFO}`
+        await sock.sendMessage(remoteJid, { 
+            text: `⏳ *PERMINTAAN DIPROSES*\n\nSedang mengubah nama WiFi pelanggan ${customerNumber}...\n• WiFi 2.4GHz: ${newSSID}\n• WiFi 5GHz: ${newSSID5G}\n\nMohon tunggu sebentar.`
         });
         
         // Encode deviceId untuk URL
         const encodedDeviceId = encodeURIComponent(device._id);
         
-        // Update SSID 2.4GHz di index 1
+        // Dapatkan konfigurasi dari settings.json
+        const genieacsUrl = global.appSettings?.genieacsUrl || process.env.GENIEACS_URL;
+        const genieacsUsername = global.appSettings?.genieacsUsername || process.env.GENIEACS_USERNAME;
+        const genieacsPassword = global.appSettings?.genieacsPassword || process.env.GENIEACS_PASSWORD;
+        
+        // Update SSID 2.4GHz hanya di index 1
         await axios.post(
-            `${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`,
+            `${genieacsUrl}/devices/${encodedDeviceId}/tasks`,
             {
                 name: "setParameterValues",
                 parameterValues: [
                     ["InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.SSID", newSSID, "xsd:string"]
-                ]
+                ] // hanya index 1 untuk 2.4GHz
             },
             {
                 auth: {
-                    username: process.env.GENIEACS_USERNAME,
-                    password: process.env.GENIEACS_PASSWORD
+                    username: genieacsUsername,
+                    password: genieacsPassword
                 }
             }
         );
         
         // Update SSID 5GHz hanya di index 5
+        let wifi5GFound = false; // DEKLARASI VARIABEL
         try {
             console.log(`Updating 5GHz SSID using config index 5`);
             await axios.post(
-                `${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`,
+                `${genieacsUrl}/devices/${encodedDeviceId}/tasks`,
                 {
                     name: "setParameterValues",
                     parameterValues: [
@@ -1981,28 +1981,34 @@ Mohon tunggu sebentar.${FOOTER_INFO}`
                 },
                 {
                     auth: {
-                        username: process.env.GENIEACS_USERNAME,
-                        password: process.env.GENIEACS_PASSWORD
+                        username: genieacsUsername,
+                        password: genieacsPassword
                     }
                 }
             );
             console.log(`Successfully updated 5GHz SSID using config index 5`);
+            wifi5GFound = true; // SET KE TRUE JIKA BERHASIL
         } catch (error) {
             console.error(`Error updating 5GHz SSID with index 5:`, error.message);
+            wifi5GFound = false; // SET KE FALSE JIKA GAGAL
+        }
+        
+        if (!wifi5GFound) {
+            console.warn('Tidak ada konfigurasi SSID 5GHz yang valid ditemukan. SSID 5GHz tidak diubah.');
         }
         
         // Tambahkan task refresh
         try {
             await axios.post(
-                `${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`,
+                `${genieacsUrl}/devices/${encodedDeviceId}/tasks`,
                 {
                     name: "refreshObject",
                     objectName: "InternetGatewayDevice.LANDevice.1.WLANConfiguration"
                 },
                 {
                     auth: {
-                        username: process.env.GENIEACS_USERNAME,
-                        password: process.env.GENIEACS_PASSWORD
+                        username: genieacsUsername,
+                        password: genieacsPassword
                     }
                 }
             );
@@ -2014,14 +2020,14 @@ Mohon tunggu sebentar.${FOOTER_INFO}`
         // Reboot perangkat untuk menerapkan perubahan
         try {
             await axios.post(
-                `${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`,
+                `${genieacsUrl}/devices/${encodedDeviceId}/tasks`,
                 {
                     name: "reboot"
                 },
                 {
                     auth: {
-                        username: process.env.GENIEACS_USERNAME,
-                        password: process.env.GENIEACS_PASSWORD
+                        username: genieacsUsername,
+                        password: genieacsPassword
                     }
                 }
             );
@@ -2029,92 +2035,52 @@ Mohon tunggu sebentar.${FOOTER_INFO}`
         } catch (rebootError) {
             console.error('Error sending reboot task:', rebootError.message);
         }
-        
-        // Pesan sukses untuk admin
-        let adminResponseMessage = `${COMPANY_HEADER}
-✅ *NAMA WIFI PELANGGAN BERHASIL DIUBAH!*
 
-📱 *Pelanggan:* ${customerNumber}
-📡 *Nama WiFi Baru:*
-• WiFi 2.4GHz: ${newSSID}`;
-
+        let responseMessage = `✅ *PERUBAHAN SSID BERHASIL*\n\n` +
+                      `Nama WiFi untuk pelanggan ${customerNumber} berhasil diubah!\n\n` +
+                      `• SSID Lama: ${currentSSID}\n` +
+                      `• SSID Baru: ${newSSID}\n`;
+                      
         if (wifi5GFound) {
-            adminResponseMessage += `\n• WiFi 5GHz: ${newSSID5G}`;
+            responseMessage += `• SSID 5GHz: ${newSSID5G}\n\n`;
         } else {
-            adminResponseMessage += `\n• WiFi 5GHz: Pengaturan tidak ditemukan atau gagal diubah`;
+            responseMessage += `• SSID 5GHz: Pengaturan tidak ditemukan atau gagal diubah\n\n`;
         }
-
-        adminResponseMessage += `\n
-⏳ Perangkat akan melakukan restart untuk menerapkan perubahan.
-📱 Perangkat yang terhubung akan terputus dan perlu menghubungkan ulang ke nama WiFi baru.
-
-_Perubahan selesai pada: ${new Date().toLocaleString()}_${FOOTER_INFO}`;
-
-        await sock.sendMessage(adminJid, { text: adminResponseMessage });
         
-        // Kirim notifikasi ke pelanggan tentang perubahan SSID
-        try {
-            // Format nomor pelanggan untuk WhatsApp
-            let customerJid;
-            if (customerNumber.includes('@')) {
-                customerJid = customerNumber; // Sudah dalam format JID
-            } else {
-                // Format nomor untuk WhatsApp
-                const cleanNumber = customerNumber.replace(/\D/g, '');
-                customerJid = `${cleanNumber}@s.whatsapp.net`;
+        responseMessage += `Perangkat WiFi akan restart dalam beberapa saat. Pelanggan perlu menghubungkan kembali perangkat mereka ke jaringan WiFi baru.`;
+
+        await sock.sendMessage(remoteJid, { text: responseMessage });
+        
+        // Kirim notifikasi ke pelanggan jika nomor pelanggan adalah nomor telepon
+        if (customerNumber.match(/^\d+$/) && customerNumber.length >= 10) {
+            try {
+                const formattedNumber = formatPhoneNumber(customerNumber);
+                
+                let notificationMessage = `✅ *PERUBAHAN NAMA WIFI*\n\n` +
+                                          `Halo Pelanggan yang terhormat,\n\n` +
+                                          `Kami informasikan bahwa nama WiFi Anda telah diubah:\n\n` +
+                                          `• Nama WiFi Baru: ${newSSID}\n`;
+                                          
+                if (wifi5GFound) {
+                    notificationMessage += `• Nama WiFi 5GHz: ${newSSID5G}\n\n`;
+                }
+                
+                notificationMessage += `Perangkat WiFi akan restart dalam beberapa saat. Silakan hubungkan kembali perangkat Anda ke jaringan WiFi baru.\n\n` +
+                             `Jika Anda memiliki pertanyaan, silakan balas pesan ini.`;
+                
+                await sock.sendMessage(`${formattedNumber}@s.whatsapp.net`, { 
+                    text: notificationMessage
+                });
+                console.log(`Notification sent to customer: ${customerNumber}`);
+            } catch (notifyError) {
+                console.error('Error notifying customer:', notifyError);
             }
-            
-            // Pesan notifikasi untuk pelanggan
-            const customerNotificationMessage = `${COMPANY_HEADER}
-📢 *PEMBERITAHUAN PERUBAHAN WIFI*
-
-Halo Pelanggan Setia,
-
-Kami informasikan bahwa nama WiFi Anda telah diubah oleh admin:
-
-📡 *Nama WiFi Baru:*
-• WiFi 2.4GHz: ${newSSID}`;
-            
-            let fullCustomerMessage = customerNotificationMessage;
-            if (wifi5GFound) {
-                fullCustomerMessage += `\n• WiFi 5GHz: ${newSSID5G}`;
-            }
-            
-            fullCustomerMessage += `\n
-⏳ Perangkat Anda akan melakukan restart untuk menerapkan perubahan.
-📱 Perangkat yang terhubung akan terputus dan perlu menghubungkan ulang ke nama WiFi baru.
-
-_Catatan: Simpan informasi ini sebagai dokumentasi jika Anda lupa nama WiFi di kemudian hari._${FOOTER_INFO}`;
-            
-            await sock.sendMessage(customerJid, { text: fullCustomerMessage });
-            console.log(`Notification sent to customer ${customerNumber} about SSID change`);
-        } catch (notificationError) {
-            console.error(`Failed to send notification to customer ${customerNumber}:`, notificationError.message);
-            // Kirim pesan ke admin bahwa notifikasi ke pelanggan gagal
-            await sock.sendMessage(adminJid, { 
-                text: `${COMPANY_HEADER}
-⚠️ *INFO*
-
-Nama WiFi pelanggan berhasil diubah, tetapi gagal mengirim notifikasi ke pelanggan.
-Error: ${notificationError.message}${FOOTER_INFO}` 
-            });
         }
         
     } catch (error) {
-        console.error('Error handling admin edit SSID:', error);
-        await sock.sendMessage(adminJid, { 
-            text: `${COMPANY_HEADER}
-❌ *GAGAL MENGUBAH NAMA WIFI PELANGGAN*
-
-Oops! Ada kendala teknis saat mengubah nama WiFi pelanggan.
-Beberapa kemungkinan penyebabnya:
-• Router pelanggan sedang offline
-• Masalah koneksi ke server
-• Format nama tidak didukung
-
-Pesan error: ${error.message}
-
-Coba lagi nanti ya!${FOOTER_INFO}` 
+        console.error('Error in handleAdminEditSSID:', error);
+        await sock.sendMessage(remoteJid, { 
+            text: `❌ *ERROR*\n\nTerjadi kesalahan saat mengubah nama WiFi:\n${error.message}`
         });
     }
 }
@@ -2553,10 +2519,8 @@ async function handleAdminEditPassword(remoteJid, customerNumber, newPassword) {
                 // Format nomor telepon
                 const formattedNumber = formatPhoneNumber(customerNumber);
                 
-                // Buat pesan notifikasi untuk pelanggan
-                const notificationMessage = `🏢 *${COMPANY_HEADER || ''}*
-                
-📢 *INFORMASI PERUBAHAN PASSWORD WIFI*
+                // Buat pesan notifikasi untuk pelanggan dengan format dari settings
+                const notificationMessage = `📢 *INFORMASI PERUBAHAN PASSWORD WIFI*
 
 Halo Pelanggan yang terhormat,
 
@@ -2566,11 +2530,11 @@ Password WiFi Anda telah diubah oleh administrator sistem. Berikut detail peruba
 🔐 *Password Baru:* ${newPassword}
 
 Silakan gunakan password baru ini untuk terhubung ke jaringan WiFi Anda.
-Perubahan akan diterapkan dalam beberapa menit.${FOOTER_INFO || ''}`;
+Perubahan akan diterapkan dalam beberapa menit.`;
 
-                // Kirim pesan menggunakan sock
+                // Kirim pesan menggunakan sock dengan format dari settings
                 await sock.sendMessage(`${formattedNumber}@s.whatsapp.net`, { 
-                    text: notificationMessage 
+                    text: formatWithHeaderFooter(notificationMessage)
                 });
                 
                 console.log(`Password change notification sent to customer: ${customerNumber}`);
@@ -2597,193 +2561,6 @@ Perubahan akan diterapkan dalam beberapa menit.${FOOTER_INFO || ''}`;
     }
 }
 
-// Handler untuk admin edit SSID pelanggan
-async function handleAdminEditSSID(remoteJid, params) {
-    if (!sock) {
-        console.error('Sock instance not set');
-        return;
-    }
-
-    console.log(`Processing adminssid command with params:`, params);
-
-    if (params.length < 2) {
-        await sock.sendMessage(remoteJid, { 
-            text: `❌ *FORMAT SALAH*\n\n` +
-                  `Format yang benar:\n` +
-                  `editssid [nomor_pelanggan] [nama_wifi_baru]\n\n` +
-                  `Contoh:\n` +
-                  `editssid 123456 RumahBaru`
-        });
-        return;
-    }
-
-    // Ambil nomor pelanggan dari parameter pertama
-    const customerNumber = params[0];
-    
-    // Gabungkan semua parameter setelah nomor pelanggan sebagai SSID baru
-    // Ini menangani kasus di mana SSID terdiri dari beberapa kata
-    const newSSID = params.slice(1).join(' ');
-    const newSSID5G = `${newSSID}-5G`;
-
-    console.log(`Attempting to change SSID for customer ${customerNumber} to "${newSSID}"`);
-
-    try {
-        // Kirim pesan bahwa proses sedang berlangsung
-        await sock.sendMessage(remoteJid, { 
-            text: `🔄 *PROSES PERUBAHAN SSID*\n\nSedang mengubah nama WiFi untuk pelanggan ${customerNumber}...\nMohon tunggu sebentar.` 
-        });
-
-        // Cari perangkat berdasarkan nomor pelanggan
-        const device = await findDeviceByTag(customerNumber);
-        
-        if (!device) {
-            console.log(`Device not found for customer number: ${customerNumber}`);
-            await sock.sendMessage(remoteJid, { 
-                text: `❌ *PERANGKAT TIDAK DITEMUKAN*\n\n` +
-                      `Tidak dapat menemukan perangkat untuk pelanggan dengan nomor ${customerNumber}.\n\n` +
-                      `Pastikan nomor pelanggan benar dan perangkat telah terdaftar dalam sistem.`
-            });
-            return;
-        }
-
-        console.log(`Device found for customer ${customerNumber}: ${device._id}`);
-
-        // Dapatkan SSID saat ini untuk referensi
-        const currentSSID = device.InternetGatewayDevice?.LANDevice?.[1]?.WLANConfiguration?.[1]?.SSID?._value || 'N/A';
-        console.log(`Current SSID: ${currentSSID}`);
-        
-        // Encode deviceId untuk URL
-        const encodedDeviceId = encodeURIComponent(device._id);
-        
-        // Update SSID 2.4GHz hanya di index 1
-        await axios.post(
-            `${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`,
-            {
-                name: "setParameterValues",
-                parameterValues: [
-                    ["InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.SSID", newSSID, "xsd:string"]
-                ] // hanya index 1 untuk 2.4GHz
-            },
-            {
-                auth: {
-                    username: process.env.GENIEACS_USERNAME,
-                    password: process.env.GENIEACS_PASSWORD
-                }
-            }
-        );
-        
-        // Update SSID 5GHz hanya di index 5
-        try {
-            console.log(`Updating 5GHz SSID using config index 5`);
-            await axios.post(
-                `${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`,
-                {
-                    name: "setParameterValues",
-                    parameterValues: [
-                        ["InternetGatewayDevice.LANDevice.1.WLANConfiguration.5.SSID", newSSID5G, "xsd:string"]
-                    ]
-                },
-                {
-                    auth: {
-                        username: process.env.GENIEACS_USERNAME,
-                        password: process.env.GENIEACS_PASSWORD
-                    }
-                }
-            );
-            console.log(`Successfully updated 5GHz SSID using config index 5`);
-        } catch (error) {
-            console.error(`Error updating 5GHz SSID with index 5:`, error.message);
-        }
-        if (!wifi5GFound) {
-            console.warn('Tidak ada konfigurasi SSID 5GHz yang valid ditemukan. SSID 5GHz tidak diubah.');
-        }
-        
-        // Tambahkan task refresh
-        try {
-            await axios.post(
-                `${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`,
-                {
-                    name: "refreshObject",
-                    objectName: "InternetGatewayDevice.LANDevice.1.WLANConfiguration"
-                },
-                {
-                    auth: {
-                        username: process.env.GENIEACS_USERNAME,
-                        password: process.env.GENIEACS_PASSWORD
-                    }
-                }
-            );
-            console.log('Successfully sent refresh task');
-        } catch (refreshError) {
-            console.error('Error sending refresh task:', refreshError.message);
-        }
-        
-        // Reboot perangkat untuk menerapkan perubahan
-        try {
-            await axios.post(
-                `${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`,
-                {
-                    name: "reboot"
-                },
-                {
-                    auth: {
-                        username: process.env.GENIEACS_USERNAME,
-                        password: process.env.GENIEACS_PASSWORD
-                    }
-                }
-            );
-            console.log('Successfully sent reboot task');
-        } catch (rebootError) {
-            console.error('Error sending reboot task:', rebootError.message);
-        }
-
-        let responseMessage = `✅ *PERUBAHAN SSID BERHASIL*\n\n` +
-                      `Nama WiFi untuk pelanggan ${customerNumber} berhasil diubah!\n\n` +
-                      `• SSID Lama: ${currentSSID}\n` +
-                      `• SSID Baru: ${newSSID}\n`;
-                      
-        if (wifi5GFound) {
-            responseMessage += `• SSID 5GHz: ${newSSID5G}\n\n`;
-        } else {
-            responseMessage += `• SSID 5GHz: Pengaturan tidak ditemukan atau gagal diubah\n\n`;
-        }
-        
-        responseMessage += `Perangkat WiFi akan restart dalam beberapa saat. Pelanggan perlu menghubungkan kembali perangkat mereka ke jaringan WiFi baru.`;
-
-        await sock.sendMessage(remoteJid, { text: responseMessage });
-        
-        // Kirim notifikasi ke pelanggan jika nomor pelanggan adalah nomor telepon
-        if (customerNumber.match(/^\d+$/) && customerNumber.length >= 10) {
-            try {
-                const formattedNumber = formatPhoneNumber(customerNumber);
-                
-                let notificationMessage = `✅ *PERUBAHAN NAMA WIFI*\n\n` +
-                                          `Halo Pelanggan yang terhormat,\n\n` +
-                                          `Kami informasikan bahwa nama WiFi Anda telah diubah:\n\n` +
-                                          `• Nama WiFi Baru: ${newSSID}\n`;
-                                          
-                if (wifi5GFound) {
-                    notificationMessage += `• Nama WiFi 5GHz: ${newSSID5G}\n\n`;
-                }
-                
-                notificationMessage += `Perangkat WiFi akan restart dalam beberapa saat. Silakan hubungkan kembali perangkat Anda ke jaringan WiFi baru.\n\n` +
-                                      `Jika Anda memiliki pertanyaan, silakan balas pesan ini.`;
-                
-                await sock.sendMessage(`${formattedNumber}@s.whatsapp.net`, { 
-                    text: notificationMessage
-                });
-                console.log(`Notification sent to customer: ${customerNumber}`);
-            } catch (notifyError) {
-                console.error('Error notifying customer:', notifyError);
-            }
-        }
-    } catch (error) {
-        console.error('Error in handleAdminEditSSID:', error);
-        await sock.sendMessage(remoteJid, { 
-            text: `❌ *ERROR*\n\nTerjadi kesalahan saat mengubah nama WiFi:\n${error.message}`
-        });
-    }
-}
 
 // Fungsi untuk mengubah SSID
 async function changeSSID(deviceId, newSSID) {
@@ -2793,44 +2570,49 @@ async function changeSSID(deviceId, newSSID) {
         // Encode deviceId untuk URL
         const encodedDeviceId = encodeURIComponent(deviceId);
         
+        // Dapatkan konfigurasi dari settings.json
+        const genieacsUrl = global.appSettings?.genieacsUrl || process.env.GENIEACS_URL;
+        const genieacsUsername = global.appSettings?.genieacsUsername || process.env.GENIEACS_USERNAME;
+        const genieacsPassword = global.appSettings?.genieacsPassword || process.env.GENIEACS_PASSWORD;
+        
         // Implementasi untuk mengubah SSID melalui GenieACS
         // Ubah SSID 2.4GHz
         try {
             console.log(`Setting 2.4GHz SSID to "${newSSID}"`);
-            await axios.post(`${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`, {
+            await axios.post(`${genieacsUrl}/devices/${encodedDeviceId}/tasks`, {
                 name: "setParameterValues",
                 parameterValues: [
                     ["InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.SSID", newSSID, "xsd:string"]
                 ] // hanya index 1 untuk 2.4GHz
             }, {
                 auth: {
-                    username: process.env.GENIEACS_USERNAME,
-                    password: process.env.GENIEACS_PASSWORD
+                    username: genieacsUsername,
+                    password: genieacsPassword
                 }
             });
             
             // Ubah SSID 5GHz dengan menambahkan suffix -5G
             console.log(`Setting 5GHz SSID to "${newSSID}-5G"`);
-            await axios.post(`${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`, {
+            await axios.post(`${genieacsUrl}/devices/${encodedDeviceId}/tasks`, {
                 name: "setParameterValues",
                 parameterValues: [
                     ["InternetGatewayDevice.LANDevice.1.WLANConfiguration.5.SSID", `${newSSID}-5G`, "xsd:string"]
                 ]
             }, {
                 auth: {
-                    username: process.env.GENIEACS_USERNAME,
-                    password: process.env.GENIEACS_PASSWORD
+                    username: genieacsUsername,
+                    password: genieacsPassword
                 }
             });
             
             // Commit perubahan
             console.log(`Rebooting device to apply changes`);
-            await axios.post(`${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`, {
+            await axios.post(`${genieacsUrl}/devices/${encodedDeviceId}/tasks`, {
                 name: "reboot"
             }, {
                 auth: {
-                    username: process.env.GENIEACS_USERNAME,
-                    password: process.env.GENIEACS_PASSWORD
+                    username: genieacsUsername,
+                    password: genieacsPassword
                 }
             });
             
@@ -2845,38 +2627,38 @@ async function changeSSID(deviceId, newSSID) {
                 
                 try {
                     // Coba dengan path alternatif untuk 2.4GHz
-                    await axios.post(`${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`, {
+                    await axios.post(`${genieacsUrl}/devices/${encodedDeviceId}/tasks`, {
                         name: "setParameterValues",
                         parameterValues: [
                             ["Device.WiFi.SSID.1.SSID", newSSID, "xsd:string"]
                         ]
                     }, {
                         auth: {
-                            username: process.env.GENIEACS_USERNAME,
-                            password: process.env.GENIEACS_PASSWORD
+                            username: genieacsUsername,
+                            password: genieacsPassword
                         }
                     });
                     
                     // Coba dengan path alternatif untuk 5GHz
-                    await axios.post(`${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`, {
+                    await axios.post(`${genieacsUrl}/devices/${encodedDeviceId}/tasks`, {
                         name: "setParameterValues",
                         parameterValues: [
                             ["Device.WiFi.SSID.2.SSID", `${newSSID}-5G`, "xsd:string"]
                         ]
                     }, {
                         auth: {
-                            username: process.env.GENIEACS_USERNAME,
-                            password: process.env.GENIEACS_PASSWORD
+                            username: genieacsUsername,
+                            password: genieacsPassword
                         }
                     });
                     
                     // Commit perubahan
-                    await axios.post(`${process.env.GENIEACS_URL}/devices/${encodedDeviceId}/tasks`, {
+                    await axios.post(`${genieacsUrl}/devices/${encodedDeviceId}/tasks`, {
                         name: "reboot"
                     }, {
                         auth: {
-                            username: process.env.GENIEACS_USERNAME,
-                            password: process.env.GENIEACS_PASSWORD
+                            username: genieacsUsername,
+                            password: genieacsPassword
                         }
                     });
                     
@@ -2891,13 +2673,8 @@ async function changeSSID(deviceId, newSSID) {
             }
         }
     } catch (error) {
-        console.error('Error changing SSID:', error);
-        return { 
-            success: false, 
-            message: error.response ? 
-                `${error.message} (Status: ${error.response.status})` : 
-                error.message 
-        };
+        console.error(`Error changing SSID: ${error.message}`);
+        return { success: false, message: `Gagal mengubah SSID: ${error.message}` };
     }
 }
 
@@ -3020,17 +2797,33 @@ async function handleListONU(remoteJid) {
 // Fungsi untuk mengambil semua perangkat
 async function getAllDevices() {
     try {
-        // Implementasi untuk mengambil semua perangkat dari GenieACS
-        const response = await axios.get(`${process.env.GENIEACS_URL}/devices`, {
+        // Dapatkan URL GenieACS dengan protokol
+        const genieacsUrl = global.appSettings.genieacsUrl || process.env.GENIEACS_URL;
+        if (!genieacsUrl) {
+            console.error('GenieACS URL not configured');
+            return [];
+        }
+        
+        // Pastikan URL memiliki protokol
+        let baseUrl = genieacsUrl;
+        if (!baseUrl.startsWith('http://') && !baseUrl.startsWith('https://')) {
+            baseUrl = `http://${baseUrl}`;
+        }
+        
+        const response = await axios.get(`${baseUrl}/devices`, {
             auth: {
-                username: process.env.GENIEACS_USERNAME,
-                password: process.env.GENIEACS_PASSWORD
+                username: global.appSettings.genieacsUsername || process.env.GENIEACS_USERNAME,
+                password: global.appSettings.genieacsPassword || process.env.GENIEACS_PASSWORD
+            },
+            headers: {
+                'Accept': 'application/json'
             }
         });
-        return response.data;
+        
+        return response.data || [];
     } catch (error) {
-        console.error('Error getting all devices:', error);
-        throw error;
+        console.error('Error getting all devices:', error.message);
+        return [];
     }
 }
 
@@ -3557,7 +3350,7 @@ async function handleResourceInfo(remoteJid) {
         // Import modul mikrotik
         const mikrotik = require('./mikrotik');
 
-        // Ambil informasi resource
+        // Ambil informasi resource dengan konfigurasi terbaru
         const result = await mikrotik.getResourceInfo();
 
         if (result.success) {
@@ -3594,7 +3387,7 @@ async function handleResourceInfo(remoteJid) {
 
             // Format System info
             let systemInfo = `⏰ *UPTIME*\n• ${data.uptime}\n\n`;
-            systemInfo += `🔧 *SYSTEM INFO*\n`;
+            systemInfo += ` *SYSTEM INFO*\n`;
             if (data.model !== 'N/A') systemInfo += `• Model: ${data.model}\n`;
             if (data.architecture !== 'N/A') systemInfo += `• Architecture: ${data.architecture}\n`;
             if (data.version !== 'N/A') systemInfo += `• Version: ${data.version}\n`;
@@ -5417,5 +5210,50 @@ function getAppSettings() {
         return JSON.parse(fs.readFileSync(settingsPath, 'utf-8'));
     } catch (e) {
         return {};
+    }
+}
+
+// Fungsi untuk mendapatkan perangkat berdasarkan nomor telepon
+async function getDeviceByNumber(phoneNumber) {
+    try {
+        // Dapatkan URL GenieACS dengan protokol
+        const genieacsUrl = global.appSettings.genieacsUrl || process.env.GENIEACS_URL;
+        if (!genieacsUrl) {
+            console.error('GenieACS URL not configured');
+            return null;
+        }
+        
+        // Pastikan URL memiliki protokol
+        let baseUrl = genieacsUrl;
+        if (!baseUrl.startsWith('http://') && !baseUrl.startsWith('https://')) {
+            baseUrl = `http://${baseUrl}`;
+        }
+        
+        // Buat query untuk mencari perangkat berdasarkan tag nomor telepon
+        const query = JSON.stringify({
+            '_tags': phoneNumber
+        });
+        
+        const encodedQuery = encodeURIComponent(query);
+        const url = `${baseUrl}/devices/?query=${encodedQuery}`;
+        
+        const response = await axios.get(url, {
+            auth: {
+                username: global.appSettings.genieacsUsername || process.env.GENIEACS_USERNAME,
+                password: global.appSettings.genieacsPassword || process.env.GENIEACS_PASSWORD
+            },
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        
+        if (response.data && response.data.length > 0) {
+            return response.data[0];
+        }
+        
+        return null;
+    } catch (error) {
+        console.error(`Error getting device by number ${phoneNumber}:`, error.message);
+        return null;
     }
 }

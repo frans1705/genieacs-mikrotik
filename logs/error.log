@@ -359,10 +359,105 @@ req is not defined
 2025-06-05 14:40:23 error: Error connecting to Mikrotik: 
 2025-06-05 14:40:23 error: Error connecting to Mikrotik: 
 2025-06-05 14:40:23 error: No Mikrotik connection available
-2025-07-01 05:32:42 error: Web interface error: E:\bot-acs-main\web\views\admin\settings.ejs:1
- >> 1| <%- include('../partials/header') %>
-    2| <div class="container mt-4">
-    3|     <h2>Pengaturan Sistem (settings.json)</h2>
-    4|     <div class="row">
+2025-07-05 20:32:00 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 20:32:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 20:33:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 20:34:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 20:35:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 20:36:52 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 20:37:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 20:38:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 20:39:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 20:40:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 20:41:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 20:42:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 20:43:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 20:44:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 20:45:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 20:46:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 20:47:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 20:48:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:08:10 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:08:26 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:08:40 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:09:10 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:09:25 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:09:45 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:10:31 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:10:50 error: Web interface error: Unexpected token '/' in E:\Whatsapp-Only\web\views\admin\settings.ejs while compiling ejs
 
-Could not find the include file "../partials/header"
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+2025-07-05 21:11:01 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:11:31 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:12:01 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:12:31 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:13:01 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:13:22 error: Web interface error: Unexpected token '/' in E:\Whatsapp-Only\web\views\admin\settings.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+2025-07-05 21:13:27 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:15:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:16:16 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:17:16 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:18:16 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:19:16 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:19:36 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:20:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:21:16 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:22:16 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:23:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:24:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:25:00 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:25:16 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:25:24 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:25:36 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:26:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:26:39 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:27:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:28:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:29:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:30:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:31:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:32:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:33:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:34:34 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:35:34 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:36:34 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:37:34 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:38:38 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:39:34 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:40:34 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:42:28 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:43:28 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:43:51 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:44:28 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:45:37 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:46:32 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:47:28 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:48:28 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:49:28 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:50:28 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:51:28 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:52:28 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:53:28 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:54:28 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:55:28 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:56:28 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:58:10 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 21:59:10 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:00:10 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:01:10 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:02:14 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:03:10 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:04:10 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:06:12 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:07:12 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:08:12 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:09:12 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:10:16 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:11:12 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:12:12 error: Mikrotik connection error: Timed out after 10 seconds

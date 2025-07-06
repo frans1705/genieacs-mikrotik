@@ -4,6 +4,7 @@ const router = express.Router();
 const { logger } = require('../../config/logger');
 const fs = require('fs');
 const path = require('path');
+const axios = require('axios'); // Added for GenieACS API calls
 
 // Import existing modules
 const genieacsCommands = require('../../config/genieacs-commands');
@@ -30,103 +31,13 @@ function loadSettings() {
     }
 }
 
-// Admin Settings Page
-router.get('/settings', async (req, res) => {
-    try {
-        const settings = loadSettings();
-        res.render('admin/settings', {
-            title: 'Settings',
-            settings,
-            user: req.session.user
-        });
-    } catch (error) {
-        logger.error(`Settings page error: ${error.message}`);
-        res.render('admin/settings', {
-            title: 'Settings',
-            settings: {},
-            error: 'Failed to load settings',
-            user: req.session.user
-        });
-    }
-});
-
-// API: Get settings
-router.get('/api/settings', (req, res) => {
-    const settings = loadSettings();
-    res.json(settings);
-});
-
-// API: Update settings
-router.post('/api/settings', (req, res) => {
-    try {
-        const settingsPath = path.join(__dirname, '../../settings.json');
-        const settings = loadSettings();
-        Object.assign(settings, req.body);
-        fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2), 'utf8');
-        logger.info('Settings updated by admin');
-        res.json({ success: true });
-    } catch (error) {
-        logger.error(`Failed to update settings: ${error.message}`);
-        res.status(500).json({ error: 'Gagal menyimpan pengaturan' });
-    }
-});
-
-// API: Get WhatsApp QRCode
-router.get('/api/wa/qrcode', (req, res) => {
-    // Ganti dengan logika pengambilan QRCode WhatsApp dari modul WhatsApp Anda
-    const qrcodePath = path.join(__dirname, '../../logs/wa_qrcode.png');
-    if (fs.existsSync(qrcodePath)) {
-        res.sendFile(qrcodePath);
-    } else {
-        res.status(404).send('QR Code tidak ditemukan');
-    }
-});
-
-// Import modul WhatsApp
-const whatsappModule = require('../../config/whatsapp');
-
-// API: Refresh WhatsApp QRCode
-router.post('/api/wa/refresh-qrcode', async (req, res) => {
-    logger.info('Admin requested WhatsApp QR refresh');
-    try {
-        await whatsappModule.connectToWhatsApp();
-        res.json({ success: true, message: 'QR Code WhatsApp berhasil di-refresh.' });
-    } catch (error) {
-        logger.error('Gagal refresh QRCode WhatsApp:', error);
-        res.status(500).json({ success: false, message: 'Gagal refresh QRCode WhatsApp', error: error.message });
-    }
-});
-
-// API: Delete WhatsApp Session
-router.post('/api/wa/delete-session', async (req, res) => {
-    logger.info('Admin requested WhatsApp session deletion');
-    try {
-        const result = await whatsappModule.deleteWhatsAppSession();
-        res.json(result);
-    } catch (error) {
-        logger.error('Gagal menghapus session WhatsApp:', error);
-        res.status(500).json({ success: false, message: 'Gagal menghapus session WhatsApp', error: error.message });
-    }
-});
-
-// API: WhatsApp Connection Status
-router.get('/api/wa/status', (req, res) => {
-    try {
-        const status = whatsappModule.getWhatsAppStatus ? whatsappModule.getWhatsAppStatus() : (global.whatsappStatus || {});
-        logger.info('[DEBUG] /api/wa/status response:', status);
-        res.json({ success: true, status });
-    } catch (error) {
-        logger.error('Gagal mengambil status WhatsApp:', error);
-        res.status(500).json({ success: false, message: 'Gagal mengambil status WhatsApp', error: error.message });
-    }
-});
-
 // Admin Dashboard
 router.get('/dashboard', async (req, res) => {
     try {
+        // Get system statistics and settings
         const stats = await getSystemStats();
         const settings = loadSettings();
-        console.log('DEBUG settings for dashboard:', settings);
+
         res.render('admin/dashboard', {
             title: 'Admin Dashboard',
             stats,
@@ -189,9 +100,14 @@ router.get('/devices/:deviceId', async (req, res) => {
             });
         }
 
+        // Get device basic info using the improved function
+        const genieacsConfig = require('../../web/config/genieacs');
+        const deviceInfo = genieacsConfig.getDeviceBasicInfo(device);
+
         res.render('admin/device-detail', {
             title: `Device: ${deviceId}`,
             device,
+            deviceInfo,
             settings,
             user: req.session.user
         });
@@ -1328,6 +1244,185 @@ router.post('/api/pppoe/users/:username/disconnect', async (req, res) => {
     } catch (error) {
         logger.error(`Disconnect PPPoE user error: ${error.message}`);
         res.status(500).json({ error: 'Failed to disconnect user' });
+    }
+});
+
+// API untuk mengelola tags perangkat
+router.post('/api/devices/:deviceId/tags', async (req, res) => {
+    try {
+        const deviceId = decodeURIComponent(req.params.deviceId);
+        const { tag } = req.body;
+
+        if (!tag) {
+            return res.status(400).json({ success: false, error: 'Tag is required' });
+        }
+
+        // Dapatkan konfigurasi GenieACS
+        const genieacsUrl = global.appSettings?.genieacsUrl || process.env.GENIEACS_URL;
+        const genieacsUsername = global.appSettings?.genieacsUsername || process.env.GENIEACS_USERNAME;
+        const genieacsPassword = global.appSettings?.genieacsPassword || process.env.GENIEACS_PASSWORD;
+
+        // Tambahkan tag ke perangkat
+        const response = await axios.post(
+            `${genieacsUrl}/devices/${deviceId}/tags/${encodeURIComponent(tag)}`,
+            {},
+            {
+                auth: {
+                    username: genieacsUsername,
+                    password: genieacsPassword
+                }
+            }
+        );
+
+        logger.info(`Tag ${tag} added to device ${deviceId}`);
+        res.json({ success: true, message: 'Tag added successfully' });
+    } catch (error) {
+        logger.error(`Error adding tag: ${error.message}`);
+        // Tambahkan pengecekan jika response bukan JSON
+        if (error.response && error.response.data) {
+            // Jika response HTML, ambil sebagian saja
+            let msg = typeof error.response.data === 'string'
+                ? error.response.data.substring(0, 200)
+                : JSON.stringify(error.response.data);
+            return res.status(500).json({ 
+                success: false, 
+                error: msg
+            });
+        }
+        res.status(500).json({ 
+            success: false, 
+            error: error.message 
+        });
+    }
+});
+
+router.put('/api/devices/:deviceId/tags/:oldTag', async (req, res) => {
+    try {
+        const deviceId = decodeURIComponent(req.params.deviceId);
+        const oldTag = decodeURIComponent(req.params.oldTag);
+        const { tag: newTag } = req.body;
+
+        if (!newTag) {
+            return res.status(400).json({ success: false, error: 'New tag is required' });
+        }
+
+        // Dapatkan konfigurasi GenieACS
+        const genieacsUrl = global.appSettings?.genieacsUrl || process.env.GENIEACS_URL;
+        const genieacsUsername = global.appSettings?.genieacsUsername || process.env.GENIEACS_USERNAME;
+        const genieacsPassword = global.appSettings?.genieacsPassword || process.env.GENIEACS_PASSWORD;
+
+        // Hapus tag lama
+        await axios.delete(
+            `${genieacsUrl}/devices/${deviceId}/tags/${encodeURIComponent(oldTag)}`,
+            {
+                auth: {
+                    username: genieacsUsername,
+                    password: genieacsPassword
+                }
+            }
+        );
+
+        // Tambahkan tag baru
+        await axios.post(
+            `${genieacsUrl}/devices/${deviceId}/tags/${encodeURIComponent(newTag)}`,
+            {},
+            {
+                auth: {
+                    username: genieacsUsername,
+                    password: genieacsPassword
+                }
+            }
+        );
+
+        logger.info(`Tag ${oldTag} updated to ${newTag} for device ${deviceId}`);
+        res.json({ success: true, message: 'Tag updated successfully' });
+    } catch (error) {
+        logger.error(`Error updating tag: ${error.message}`);
+        res.status(500).json({ 
+            success: false, 
+            error: error.response?.data?.message || error.message 
+        });
+    }
+});
+
+router.delete('/api/devices/:deviceId/tags/:tag', async (req, res) => {
+    try {
+        const deviceId = decodeURIComponent(req.params.deviceId);
+        const tag = decodeURIComponent(req.params.tag);
+
+        // Dapatkan konfigurasi GenieACS
+        const genieacsUrl = global.appSettings?.genieacsUrl || process.env.GENIEACS_URL;
+        const genieacsUsername = global.appSettings?.genieacsUsername || process.env.GENIEACS_USERNAME;
+        const genieacsPassword = global.appSettings?.genieacsPassword || process.env.GENIEACS_PASSWORD;
+
+        // Hapus tag dari perangkat
+        await axios.delete(
+            `${genieacsUrl}/devices/${deviceId}/tags/${encodeURIComponent(tag)}`,
+            {
+                auth: {
+                    username: genieacsUsername,
+                    password: genieacsPassword
+                }
+            }
+        );
+
+        logger.info(`Tag ${tag} removed from device ${deviceId}`);
+        res.json({ success: true, message: 'Tag removed successfully' });
+    } catch (error) {
+        logger.error(`Error removing tag: ${error.message}`);
+        res.status(500).json({ 
+            success: false, 
+            error: error.response?.data?.message || error.message 
+        });
+    }
+});
+
+// Path ke settings.json
+const settingsPath = path.join(__dirname, '../../settings.json');
+
+// API: GET settings
+router.get('/api/settings', (req, res) => {
+    try {
+        const settings = JSON.parse(fs.readFileSync(settingsPath, 'utf-8'));
+        res.json({ success: true, settings });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+// API: POST settings (update)
+router.post('/api/settings', (req, res) => {
+    try {
+        const newSettings = req.body;
+        fs.writeFileSync(settingsPath, JSON.stringify(newSettings, null, 2));
+        // Update global.appSettings juga jika ada
+        if (global.appSettings) {
+            Object.assign(global.appSettings, newSettings);
+        }
+        res.json({ success: true });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+// Halaman settings - PERBAIKI ROUTE INI
+router.get('/settings', (req, res) => {
+    try {
+        const settings = JSON.parse(fs.readFileSync(settingsPath, 'utf-8'));
+        
+        res.render('admin/settings', { 
+            title: 'Pengaturan Sistem',
+            settings: settings, // Gunakan settings langsung
+            user: req.session.user 
+        });
+    } catch (error) {
+        logger.error(`Settings page error: ${error.message}`);
+        res.status(500).render('error', {
+            title: 'Error',
+            message: 'Failed to load settings',
+            settings: loadSettings(),
+            error: { status: 500 }
+        });
     }
 });
 
