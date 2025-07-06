@@ -6676,3 +6676,197 @@ Or, if you meant to create an async function, pass `async: true` as an option.
 2025-07-05 22:12:02 info: No existing Mikrotik connection, attempting to connect...
 2025-07-05 22:12:02 info: Monitoring PPPoE connections: 164 active connections
 2025-07-05 22:12:12 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:17:07 info: PPPoE monitoring started with interval 60000ms
+2025-07-05 22:17:07 info: Attempting to start server on configured port: 3501
+2025-07-05 22:17:07 info: Mencoba memulai server pada port 3501...
+2025-07-05 22:17:07 info: Web interface started successfully
+2025-07-05 22:17:07 info: Server berhasil berjalan pada port 3501
+2025-07-05 22:17:07 info: Environment: production
+2025-07-05 22:17:07 info: ✅ Web interface started successfully on port 3100
+2025-07-05 22:17:07 info: 🔗 Admin dashboard: http://localhost:3100/admin
+2025-07-05 22:17:07 info: 👤 Customer portal: http://localhost:3100/customer
+2025-07-05 22:17:07 info: 🔐 Login page: http://localhost:3100/auth/login
+2025-07-05 22:17:07 info: WhatsApp socket set in pppoe-notifications module
+2025-07-05 22:17:07 info: WhatsApp socket set in pppoe-commands module
+2025-07-05 22:17:07 info: WhatsApp socket set in genieacs-commands module
+2025-07-05 22:17:07 info: WhatsApp connected successfully
+2025-07-05 22:17:07 info: PPPoE monitoring started with interval 60000ms
+2025-07-05 22:17:07 info: PPPoE monitoring auto-started on initialization
+2025-07-05 22:17:07 info: PPPoE monitoring initialized
+2025-07-05 22:17:13 info: Auth settings loaded from E:\Whatsapp-Only\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-05 22:17:40 info: Message received
+2025-07-05 22:17:42 info: Admin login successful: admin
+2025-07-05 22:17:47 info: Settings loaded from E:\Whatsapp-Only\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-05 22:17:55 info: Settings loaded from E:\Whatsapp-Only\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-05 22:17:55 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:18:01 info: Settings loaded from E:\Whatsapp-Only\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-05 22:18:07 info: PPPoE LOGIN detected: tester, andi, jami@sut, handoko, darim, lussy, tarci, rom@lah, darim@lor, junanto@rawagunda, yudi, aqiel, iman@, kendo@tanjungpura, ros_pppoe, ejun, raeni, tinih, nurudin, RT-KARONI, kasdi@rawagunda, yessy, atam, brohim, rasta, dedy@sarkim, daskunah, runaeni, indah@tanjungpura, seka, fajar, karsih, hany@tarsiti, maktub, gunawan, talita, Uchi, mardi, toko@sayur, eka, wendy@tanjungpura, sandi@rajan, server@yayan, karban, wiwin@seblak, murba, nalda@rawagunda2, aldo, eva, gadel, alam, SDNUG1, suliwa, kus, karmanda, antony@ps, wadi@rawagunda, kandar, kasmuri, memble@, sarwan, @cimun, server@ilik, abibah, winata, rudibengkel@tanjungpura, sanyo, daruni@rawagunda, salsa, opang@tanjungpura, warsana, wakeng, test, damar, codet, adiiman, aang, yuni@rawagunda, nadiva, rangdu, toyinah, nina@kesin, suminih@rawagunda, koriya, nesa, icha, yogi, toax, dasta, nuriyah, coyih, pandi@tanjungpura, kincling, windah, leha, khofik@janggar, turidah, sang, wendy@genjong, umikulsum@janggar, dadang@genjong, Endra@genjong1, pabudi@genjong, setiyadi@genjong, uung@pegagan, astri@pegagan, waidah@pegagan, mangasep@janggar, durniyah@pegagan, sutara@pegagan, nalda@pegagan, wilda, murdani, yusuf, intan@ujungmulya, surminih@pegagan, gemblung, novita, denihamdani@pegagan, ety@pegagan, eva@pegagan, lina@ujungmulya, nani, anwar@janggar, sarna@pegagan, yuni@ujungmulya, eryanto@pegagan, abas@pegagan, kurnati, sudini@pegagan, nana, tibil, erul, luwih@, ajri, dedi@aira, elvano1, kama@, rintem, dhea_tile@rawagunda, ooh, tariman, lisan@banteng, alan@pentud, adinesep@ujungmulya, erni, warungyuni@laut, h.juroh, muktar@ompong, oland, warung_elisa@laut, memble2, mastobari@, server@arep, walong@asep, winata@laut, joni@rawagunda, F663, Tarci@lor, bunga, soleh@pegagan, mella, santo, aang2
+2025-07-05 22:18:07 info: PPPoE LOGIN:
+2025-07-05 22:18:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:18:08 info: PPPoE notification sent to 6281947215703
+2025-07-05 22:18:09 info: PPPoE notification sent to 083807665697
+2025-07-05 22:18:10 info: Settings loaded from E:\Whatsapp-Only\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-05 22:18:11 info: PPPoE notification sent to 082218094778
+2025-07-05 22:18:11 info: PPPoE notification sent to 3/3 valid recipients (3 total)
+2025-07-05 22:18:11 info: PPPoE monitoring: 164 active connections, 164 login, 0 logout
+2025-07-05 22:18:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:18:23 info: Settings loaded from E:\Whatsapp-Only\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-05 22:18:30 info: Tag 081321960222 added to device 68D482-F650-ZICG094F9AFE
+2025-07-05 22:18:35 info: Settings loaded from E:\Whatsapp-Only\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-05 22:19:06 info: Settings loaded from E:\Whatsapp-Only\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-05 22:19:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:19:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:19:16 info: Settings loaded from E:\Whatsapp-Only\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-05 22:19:16 info: Message received
+2025-07-05 22:19:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:19:41 info: Admin changed WiFi password for 081321960111
+2025-07-05 22:19:48 info: Settings loaded from E:\Whatsapp-Only\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-05 22:20:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:20:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:20:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:20:36 info: Message received
+2025-07-05 22:21:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:21:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:21:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:21:39 info: Settings loaded from E:\Whatsapp-Only\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-05 22:21:53 info: Settings loaded from E:\Whatsapp-Only\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-05 22:22:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:22:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:22:21 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:22:30 info: Message received
+2025-07-05 22:22:31 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:22:41 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:22:43 info: Message received
+2025-07-05 22:22:43 info: PPPoE notification settings saved
+2025-07-05 22:22:43 info: PPPoE monitoring is already running
+2025-07-05 22:22:43 info: PPPoE notifications enabled via WhatsApp command
+2025-07-05 22:22:55 info: Message received
+2025-07-05 22:23:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:23:07 info: PPPoE LOGOUT:
+2025-07-05 22:23:07 info: Monitoring PPPoE connections: 163 active connections
+2025-07-05 22:23:07 info: PPPoE LOGOUT detected: santo
+2025-07-05 22:23:08 info: PPPoE notification sent to 6281947215703
+2025-07-05 22:23:09 info: PPPoE notification sent to 083807665697
+2025-07-05 22:23:11 info: PPPoE notification sent to 082218094778
+2025-07-05 22:23:11 info: PPPoE notification sent to 3/3 valid recipients (3 total)
+2025-07-05 22:23:11 info: PPPoE monitoring: 163 active connections, 0 login, 1 logout
+2025-07-05 22:23:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:23:20 info: Message received
+2025-07-05 22:23:20 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:23:33 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:24:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:24:07 info: PPPoE LOGIN detected: santo
+2025-07-05 22:24:07 info: PPPoE LOGIN:
+2025-07-05 22:24:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:24:08 info: PPPoE notification sent to 6281947215703
+2025-07-05 22:24:09 info: PPPoE notification sent to 083807665697
+2025-07-05 22:24:11 info: PPPoE notification sent to 082218094778
+2025-07-05 22:24:11 info: PPPoE notification sent to 3/3 valid recipients (3 total)
+2025-07-05 22:24:11 info: PPPoE monitoring: 164 active connections, 1 login, 0 logout
+2025-07-05 22:24:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:24:24 info: Message received
+2025-07-05 22:25:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:25:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:25:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:26:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:26:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:26:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:27:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:27:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:27:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:28:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:28:07 info: PPPoE LOGOUT detected: kandar
+2025-07-05 22:28:07 info: PPPoE LOGOUT:
+2025-07-05 22:28:07 info: Monitoring PPPoE connections: 163 active connections
+2025-07-05 22:28:08 info: PPPoE notification sent to 6281947215703
+2025-07-05 22:28:09 info: PPPoE notification sent to 083807665697
+2025-07-05 22:28:11 info: PPPoE notification sent to 082218094778
+2025-07-05 22:28:11 info: PPPoE notification sent to 3/3 valid recipients (3 total)
+2025-07-05 22:28:11 info: PPPoE monitoring: 163 active connections, 0 login, 1 logout
+2025-07-05 22:28:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:28:25 info: Message received
+2025-07-05 22:29:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:29:07 info: Monitoring PPPoE connections: 163 active connections
+2025-07-05 22:29:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:30:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:30:07 info: PPPoE LOGIN detected: kandar
+2025-07-05 22:30:07 info: PPPoE LOGIN:
+2025-07-05 22:30:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:30:08 info: PPPoE notification sent to 6281947215703
+2025-07-05 22:30:09 info: PPPoE notification sent to 083807665697
+2025-07-05 22:30:11 info: PPPoE notification sent to 082218094778
+2025-07-05 22:30:11 info: PPPoE notification sent to 3/3 valid recipients (3 total)
+2025-07-05 22:30:11 info: PPPoE monitoring: 164 active connections, 1 login, 0 logout
+2025-07-05 22:30:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:30:22 info: Message received
+2025-07-05 22:31:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:31:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:31:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:32:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:32:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:32:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:33:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:33:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:33:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:34:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:34:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:34:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:35:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:35:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:35:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:35:22 info: Message received
+2025-07-05 22:36:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:36:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:36:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:36:57 info: Message received
+2025-07-05 22:37:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:37:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:37:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:38:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:38:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:38:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:39:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:39:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:39:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:40:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:40:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:40:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:41:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:41:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:41:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:42:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:42:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:42:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:43:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:43:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:43:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:44:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:44:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:44:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:45:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:45:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:45:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:46:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:46:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:46:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:47:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:47:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:47:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:48:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:48:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:48:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:49:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:49:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:49:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:50:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:50:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:50:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:51:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:51:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:51:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:52:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:52:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:52:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-05 22:53:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-05 22:53:07 info: Monitoring PPPoE connections: 164 active connections
+2025-07-05 22:53:18 error: Mikrotik connection error: Timed out after 10 seconds
