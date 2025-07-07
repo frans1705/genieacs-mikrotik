@@ -81,7 +81,10 @@ WHATSAPP_RESTART_ON_ERROR=true
 pm2 start app-whatsapp-only.js
 ```
 
-Scan QR code yang muncul di terminal untuk login WhatsApp.
+Scan QR code yang muncul di terminal untuk login WhatsApp.<br>
+siapkan dua nomer whatsapp <br>
+untuk scan QRCode sebagai BOT <br>
+untuk perintah ADMIN 
 
 ## Perintah WhatsApp
 
