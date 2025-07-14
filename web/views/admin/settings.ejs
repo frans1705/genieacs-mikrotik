@@ -202,8 +202,8 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-12">
+                <div class="row align-items-start mb-4">
+                    <div class="col-md-8">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="mb-0">
@@ -316,7 +316,148 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="bi bi-whatsapp"></i> WhatsApp QRCode
+                            </div>
+                            <div class="card-body text-center">
+                                <div id="wa-qrcode-section">
+                                    <img id="wa-qrcode-img" src="/admin/api/whatsapp/qrcode" alt="WhatsApp QRCode" style="max-width: 220px; border: 1px solid #eee; border-radius: 8px; background: #fff; padding: 8px;" />
+                                </div>
+                                <div class="mt-3">
+                                    <button id="refresh-wa-qrcode" class="btn btn-outline-primary me-2"><i class="bi bi-arrow-clockwise"></i> Refresh QRCode</button>
+                                    <button id="delete-wa-session" class="btn btn-outline-danger"><i class="bi bi-trash"></i> Hapus Session WhatsApp</button>
+                                </div>
+                                <div id="wa-qrcode-status" class="mt-2 text-muted small"></div>
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-header bg-success text-white">
+                                <i class="bi bi-terminal"></i> Daftar Perintah WhatsApp Admin
+                            </div>
+                            <div class="card-body">
+<pre class="small" style="white-space: pre-wrap; background: #f8fafc; border-radius: 8px; padding: 1rem;">
+🖥️ <b>Manajemen Perangkat:</b>
+▸ <b>admin</b> — Menampilkan menu admin
+▸ <b>cek [nomor]</b> — Cek status ONU pelanggan
+▸ <b>detail [nomor]</b> — Detail lengkap perangkat
+▸ <b>list</b> — Daftar semua ONU
+▸ <b>cekall</b> — Cek status semua ONU
+
+📶 <b>Manajemen WiFi:</b>
+▸ <b>editssid [nomor] [ssid]</b> — Edit SSID pelanggan
+▸ <b>editpass [nomor] [password]</b> — Edit password WiFi pelanggan
+
+🔧 <b>Kontrol Perangkat:</b>
+▸ <b>adminrestart [nomor]</b> — Restart perangkat pelanggan
+▸ <b>adminfactory [nomor]</b> — Factory reset perangkat pelanggan
+
+🌐 <b>Manajemen Hotspot:</b>
+▸ <b>addhotspot [user] [pass] [profile]</b> — Tambah user hotspot
+▸ <b>delhotspot [user]</b> — Hapus user hotspot
+▸ <b>hotspot</b> — Lihat user hotspot aktif
+▸ <b>vcr [username] [profile] [nomor_wa]</b> — Buat voucher + kirim notif
+
+📡 <b>Manajemen PPPoE:</b>
+▸ <b>addpppoe [user] [pass] [profile] [ip]</b> — Tambah secret PPPoE
+▸ <b>delpppoe [user]</b> — Hapus secret PPPoE
+▸ <b>setprofile [user] [profile]</b> — Ubah profile PPPoE
+▸ <b>pppoe</b> — Lihat koneksi PPPoE aktif
+▸ <b>offline</b> — Lihat user PPPoE offline
+
+🔌 <b>Manajemen Interface:</b>
+▸ <b>interfaces</b> — Daftar semua interface
+▸ <b>interface [nama]</b> — Detail interface tertentu
+▸ <b>enableif [nama]</b> — Aktifkan interface
+▸ <b>disableif [nama]</b> — Nonaktifkan interface
+
+🌐 <b>Manajemen IP & Route:</b>
+▸ <b>ipaddress</b> — Daftar IP address
+▸ <b>routes</b> — Daftar routing table
+▸ <b>dhcp</b> — Daftar DHCP leases
+
+👥 <b>Manajemen User & Profile:</b>
+▸ <b>users</b> — Ringkasan semua user
+▸ <b>profiles [type]</b> — Daftar profile (pppoe/hotspot/all)
+
+🛡️ <b>Firewall & Security:</b>
+▸ <b>firewall [chain]</b> — Daftar firewall rules
+
+🔧 <b>Tools & Monitoring:</b>
+▸ <b>ping [host] [count]</b> — Ping ke host
+▸ <b>logs [topics] [count]</b> — System logs
+▸ <b>resource</b> — Info resource router
+▸ <b>debug resource</b> — Debug raw resource data
+▸ <b>clock</b> — Waktu router
+▸ <b>identity [nama]</b> — Identity router
+
+⚙️ <b>System Management:</b>
+▸ <b>reboot</b> — Restart router (perlu konfirmasi)
+
+📢 <b>Notifikasi PPPoE:</b>
+▸ <b>pppoe on</b> — Aktifkan notifikasi PPPoE
+▸ <b>pppoe off</b> — Nonaktifkan notifikasi PPPoE
+▸ <b>pppoe status</b> — Status notifikasi PPPoE
+▸ <b>pppoe addadmin [nomor]</b> — Tambah nomor admin
+▸ <b>pppoe addtech [nomor]</b> — Tambah nomor teknisi
+▸ <b>pppoe removeadmin [nomor]</b> — Hapus nomor admin
+▸ <b>pppoe removetech [nomor]</b> — Hapus nomor teknisi
+▸ <b>pppoe interval [detik]</b> — Ubah interval monitoring
+▸ <b>pppoe test</b> — Test notifikasi
+
+🔌 <b>Manajemen WAN:</b>
+▸ <b>addwan [nomor] [tipe] [mode]</b> — Tambah konfigurasi WAN
+  ↳ Tipe: ppp atau ip
+  ↳ Mode: bridge atau route
+  ↳ Contoh: addwan 081234567890 ppp route
+
+⚙️ <b>Pengaturan Bot:</b>
+▸ <b>setheader [teks_header_baru]</b> — Ganti header pesan bot
+   Contoh: setheader ALIJAYA HOTSPOT
+▸ <b>setfooter [teks_footer_baru]</b> — Ganti footer pesan bot
+   Contoh: setfooter Powered by Alijaya Digital Network
+▸ <b>setadmin [nomor_admin_baru]</b> — Ganti admin utama
+   Contoh: setadmin 6281234567890
+▸ <b>settechnician [nomor1,nomor2,...]</b> — Ganti daftar teknisi
+   Contoh: settechnician 6281234567890,6289876543210
+▸ <b>setgenieacs [url] [username] [password]</b> — Ganti konfigurasi GenieACS
+   Contoh: setgenieacs http://192.168.8.89:7557 admin admin
+▸ <b>setmikrotik [host] [port] [user] [password]</b> — Ganti konfigurasi Mikrotik
+   Contoh: setmikrotik 192.168.8.1 8728 admin admin
+</pre>
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-header bg-warning text-dark">
+                                <i class="bi bi-heart-fill"></i> Rekening Donasi Pembangunan Masjid
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="fs-5 fw-bold mb-2">4206 0101 2214 534</div>
+                                <div class="mb-2">BRI a.n. DKM BAITUR ROHMAN</div>
+                                <div class="text-muted small">Terima kasih atas partisipasi dan dukungan Anda 🙏</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <script>
+                document.getElementById('refresh-wa-qrcode').onclick = function() {
+                    fetch('/admin/api/whatsapp/refresh-qrcode', { method: 'POST' })
+                        .then(() => {
+                            document.getElementById('wa-qrcode-img').src = '/admin/api/whatsapp/qrcode?' + Date.now();
+                            document.getElementById('wa-qrcode-status').textContent = 'QRCode di-refresh.';
+                        });
+                };
+                document.getElementById('delete-wa-session').onclick = function() {
+                    if (confirm('Yakin ingin menghapus session WhatsApp?')) {
+                        fetch('/admin/api/whatsapp/delete-session', { method: 'POST' })
+                            .then(() => {
+                                document.getElementById('wa-qrcode-img').src = '/admin/api/whatsapp/qrcode?' + Date.now();
+                                document.getElementById('wa-qrcode-status').textContent = 'Session WhatsApp dihapus. Silakan scan ulang QRCode.';
+                            });
+                    }
+                };
+                </script>
             </main>
         </div>
     </div>

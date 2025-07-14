@@ -2,6 +2,8 @@
 const { RouterOSAPI } = require('node-routeros');
 const { logger } = require('./logger');
 require('dotenv').config();
+const fs = require('fs');
+const path = require('path');
 
 let sock = null;
 let mikrotikConnection = null;
@@ -14,12 +16,20 @@ function setSock(sockInstance) {
 
 // Fungsi untuk mendapatkan konfigurasi MikroTik dari settings.json
 function getMikrotikConfig() {
-    // Prioritaskan settings.json, fallback ke environment variables
+    // Selalu baca settings.json langsung
+    let settings = {};
+    try {
+        const settingsPath = path.join(__dirname, '..', 'settings.json');
+        settings = JSON.parse(fs.readFileSync(settingsPath, 'utf8'));
+    } catch (e) {
+        // fallback ke global jika gagal
+        settings = global.appSettings || {};
+    }
     return {
-        host: global.appSettings?.mikrotikHost,
-        user: global.appSettings?.mikrotikUser,
-        password: global.appSettings?.mikrotikPassword,
-        port: global.appSettings?.mikrotikPort || 8728
+        host: settings.mikrotik_host,
+        user: settings.mikrotik_user,
+        password: settings.mikrotik_password,
+        port: settings.mikrotik_port || 8728
     };
 }
 
@@ -255,7 +265,7 @@ function parseMemoryValue(value) {
 // Fungsi untuk mendapatkan informasi resource yang diformat
 async function getResourceInfo() {
     // Ambil traffic interface utama (default ether1)
-    const interfaceName = global.appSettings.mainInterface || 'ether1';
+    const interfaceName = global.appSettings.main_interface || 'ether1';
     let traffic = { rx: 0, tx: 0 };
     try {
         traffic = await getInterfaceTraffic(interfaceName);

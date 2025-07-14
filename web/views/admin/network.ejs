@@ -325,21 +325,23 @@
                                     <table class="table table-borderless">
                                         <tr>
                                             <td><strong>Router Model:</strong></td>
-                                            <td>RB4011iGS+</td>
+                                            <td><%= networkStats.systemResources ? networkStats.systemResources.routerModel : '-' %></td>
                                         </tr>
                                         <tr>
                                             <td><strong>RouterOS Version:</strong></td>
-                                            <td>6.49.7</td>
+                                            <td><%= networkStats.systemResources ? networkStats.systemResources.routerVersion : '-' %></td>
                                         </tr>
                                         <tr>
                                             <td><strong>Uptime:</strong></td>
-                                            <td>15d 8h 32m</td>
+                                            <td><%= networkStats.systemResources ? networkStats.systemResources.uptime : '-' %></td>
                                         </tr>
                                         <tr>
                                             <td><strong>CPU Usage:</strong></td>
                                             <td>
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-success" style="width: 25%">25%</div>
+                                                    <div class="progress-bar bg-success" style="width: <%= Number(networkStats.systemResources && networkStats.systemResources.cpuUsage ? networkStats.systemResources.cpuUsage : 0) %>%;">
+                                                        <%= Number(networkStats.systemResources && networkStats.systemResources.cpuUsage ? networkStats.systemResources.cpuUsage : 0) %> %
+                                                    </div>
                                                 </div>
                                             </td>
                                         </tr>
@@ -347,15 +349,52 @@
                                             <td><strong>Memory Usage:</strong></td>
                                             <td>
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-info" style="width: 45%">45%</div>
+                                                    <div class="progress-bar bg-info" style="width: <%= Number(networkStats.systemResources && networkStats.systemResources.memoryUsage ? networkStats.systemResources.memoryUsage : 0) %>%;">
+                                                        <%= Number(networkStats.systemResources && networkStats.systemResources.memoryUsage ? networkStats.systemResources.memoryUsage : 0) %> %
+                                                    </div>
                                                 </div>
                                             </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>CPU Count:</strong></td>
+                                            <td><%= networkStats.systemResources ? networkStats.systemResources.cpuCount : '-' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>CPU Frequency:</strong></td>
+                                            <td><%= networkStats.systemResources ? networkStats.systemResources.cpuFrequency + ' MHz' : '-' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Architecture:</strong></td>
+                                            <td><%= networkStats.systemResources ? networkStats.systemResources.architecture : '-' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Memory Free:</strong></td>
+                                            <td><%= networkStats.systemResources ? networkStats.systemResources.memoryFree + ' MB' : '-' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Memory Used:</strong></td>
+                                            <td><%= networkStats.systemResources ? networkStats.systemResources.memoryUsed + ' MB' : '-' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Total Memory:</strong></td>
+                                            <td><%= networkStats.systemResources ? networkStats.systemResources.totalMemory + ' MB' : '-' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Disk Free:</strong></td>
+                                            <td><%= networkStats.systemResources ? networkStats.systemResources.diskFree + ' MB' : '-' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Disk Used:</strong></td>
+                                            <td><%= networkStats.systemResources ? networkStats.systemResources.diskUsed + ' MB' : '-' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Total Disk:</strong></td>
+                                            <td><%= networkStats.systemResources ? networkStats.systemResources.totalDisk + ' MB' : '-' %></td>
                                         </tr>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-header">
@@ -363,34 +402,23 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="list-group list-group-flush">
-                                        <div class="list-group-item d-flex justify-content-between align-items-center">
-                                            <div>
-                                                <strong>ether1-ISP</strong><br>
-                                                <small class="text-muted">WAN Interface</small>
-                                            </div>
-                                            <span class="badge bg-success">Running</span>
-                                        </div>
-                                        <div class="list-group-item d-flex justify-content-between align-items-center">
-                                            <div>
-                                                <strong>ether2-LAN</strong><br>
-                                                <small class="text-muted">LAN Interface</small>
-                                            </div>
-                                            <span class="badge bg-success">Running</span>
-                                        </div>
-                                        <div class="list-group-item d-flex justify-content-between align-items-center">
-                                            <div>
-                                                <strong>bridge-LAN</strong><br>
-                                                <small class="text-muted">Bridge Interface</small>
-                                            </div>
-                                            <span class="badge bg-success">Running</span>
-                                        </div>
-                                        <div class="list-group-item d-flex justify-content-between align-items-center">
-                                            <div>
-                                                <strong>wlan1</strong><br>
-                                                <small class="text-muted">WiFi Interface</small>
-                                            </div>
-                                            <span class="badge bg-warning">Disabled</span>
-                                        </div>
+                                        <% if (networkStats.interfaces && networkStats.interfaces.length > 0) { %>
+                                            <% networkStats.interfaces.forEach(function(iface) { %>
+                                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <strong><%= iface.name %></strong><br>
+                                                        <small class="text-muted"><%= iface.type || iface['type'] || '' %></small>
+                                                    </div>
+                                                    <% if (iface.disabled === 'true' || iface.disabled === true) { %>
+                                                        <span class="badge bg-warning">Disabled</span>
+                                                    <% } else { %>
+                                                        <span class="badge bg-success">Running</span>
+                                                    <% } %>
+                                                </div>
+                                            <% }); %>
+                                        <% } else { %>
+                                            <div class="list-group-item text-center text-muted">No interface data</div>
+                                        <% } %>
                                     </div>
                                 </div>
                             </div>
@@ -497,8 +525,8 @@
                                                         <td><strong>CPU Usage:</strong></td>
                                                         <td>
                                                             <div class="progress">
-                                                                <div class="progress-bar bg-success" style="width: <%= networkStats.systemResources.cpuUsage %>%">
-                                                                    <%= networkStats.systemResources.cpuUsage %>%
+                                                                <div class="progress-bar bg-success" style="width: <%= Number(networkStats.systemResources && networkStats.systemResources.cpuUsage ? networkStats.systemResources.cpuUsage : 0) %>%;">
+                                                                    <%= Number(networkStats.systemResources && networkStats.systemResources.cpuUsage ? networkStats.systemResources.cpuUsage : 0) %> %
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -507,8 +535,8 @@
                                                         <td><strong>Memory Usage:</strong></td>
                                                         <td>
                                                             <div class="progress">
-                                                                <div class="progress-bar bg-info" style="width: <%= networkStats.systemResources.memoryUsage %>%">
-                                                                    <%= networkStats.systemResources.memoryUsage %>%
+                                                                <div class="progress-bar bg-info" style="width: <%= Number(networkStats.systemResources && networkStats.systemResources.memoryUsage ? networkStats.systemResources.memoryUsage : 0) %>%;">
+                                                                    <%= Number(networkStats.systemResources && networkStats.systemResources.memoryUsage ? networkStats.systemResources.memoryUsage : 0) %> %
                                                                 </div>
                                                             </div>
                                                         </td>

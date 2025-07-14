@@ -440,6 +440,58 @@
                                         </div>
                                     </div>
 
+                                    <!-- Active PPPoE Users (langsung tampil) -->
+                                    <div id="activeUsersList">
+                                        <h6><i class="bi bi-person-check"></i> Active PPPoE Users</h6>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Username</th>
+                                                        <th>Profile</th>
+                                                        <th>Status</th>
+                                                        <th>Uptime</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% if (activeConnections && activeConnections.length > 0) { %>
+                                                        <% activeConnections.forEach(function(user) { %>
+                                                            <tr>
+                                                                <td>
+                                                                    <strong><%= user.name || user.username || 'Unknown' %></strong>
+                                                                    <% if (user.comment) { %><br><small class="text-muted"><%= user.comment %></small><% } %>
+                                                                    <% if (user.address) { %><br><small class="text-info">IP: <%= user.address %></small><% } %>
+                                                                </td>
+                                                                <td><span class="badge bg-info"><%= user.profile || 'default' %></span></td>
+                                                                <td>
+                                                                    <span class="badge bg-success">Active</span>
+                                                                    <% if (user.callerID) { %><br><small class="text-muted">ID: <%= user.callerID %></small><% } %>
+                                                                </td>
+                                                                <td><%= user.uptime || 'N/A' %></td>
+                                                                <td>
+                                                                    <div class="btn-group" role="group">
+                                                                        <button class="btn btn-sm btn-outline-primary" onclick="editPPPoEUser('<%= user.name || user.username %>')" title="Edit User">
+                                                                            <i class="bi bi-pencil"></i>
+                                                                        </button>
+                                                                        <button class="btn btn-sm btn-outline-danger" onclick="deletePPPoEUser('<%= user.name || user.username %>')" title="Delete User">
+                                                                            <i class="bi bi-trash"></i>
+                                                                        </button>
+                                                                        <button class="btn btn-sm btn-outline-warning" onclick="disconnectUser('<%= user.name || user.username %>')" title="Disconnect">
+                                                                            <i class="bi bi-plug"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        <% }); %>
+                                                    <% } else { %>
+                                                        <tr><td colspan="5" class="text-center text-muted">No active PPPoE users</td></tr>
+                                                    <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
                                     <!-- No Results Message -->
                                     <div id="noResults" class="text-center py-4" style="display: none;">
                                         <i class="bi bi-exclamation-circle fs-1 text-muted"></i>
@@ -801,6 +853,7 @@
             // Hide all sections first
             document.getElementById('searchResults').style.display = 'none';
             document.getElementById('allUsersList').style.display = 'none';
+            document.getElementById('activeUsersList').style.display = 'none'; // Hide active users
             document.getElementById('noResults').style.display = 'none';
 
             // Search from all users instead of individual API call
@@ -838,6 +891,7 @@
             // Hide all sections first
             document.getElementById('searchResults').style.display = 'none';
             document.getElementById('allUsersList').style.display = 'none';
+            document.getElementById('activeUsersList').style.display = 'none'; // Hide active users
             document.getElementById('noResults').style.display = 'none';
 
             // Load all users using the new comprehensive API

@@ -542,3 +542,143 @@ Or, if you meant to create an async function, pass `async: true` as an option.
 2025-07-14 13:37:08 error: Mikrotik connection error: Timed out after 10 seconds
 2025-07-14 13:37:38 error: Mikrotik connection error: Timed out after 10 seconds
 2025-07-14 13:38:08 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:39:57 error: ❌ Port 3100 is already in use!
+2025-07-14 14:00:16 error: ❌ Port 3100 is already in use!
+2025-07-14 14:05:22 error: Error connecting to Mikrotik: 
+2025-07-14 14:14:07 error: ❌ Port 3100 is already in use!
+2025-07-14 14:14:45 error: Error connecting to Mikrotik: 
+2025-07-14 14:14:45 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-14 14:19:13 error: Error connecting to Mikrotik: 
+2025-07-14 14:22:18 error: ❌ Port 3100 is already in use!
+2025-07-14 14:27:39 error: Error connecting to Mikrotik: 
+2025-07-14 20:13:54 error: ❌ Port 3100 is already in use!
+2025-07-14 20:14:34 error: Error connecting to Mikrotik: 
+2025-07-14 20:14:34 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-14 20:15:35 error: Error connecting to Mikrotik: 
+2025-07-14 20:15:35 error: No Mikrotik connection available
+2025-07-14 20:15:37 error: Error connecting to Mikrotik: 
+2025-07-14 20:15:37 error: No Mikrotik connection available
+2025-07-14 20:15:40 error: Error connecting to Mikrotik: 
+2025-07-14 20:15:40 error: No Mikrotik connection available
+2025-07-14 20:15:42 error: Error connecting to Mikrotik: 
+2025-07-14 20:15:44 error: Error connecting to Mikrotik: 
+2025-07-14 20:15:44 error: No Mikrotik connection available
+2025-07-14 20:15:44 error: Error connecting to Mikrotik: 
+2025-07-14 20:15:46 error: Error connecting to Mikrotik: 
+2025-07-14 20:15:46 error: No Mikrotik connection available
+2025-07-14 20:15:46 error: Error connecting to Mikrotik: 
+2025-07-14 20:15:46 error: No Mikrotik connection available
+2025-07-14 20:15:48 error: Error connecting to Mikrotik: 
+2025-07-14 20:15:48 error: No Mikrotik connection available
+2025-07-14 20:15:50 error: Error connecting to Mikrotik: 
+2025-07-14 20:15:50 error: No Mikrotik connection available
+2025-07-14 20:15:52 error: Error connecting to Mikrotik: 
+2025-07-14 20:15:52 error: No Mikrotik connection available
+2025-07-14 20:18:59 error: Error connecting to Mikrotik: 
+2025-07-14 20:23:49 error: Error connecting to Mikrotik: 
+2025-07-14 20:23:51 error: Error connecting to Mikrotik: 
+2025-07-14 20:23:51 error: No Mikrotik connection available
+2025-07-14 20:23:53 error: Error connecting to Mikrotik: 
+2025-07-14 20:23:53 error: No Mikrotik connection available
+2025-07-14 20:23:55 error: Error connecting to Mikrotik: 
+2025-07-14 20:23:55 error: No Mikrotik connection available
+2025-07-14 20:23:57 error: Error connecting to Mikrotik: 
+2025-07-14 20:23:57 error: No Mikrotik connection available
+2025-07-14 20:26:28 error: Error connecting to Mikrotik: 
+2025-07-14 20:26:30 error: Error connecting to Mikrotik: 
+2025-07-14 20:26:30 error: No Mikrotik connection available
+2025-07-14 20:26:32 error: Error connecting to Mikrotik: 
+2025-07-14 20:26:32 error: No Mikrotik connection available
+2025-07-14 20:26:34 error: Error connecting to Mikrotik: 
+2025-07-14 20:26:34 error: No Mikrotik connection available
+2025-07-14 20:26:36 error: Error connecting to Mikrotik: 
+2025-07-14 20:26:36 error: No Mikrotik connection available
+2025-07-14 20:26:44 error: ❌ Port 3100 is already in use!
+2025-07-14 20:26:53 error: Error connecting to Mikrotik: 
+2025-07-14 20:26:55 error: Error connecting to Mikrotik: 
+2025-07-14 20:26:55 error: No Mikrotik connection available
+2025-07-14 20:26:57 error: Error connecting to Mikrotik: 
+2025-07-14 20:26:57 error: No Mikrotik connection available
+2025-07-14 20:26:59 error: Error connecting to Mikrotik: 
+2025-07-14 20:26:59 error: No Mikrotik connection available
+2025-07-14 20:27:01 error: Error connecting to Mikrotik: 
+2025-07-14 20:27:01 error: No Mikrotik connection available
+2025-07-14 20:30:16 error: Error connecting to Mikrotik: 
+2025-07-14 20:30:18 error: Error connecting to Mikrotik: 
+2025-07-14 20:30:18 error: No Mikrotik connection available
+2025-07-14 20:30:20 error: Error connecting to Mikrotik: 
+2025-07-14 20:30:20 error: No Mikrotik connection available
+2025-07-14 20:30:22 error: Error connecting to Mikrotik: 
+2025-07-14 20:30:22 error: No Mikrotik connection available
+2025-07-14 20:30:24 error: Error connecting to Mikrotik: 
+2025-07-14 20:30:24 error: No Mikrotik connection available
+2025-07-14 20:31:01 error: ❌ Port 3100 is already in use!
+2025-07-14 20:31:09 error: Error connecting to Mikrotik: 
+2025-07-14 20:31:11 error: Error connecting to Mikrotik: 
+2025-07-14 20:31:11 error: No Mikrotik connection available
+2025-07-14 20:31:13 error: Error connecting to Mikrotik: 
+2025-07-14 20:31:13 error: No Mikrotik connection available
+2025-07-14 20:31:15 error: Error connecting to Mikrotik: 
+2025-07-14 20:31:15 error: No Mikrotik connection available
+2025-07-14 20:31:17 error: Error connecting to Mikrotik: 
+2025-07-14 20:31:17 error: No Mikrotik connection available
+2025-07-14 20:32:39 error: Error connecting to Mikrotik: 
+2025-07-14 20:32:41 error: Error connecting to Mikrotik: 
+2025-07-14 20:32:41 error: No Mikrotik connection available
+2025-07-14 20:32:43 error: Error connecting to Mikrotik: 
+2025-07-14 20:32:43 error: No Mikrotik connection available
+2025-07-14 20:32:45 error: Error connecting to Mikrotik: 
+2025-07-14 20:32:45 error: No Mikrotik connection available
+2025-07-14 20:32:47 error: Error connecting to Mikrotik: 
+2025-07-14 20:32:47 error: No Mikrotik connection available
+2025-07-14 20:34:10 error: Error connecting to Mikrotik: 
+2025-07-14 20:34:12 error: Error connecting to Mikrotik: 
+2025-07-14 20:34:12 error: No Mikrotik connection available
+2025-07-14 20:34:12 error: Error connecting to Mikrotik: 
+2025-07-14 20:34:14 error: Error connecting to Mikrotik: 
+2025-07-14 20:34:14 error: No Mikrotik connection available
+2025-07-14 20:34:14 error: Error connecting to Mikrotik: 
+2025-07-14 20:34:14 error: No Mikrotik connection available
+2025-07-14 20:34:16 error: Error connecting to Mikrotik: 
+2025-07-14 20:34:16 error: No Mikrotik connection available
+2025-07-14 20:34:16 error: Error connecting to Mikrotik: 
+2025-07-14 20:34:16 error: No Mikrotik connection available
+2025-07-14 20:34:18 error: Error connecting to Mikrotik: 
+2025-07-14 20:34:18 error: No Mikrotik connection available
+2025-07-14 20:34:18 error: Error connecting to Mikrotik: 
+2025-07-14 20:34:18 error: No Mikrotik connection available
+2025-07-14 20:34:20 error: Error connecting to Mikrotik: 
+2025-07-14 20:34:20 error: No Mikrotik connection available
+2025-07-14 20:35:44 error: ❌ Port 3100 is already in use!
+2025-07-14 20:35:59 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-14 20:35:59 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-14 20:35:59 error: No Mikrotik connection available
+2025-07-14 20:35:59 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-14 20:35:59 error: No Mikrotik connection available
+2025-07-14 20:35:59 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-14 20:35:59 error: No Mikrotik connection available
+2025-07-14 20:35:59 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-14 20:35:59 error: No Mikrotik connection available
+2025-07-14 20:38:09 error: ❌ Port 3100 is already in use!
+2025-07-14 20:38:18 error: Error getting interface traffic:
+2025-07-14 20:38:28 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:40:01 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:40:32 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:41:02 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:41:31 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:42:01 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:42:31 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:43:02 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:43:19 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:43:23 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:43:32 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:44:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:44:48 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:45:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:45:48 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:46:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:46:48 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:47:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:47:55 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:48:25 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 20:48:55 error: Mikrotik connection error: Timed out after 10 seconds

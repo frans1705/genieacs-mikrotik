@@ -10,6 +10,7 @@ const axios = require('axios'); // Added for GenieACS API calls
 const genieacsCommands = require('../../config/genieacs-commands');
 const mikrotikCommands = require('../../config/mikrotik-commands');
 const pppoeMonitor = require('../../config/pppoe-monitor');
+const whatsapp = require('../../config/whatsapp');
 
 // Helper function to load settings
 function loadSettings() {
@@ -393,9 +394,22 @@ async function getNetworkStats() {
             },
             systemResources: resourceInfo.success ? {
                 cpuUsage: resourceInfo.data.cpuLoad,
+                cpuCount: resourceInfo.data.cpuCount,
+                cpuFrequency: resourceInfo.data.cpuFrequency,
+                architecture: resourceInfo.data.architecture,
                 memoryUsage: resourceInfo.data.memoryUsage,
-                uptime: resourceInfo.data.uptime
-            } : null
+                memoryFree: resourceInfo.data.memoryFree,
+                memoryUsed: resourceInfo.data.memoryUsed,
+                totalMemory: resourceInfo.data.totalMemory,
+                diskFree: resourceInfo.data.diskFree,
+                diskUsed: resourceInfo.data.diskUsed,
+                totalDisk: resourceInfo.data.totalDisk,
+                uptime: resourceInfo.data.uptime,
+                routerModel: resourceInfo.data.model,
+                routerVersion: resourceInfo.data.version,
+                routerBoard: resourceInfo.data.boardName
+            } : null,
+            interfaces: interfaces.success ? interfaces.data : []
         };
     } catch (error) {
         logger.error(`Error getting network stats: ${error.message}`);
@@ -1431,6 +1445,59 @@ router.get('/settings', (req, res) => {
             settings: loadSettings(),
             error: { status: 500 }
         });
+    }
+});
+
+// API: GET WhatsApp QRCode
+router.get('/api/whatsapp/qrcode', async (req, res) => {
+    try {
+        // Cek apakah QRCode tersedia di global.whatsappStatus
+        if (global.whatsappStatus && global.whatsappStatus.qrCode) {
+            // Jika QRCode berupa data URI
+            if (global.whatsappStatus.qrCode.startsWith('data:image')) {
+                const data = global.whatsappStatus.qrCode.split(',')[1];
+                const img = Buffer.from(data, 'base64');
+                res.writeHead(200, {
+                    'Content-Type': 'image/png',
+                    'Content-Length': img.length
+                });
+                return res.end(img);
+            }
+        }
+        // Jika tidak ada, cek file logs/wa_qrcode.png
+        const qrcodePath = path.join(__dirname, '../../logs/wa_qrcode.png');
+        if (fs.existsSync(qrcodePath)) {
+            res.sendFile(qrcodePath);
+        } else {
+            res.status(404).send('QR code not available');
+        }
+    } catch (error) {
+        res.status(500).send('Failed to get QR code');
+    }
+});
+
+// API: POST WhatsApp Refresh QRCode
+router.post('/api/whatsapp/refresh-qrcode', async (req, res) => {
+    try {
+        // Paksa WhatsApp untuk refresh QRCode dengan restart koneksi
+        if (typeof whatsapp.connectToWhatsApp === 'function') {
+            await whatsapp.connectToWhatsApp(true); // true = force refresh
+        }
+        res.json({ success: true });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+// API: POST WhatsApp Delete Session
+router.post('/api/whatsapp/delete-session', async (req, res) => {
+    try {
+        if (typeof whatsapp.deleteWhatsAppSession === 'function') {
+            await whatsapp.deleteWhatsAppSession();
+        }
+        res.json({ success: true });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
     }
 });
 
