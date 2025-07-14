@@ -37,8 +37,45 @@ cd genieacs-mikrotik
 ```bash
 npm install
 ```
+### 2. Konfigurasi Environment Variables
 
-### 2. Menjalankan Aplikasi
+Salin file `.env.example` menjadi `.env` dan sesuaikan:
+
+```bash
+cp env-example.txt .env
+```
+
+Edit file `.env` dengan pengaturan yang sesuai:
+
+```
+# Konfigurasi Server
+PORT=4500
+HOST=localhost
+
+# Konfigurasi Admin
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=password
+
+# Konfigurasi GenieACS
+GENIEACS_URL=http://your-genieacs-server:7557
+GENIEACS_USERNAME=username
+GENIEACS_PASSWORD=password
+
+# Konfigurasi Mikrotik (opsional)
+MIKROTIK_HOST=192.168.1.1
+MIKROTIK_PORT=8728
+MIKROTIK_USER=admin
+MIKROTIK_PASSWORD=password
+
+# Konfigurasi WhatsApp
+ADMIN_NUMBER=6281234567890
+TECHNICIAN_NUMBERS=6281234567890,6287654321098
+WHATSAPP_SESSION_PATH=./whatsapp-session
+WHATSAPP_KEEP_ALIVE=true
+WHATSAPP_RESTART_ON_ERROR=true
+```
+
+### 3. Menjalankan Aplikasi
 
 ```bash
 pm2 start app-whatsapp-only.js
@@ -49,8 +86,7 @@ siapkan dua nomer whatsapp <br>
 untuk scan QRCode sebagai BOT <br>
 untuk perintah ADMIN 
 
-## Semua settingan url genieacs dan mikrotik ada di file settings.json
-atau memalui web admin setting
+## Perintah WhatsApp
 
 ### Perintah untuk Pelanggan
 

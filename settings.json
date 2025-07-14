@@ -6,12 +6,12 @@
   "admin_username": "admin",
   "admin_password": "admin",
   "genieacs_url": "http://192.168.8.89:7557",
-  "genieacs_username": "acs",
-  "genieacs_password": "060111",
+  "genieacs_username": "admin",
+  "genieacs_password": "admin",
   "mikrotik_host": "192.168.8.1",
   "mikrotik_port": "8728",
-  "mikrotik_user": "alijaya",
-  "mikrotik_password": "060111",
+  "mikrotik_user": "admin",
+  "mikrotik_password": "admin",
   "main_interface": "ether1-ISP",
   "pppoe_monitor_enable": true,
   "technician_numbers": [
@@ -34,7 +34,7 @@
   "otp_length": "4",
   "enable_rx_power_warning": true,
   "enable_offline_warning": true,
-  "whatsapp_header": "🏢 *ALIJAYA HOTSPOT*\n\n",
+  "whatsapp_header": "*ALIJAYA HOTSPOT*",
   "whatsapp_footer": "_Management RTRW-Net_",
   "whatsapp_separator": "━━━━━━━━━━━━━━━━━━━━━━━━"
 }
