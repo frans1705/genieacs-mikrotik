@@ -50,6 +50,7 @@ untuk scan QRCode sebagai BOT <br>
 untuk perintah ADMIN 
 
 ## Semua settingan url genieacs dan mikrotik ada di file settings.json
+atau memalui web admin setting
 
 ### Perintah untuk Pelanggan
 
