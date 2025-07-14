@@ -499,3 +499,46 @@ Or, if you meant to create an async function, pass `async: true` as an option.
 2025-07-05 22:51:18 error: Mikrotik connection error: Timed out after 10 seconds
 2025-07-05 22:52:18 error: Mikrotik connection error: Timed out after 10 seconds
 2025-07-05 22:53:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:27:00 error: ❌ Port 3100 is already in use!
+2025-07-14 13:27:36 error: Error getting all devices: Invalid URL
+2025-07-14 13:27:36 error: Error getting all devices: Invalid URL
+2025-07-14 13:27:46 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:27:51 error: Error getting all devices: Invalid URL
+2025-07-14 13:27:54 error: Error getting all devices: Invalid URL
+2025-07-14 13:27:54 error: Error getting all devices: Invalid URL
+2025-07-14 13:28:05 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:28:25 error: Error getting all devices: Invalid URL
+2025-07-14 13:28:25 error: Error getting all devices: Invalid URL
+2025-07-14 13:28:35 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:28:55 error: Error getting all devices: Invalid URL
+2025-07-14 13:28:55 error: Error getting all devices: Invalid URL
+2025-07-14 13:29:05 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:29:25 error: Error getting all devices: Invalid URL
+2025-07-14 13:29:25 error: Error getting all devices: Invalid URL
+2025-07-14 13:29:35 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:29:55 error: Error getting all devices: Invalid URL
+2025-07-14 13:29:55 error: Error getting all devices: Invalid URL
+2025-07-14 13:30:05 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:30:25 error: Error getting all devices: Invalid URL
+2025-07-14 13:30:25 error: Error getting all devices: Invalid URL
+2025-07-14 13:30:35 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:30:55 error: Error getting all devices: Invalid URL
+2025-07-14 13:30:55 error: Error getting all devices: Invalid URL
+2025-07-14 13:31:05 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:31:25 error: Error getting all devices: Invalid URL
+2025-07-14 13:31:25 error: Error getting all devices: Invalid URL
+2025-07-14 13:31:35 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:31:45 error: ❌ Port 3100 is already in use!
+2025-07-14 13:31:59 error: Error getting all devices: Invalid URL
+2025-07-14 13:32:00 error: Error getting all devices: Invalid URL
+2025-07-14 13:32:10 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:34:19 error: ❌ Port 3100 is already in use!
+2025-07-14 13:34:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:35:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:35:27 error: Error getting interface traffic:
+2025-07-14 13:35:45 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:36:08 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:36:38 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:37:08 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:37:38 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:38:08 error: Mikrotik connection error: Timed out after 10 seconds

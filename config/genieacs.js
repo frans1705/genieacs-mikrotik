@@ -5,37 +5,45 @@ const mikrotik = require('./mikrotik');
 const { getMikrotikConnection } = require('./mikrotik');
 
 // Konfigurasi GenieACS API
-const GENIEACS_HOST = process.env.GENIEACS_HOST || global.appSettings?.genieacsHost || '192.168.8.89';
-const GENIEACS_PORT = process.env.GENIEACS_PORT || global.appSettings?.genieacsPort || '7557';
-const GENIEACS_URL = `http://${GENIEACS_HOST}:${GENIEACS_PORT}`;
-const GENIEACS_USERNAME = process.env.GENIEACS_USERNAME || global.appSettings?.genieacsUsername || '';
-const GENIEACS_PASSWORD = process.env.GENIEACS_PASSWORD || global.appSettings?.genieacsPassword || '';
+const GENIEACS_HOST = global.appSettings?.genieacsHost || '192.168.8.89';
+const GENIEACS_PORT = global.appSettings?.genieacsPort || '7557';
+const GENIEACS_URL = global.appSettings?.genieacsUrl;
+const GENIEACS_USERNAME = global.appSettings?.genieacsUsername || '';
+const GENIEACS_PASSWORD = global.appSettings?.genieacsPassword || '';
 
 console.log(`GenieACS configuration: ${GENIEACS_URL}`);
 
-// Buat instance axios dengan konfigurasi default
-const axiosInstance = axios.create({
-    baseURL: GENIEACS_URL,
-    auth: {
-        username: GENIEACS_USERNAME,
-        password: GENIEACS_PASSWORD
-    },
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    }
-});
+function getAxiosInstance() {
+    return axios.create({
+        baseURL: global.appSettings?.genieacsUrl,
+        auth: {
+            username: global.appSettings?.genieacsUsername || '',
+            password: global.appSettings?.genieacsPassword || ''
+        },
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    });
+}
 
 // GenieACS API wrapper
 const genieacsApi = {
     async getDevices() {
         try {
             console.log('Getting all devices...');
+            const axiosInstance = getAxiosInstance();
             const response = await axiosInstance.get('/devices');
             console.log(`Found ${response.data?.length || 0} devices`);
             return response.data;
         } catch (error) {
-            console.error('Error getting devices:', error.response?.data || error.message);
+            if (error.response) {
+                console.error('Error getting devices from GenieACS:', error.response.status, error.response.statusText, error.response.data);
+            } else if (error.request) {
+                console.error('No response received from GenieACS:', error.request);
+            } else {
+                console.error('Error setting up request to GenieACS:', error.message);
+            }
             throw error;
         }
     },
@@ -48,6 +56,7 @@ const genieacsApi = {
                 '_tags': phoneNumber
             });
 
+            const axiosInstance = getAxiosInstance();
             const response = await axiosInstance.get('/devices/', {
                 params: {
                     query: query
@@ -60,7 +69,13 @@ const genieacsApi = {
 
             return response.data[0]; // Mengembalikan device pertama yang ditemukan
         } catch (error) {
-            console.error(`Error finding device with phone number ${phoneNumber}:`, error.response?.data || error.message);
+            if (error.response) {
+                console.error('Error finding device by phone number from GenieACS:', error.response.status, error.response.statusText, error.response.data);
+            } else if (error.request) {
+                console.error('No response received from GenieACS:', error.request);
+            } else {
+                console.error('Error setting up request to GenieACS:', error.message);
+            }
             throw error;
         }
     },
@@ -82,6 +97,7 @@ const genieacsApi = {
                 '_id': deviceId
             });
 
+            const axiosInstance = getAxiosInstance();
             const response = await axiosInstance.get('/devices/', {
                 params: {
                     query: query
@@ -94,7 +110,13 @@ const genieacsApi = {
 
             return response.data[0];
         } catch (error) {
-            console.error(`Error getting device ${deviceId}:`, error.response?.data || error.message);
+            if (error.response) {
+                console.error('Error getting device from GenieACS:', error.response.status, error.response.statusText, error.response.data);
+            } else if (error.request) {
+                console.error('No response received from GenieACS:', error.request);
+            } else {
+                console.error('Error setting up request to GenieACS:', error.message);
+            }
             throw error;
         }
     },
@@ -150,6 +172,7 @@ const genieacsApi = {
                 parameterValues: parameterValues
             };
 
+            const axiosInstance = getAxiosInstance();
             const response = await axiosInstance.post(
                 `/devices/${encodeURIComponent(deviceId)}/tasks?connection_request`,
                 task
@@ -179,7 +202,13 @@ const genieacsApi = {
 
             return response.data;
         } catch (error) {
-            console.error(`Error setting parameters for device ${deviceId}:`, error.response?.data || error.message);
+            if (error.response) {
+                console.error('Error setting parameters for device in GenieACS:', error.response.status, error.response.statusText, error.response.data);
+            } else if (error.request) {
+                console.error('No response received from GenieACS:', error.request);
+            } else {
+                console.error('Error setting up request to GenieACS:', error.message);
+            }
             throw error;
         }
     },
@@ -189,13 +218,20 @@ const genieacsApi = {
             const task = {
                 name: "reboot"
             };
+            const axiosInstance = getAxiosInstance();
             const response = await axiosInstance.post(
                 `/devices/${encodeURIComponent(deviceId)}/tasks?connection_request`,
                 task
             );
             return response.data;
         } catch (error) {
-            console.error(`Error rebooting device ${deviceId}:`, error.response?.data || error.message);
+            if (error.response) {
+                console.error('Error rebooting device in GenieACS:', error.response.status, error.response.statusText, error.response.data);
+            } else if (error.request) {
+                console.error('No response received from GenieACS:', error.request);
+            } else {
+                console.error('Error setting up request to GenieACS:', error.message);
+            }
             throw error;
         }
     },
@@ -205,13 +241,20 @@ const genieacsApi = {
             const task = {
                 name: "factoryReset"
             };
+            const axiosInstance = getAxiosInstance();
             const response = await axiosInstance.post(
                 `/devices/${encodeURIComponent(deviceId)}/tasks?connection_request`,
                 task
             );
             return response.data;
         } catch (error) {
-            console.error(`Error factory resetting device ${deviceId}:`, error.response?.data || error.message);
+            if (error.response) {
+                console.error('Error factory resetting device in GenieACS:', error.response.status, error.response.statusText, error.response.data);
+            } else if (error.request) {
+                console.error('No response received from GenieACS:', error.request);
+            } else {
+                console.error('Error setting up request to GenieACS:', error.message);
+            }
             throw error;
         }
     },
@@ -224,6 +267,7 @@ const genieacsApi = {
                 parameterNames: parameterNames
             };
 
+            const axiosInstance = getAxiosInstance();
             const response = await axiosInstance.post(
                 `/devices/${encodeURIComponent(deviceId)}/tasks?connection_request`,
                 task
@@ -231,7 +275,13 @@ const genieacsApi = {
 
             return response.data;
         } catch (error) {
-            console.error(`Error getting parameters for device ${deviceId}:`, error.response?.data || error.message);
+            if (error.response) {
+                console.error('Error getting parameters for device in GenieACS:', error.response.status, error.response.statusText, error.response.data);
+            } else if (error.request) {
+                console.error('No response received from GenieACS:', error.request);
+            } else {
+                console.error('Error setting up request to GenieACS:', error.message);
+            }
             throw error;
         }
     },
@@ -252,7 +302,13 @@ const genieacsApi = {
             console.log('Device data retrieved successfully');
             return device;
         } catch (error) {
-            console.error('Error getting device info:', error.response?.data || error.message);
+            if (error.response) {
+                console.error('Error getting device info from GenieACS:', error.response.status, error.response.statusText, error.response.data);
+            } else if (error.request) {
+                console.error('No response received from GenieACS:', error.request);
+            } else {
+                console.error('Error setting up request to GenieACS:', error.message);
+            }
             return null;
         }
     },
@@ -311,7 +367,8 @@ const genieacsApi = {
             ];
 
             // Menggunakan tasks endpoint untuk mendapatkan parameter values
-            const response = await axios.post(`${GENIEACS_URL}/tasks`, [{
+            const axiosInstance = getAxiosInstance();
+            const response = await axiosInstance.post(`${GENIEACS_URL}/tasks`, [{
                 name: "getParameterValues",
                 parameterNames: virtualParams,
                 device: deviceId
@@ -325,7 +382,13 @@ const genieacsApi = {
             console.log('Virtual parameters retrieved successfully');
             return response.data;
         } catch (error) {
-            console.error('Error getting virtual parameters:', error.response?.data || error.message);
+            if (error.response) {
+                console.error('Error getting virtual parameters from GenieACS:', error.response.status, error.response.statusText, error.response.data);
+            } else if (error.request) {
+                console.error('No response received from GenieACS:', error.request);
+            } else {
+                console.error('Error setting up request to GenieACS:', error.message);
+            }
             return null;
         }
     },

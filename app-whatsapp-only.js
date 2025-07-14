@@ -55,44 +55,44 @@ const settingsFromFile = loadSettings();
 // Variabel global untuk menyimpan semua pengaturan (prioritas: settings.json > .env > default)
 global.appSettings = {
   // Server
-  port: settingsFromFile.web_port || process.env.PORT || '3501',
-  host: settingsFromFile.web_host || process.env.HOST || 'localhost',
+  port: settingsFromFile.web_port || '3501',
+  host: settingsFromFile.web_host || 'localhost',
 
   // Admin
-  adminUsername: settingsFromFile.admin_username || process.env.ADMIN_USERNAME || 'admin',
-  adminPassword: settingsFromFile.admin_password || process.env.ADMIN_PASSWORD || 'admin',
+  adminUsername: settingsFromFile.admin_username || 'admin',
+  adminPassword: settingsFromFile.admin_password || 'admin',
 
   // GenieACS
-  genieacsHost: settingsFromFile.genieacs_host || process.env.GENIEACS_HOST || '192.168.8.89',
-  genieacsPort: settingsFromFile.genieacs_port || process.env.GENIEACS_PORT || '7557',
-  genieacsUrl: settingsFromFile.genieacs_url || process.env.GENIEACS_URL || `http://${settingsFromFile.genieacs_host || '192.168.8.89'}:${settingsFromFile.genieacs_port || '7557'}`,
-  genieacsUsername: settingsFromFile.genieacs_username || process.env.GENIEACS_USERNAME || '',
-  genieacsPassword: settingsFromFile.genieacs_password || process.env.GENIEACS_PASSWORD || '',
-  genieApiUrl: settingsFromFile.genie_api_url || process.env.GENIE_API_URL || '',
+  genieacsHost: settingsFromFile.genieacs_host || '192.168.8.89',
+  genieacsPort: settingsFromFile.genieacs_port || '7557',
+  genieacsUrl: settingsFromFile.genieacs_url || `http://${settingsFromFile.genieacs_host || '192.168.8.89'}:${settingsFromFile.genieacs_port || '7557'}`,
+  genieacsUsername: settingsFromFile.genieacs_username || '',
+  genieacsPassword: settingsFromFile.genieacs_password || '',
+  genieApiUrl: settingsFromFile.genie_api_url || '',
 
   // Mikrotik
-  mikrotikHost: settingsFromFile.mikrotik_host || process.env.MIKROTIK_HOST || '192.168.8.1',
-  mikrotikPort: settingsFromFile.mikrotik_port || process.env.MIKROTIK_PORT || '8700',
-  mikrotikUser: settingsFromFile.mikrotik_user || process.env.MIKROTIK_USER || 'admin',
-  mikrotikPassword: settingsFromFile.mikrotik_password || process.env.MIKROTIK_PASSWORD || '',
+  mikrotikHost: settingsFromFile.mikrotik_host || '192.168.8.1',
+  mikrotikPort: settingsFromFile.mikrotik_port || '8700',
+  mikrotikUser: settingsFromFile.mikrotik_user || 'admin',
+  mikrotikPassword: settingsFromFile.mikrotik_password || '',
 
   // WhatsApp
-  adminNumber: settingsFromFile.admin_number || process.env.ADMIN_NUMBER || '',
-  technicianNumbers: settingsFromFile.technician_numbers || process.env.TECHNICIAN_NUMBERS || '',
-  reconnectInterval: settingsFromFile.reconnect_interval || process.env.RECONNECT_INTERVAL || '5000',
-  maxReconnectRetries: settingsFromFile.max_reconnect_retries || process.env.MAX_RECONNECT_RETRIES || '5',
-  whatsappSessionPath: settingsFromFile.whatsapp_session_path || process.env.WHATSAPP_SESSION_PATH || './whatsapp-session',
-  whatsappKeepAlive: settingsFromFile.whatsapp_keep_alive !== undefined ? settingsFromFile.whatsapp_keep_alive : (process.env.WHATSAPP_KEEP_ALIVE === 'true'),
-  whatsappRestartOnError: settingsFromFile.whatsapp_restart_on_error !== undefined ? settingsFromFile.whatsapp_restart_on_error : (process.env.WHATSAPP_RESTART_ON_ERROR === 'true'),
+  adminNumber: settingsFromFile.admin_number || '',
+  technicianNumbers: settingsFromFile.technician_numbers || '',
+  reconnectInterval: settingsFromFile.reconnect_interval || '5000',
+  maxReconnectRetries: settingsFromFile.max_reconnect_retries || '5',
+  whatsappSessionPath: settingsFromFile.whatsapp_session_path || './whatsapp-session',
+  whatsappKeepAlive: settingsFromFile.whatsapp_keep_alive !== undefined ? settingsFromFile.whatsapp_keep_alive : false,
+  whatsappRestartOnError: settingsFromFile.whatsapp_restart_on_error !== undefined ? settingsFromFile.whatsapp_restart_on_error : false,
 
   // Monitoring
-  pppoeMonitorInterval: settingsFromFile.pppoe_monitor_interval || process.env.PPPOE_MONITOR_INTERVAL || '60000',
-  rxPowerWarning: settingsFromFile.rx_power_warning || process.env.RX_POWER_WARNING || '-25',
-  rxPowerCritical: settingsFromFile.rx_power_critical || process.env.RX_POWER_CRITICAL || '-27',
+  pppoeMonitorInterval: settingsFromFile.pppoe_monitor_interval || '60000',
+  rxPowerWarning: settingsFromFile.rx_power_warning || '-25',
+  rxPowerCritical: settingsFromFile.rx_power_critical || '-27',
 
   // Company Info
-  companyHeader: settingsFromFile.company_header || process.env.COMPANY_HEADER || 'ISP Monitor',
-  footerInfo: settingsFromFile.footer_info || process.env.FOOTER_INFO || '',
+  companyHeader: settingsFromFile.company_header || 'ISP Monitor',
+  footerInfo: settingsFromFile.footer_info || '',
 };
 
 console.log('Global settings initialized:');
@@ -223,7 +223,7 @@ function startServer(portToUse) {
 // Pastikan port menggunakan nilai langsung dari .env
 // Reload dotenv untuk memastikan kita mendapatkan nilai terbaru dari file .env
 require('dotenv').config();
-port = parseInt(process.env.PORT, 10);
+const port = parseInt(global.appSettings.port, 10);
 logger.info(`Attempting to start server on configured port: ${port}`);
 
 // Mulai server dengan port dari konfigurasi

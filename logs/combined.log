@@ -6870,3 +6870,136 @@ Or, if you meant to create an async function, pass `async: true` as an option.
 2025-07-05 22:53:07 info: No existing Mikrotik connection, attempting to connect...
 2025-07-05 22:53:07 info: Monitoring PPPoE connections: 164 active connections
 2025-07-05 22:53:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:27:00 info: Direktori sesi WhatsApp dibuat: ./whatsapp-session
+2025-07-14 13:27:00 info: Attempting to start server on configured port: 3100
+2025-07-14 13:27:00 info: Mencoba memulai server pada port 3100...
+2025-07-14 13:27:00 info: Web interface started successfully
+2025-07-14 13:27:00 info: Server berhasil berjalan pada port 3100
+2025-07-14 13:27:00 info: Environment: development
+2025-07-14 13:27:00 error: ❌ Port 3100 is already in use!
+2025-07-14 13:27:00 info: 💡 To fix this, you can:
+2025-07-14 13:27:00 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-14 13:27:00 info:    2. Add "web_port": 3200 to settings.json
+2025-07-14 13:27:00 info:    3. Stop the service using port 3100
+2025-07-14 13:27:00 info: 🔄 Trying alternative port: 3200
+2025-07-14 13:27:00 info: ✅ Web interface started on alternative port 3200
+2025-07-14 13:27:00 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-14 13:27:00 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-14 13:27:00 info: WhatsApp socket set in pppoe-notifications module
+2025-07-14 13:27:00 info: WhatsApp socket set in pppoe-commands module
+2025-07-14 13:27:00 info: WhatsApp socket set in genieacs-commands module
+2025-07-14 13:27:00 info: WhatsApp connected successfully
+2025-07-14 13:27:34 info: Auth settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-14 13:27:36 info: Admin login successful: admin
+2025-07-14 13:27:36 error: Error getting all devices: Invalid URL
+2025-07-14 13:27:36 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-14 13:27:36 error: Error getting all devices: Invalid URL
+2025-07-14 13:27:36 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:27:46 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:27:51 error: Error getting all devices: Invalid URL
+2025-07-14 13:27:51 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-14 13:27:54 error: Error getting all devices: Invalid URL
+2025-07-14 13:27:54 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-14 13:27:54 error: Error getting all devices: Invalid URL
+2025-07-14 13:27:54 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:28:05 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:28:25 error: Error getting all devices: Invalid URL
+2025-07-14 13:28:25 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:28:25 error: Error getting all devices: Invalid URL
+2025-07-14 13:28:35 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:28:55 error: Error getting all devices: Invalid URL
+2025-07-14 13:28:55 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:28:55 error: Error getting all devices: Invalid URL
+2025-07-14 13:29:05 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:29:25 error: Error getting all devices: Invalid URL
+2025-07-14 13:29:25 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:29:25 error: Error getting all devices: Invalid URL
+2025-07-14 13:29:35 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:29:55 error: Error getting all devices: Invalid URL
+2025-07-14 13:29:55 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:29:55 error: Error getting all devices: Invalid URL
+2025-07-14 13:30:05 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:30:25 error: Error getting all devices: Invalid URL
+2025-07-14 13:30:25 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:30:25 error: Error getting all devices: Invalid URL
+2025-07-14 13:30:35 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:30:55 error: Error getting all devices: Invalid URL
+2025-07-14 13:30:55 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:30:55 error: Error getting all devices: Invalid URL
+2025-07-14 13:31:05 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:31:25 error: Error getting all devices: Invalid URL
+2025-07-14 13:31:25 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:31:25 error: Error getting all devices: Invalid URL
+2025-07-14 13:31:35 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:31:45 info: Attempting to start server on configured port: 3100
+2025-07-14 13:31:45 info: Mencoba memulai server pada port 3100...
+2025-07-14 13:31:45 info: Web interface started successfully
+2025-07-14 13:31:45 info: Server berhasil berjalan pada port 3100
+2025-07-14 13:31:45 info: Environment: development
+2025-07-14 13:31:45 error: ❌ Port 3100 is already in use!
+2025-07-14 13:31:45 info: 💡 To fix this, you can:
+2025-07-14 13:31:45 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-14 13:31:45 info:    2. Add "web_port": 3200 to settings.json
+2025-07-14 13:31:45 info:    3. Stop the service using port 3100
+2025-07-14 13:31:45 info: 🔄 Trying alternative port: 3200
+2025-07-14 13:31:45 info: ✅ Web interface started on alternative port 3200
+2025-07-14 13:31:45 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-14 13:31:45 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-14 13:31:45 info: WhatsApp socket set in pppoe-notifications module
+2025-07-14 13:31:45 info: WhatsApp socket set in pppoe-commands module
+2025-07-14 13:31:45 info: WhatsApp socket set in genieacs-commands module
+2025-07-14 13:31:45 info: WhatsApp connected successfully
+2025-07-14 13:31:56 info: Auth settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-14 13:31:56 info: Auth settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-14 13:31:56 info: Auth settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-14 13:31:58 info: Auth settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-14 13:31:59 info: Admin login successful: admin
+2025-07-14 13:31:59 error: Error getting all devices: Invalid URL
+2025-07-14 13:31:59 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-14 13:32:00 error: Error getting all devices: Invalid URL
+2025-07-14 13:32:00 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:32:10 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:34:19 info: Attempting to start server on configured port: 3100
+2025-07-14 13:34:19 info: Mencoba memulai server pada port 3100...
+2025-07-14 13:34:19 info: Web interface started successfully
+2025-07-14 13:34:19 info: Server berhasil berjalan pada port 3100
+2025-07-14 13:34:19 info: Environment: development
+2025-07-14 13:34:19 error: ❌ Port 3100 is already in use!
+2025-07-14 13:34:19 info: 💡 To fix this, you can:
+2025-07-14 13:34:19 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-14 13:34:19 info:    2. Add "web_port": 3200 to settings.json
+2025-07-14 13:34:19 info:    3. Stop the service using port 3100
+2025-07-14 13:34:19 info: 🔄 Trying alternative port: 3200
+2025-07-14 13:34:19 info: ✅ Web interface started on alternative port 3200
+2025-07-14 13:34:19 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-14 13:34:19 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-14 13:34:19 info: WhatsApp socket set in pppoe-notifications module
+2025-07-14 13:34:19 info: WhatsApp socket set in pppoe-commands module
+2025-07-14 13:34:19 info: WhatsApp socket set in genieacs-commands module
+2025-07-14 13:34:19 info: WhatsApp connected successfully
+2025-07-14 13:34:28 info: Auth settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-14 13:34:30 info: Admin login successful: admin
+2025-07-14 13:34:34 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-14 13:34:37 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-14 13:34:37 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:34:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:35:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:35:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:35:27 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:35:27 error: Error getting interface traffic:
+2025-07-14 13:35:28 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-14 13:35:31 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-14 13:35:35 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-14 13:35:45 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:35:58 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-14 13:35:58 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:36:08 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:36:28 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:36:38 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:36:58 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:37:08 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:37:28 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:37:38 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:37:58 info: No existing Mikrotik connection, attempting to connect...
+2025-07-14 13:38:08 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 13:38:28 info: No existing Mikrotik connection, attempting to connect...

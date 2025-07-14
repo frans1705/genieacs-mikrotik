@@ -47,7 +47,7 @@ async function getTrafficStats() {
         const hotspotUsers = await mikrotik.getActiveHotspotUsers();
 
         // Get main interface traffic
-        const mainInterface = process.env.MAIN_INTERFACE || 'ether1';
+        const mainInterface = global.appSettings.mainInterface || 'ether1';
         let mainInterfaceStats = null;
         
         if (interfaces.success && interfaces.data) {

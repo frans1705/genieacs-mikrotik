@@ -70,12 +70,20 @@ router.get('/devices', async (req, res) => {
         });
     } catch (error) {
         logger.error(`Admin devices error: ${error.message}`);
+        if (error.response) {
+            logger.error(`GenieACS response error: ${error.response.status} ${error.response.statusText}`);
+            logger.error(`GenieACS response data: ${JSON.stringify(error.response.data)}`);
+        } else if (error.request) {
+            logger.error('No response received from GenieACS:', error.request);
+        } else {
+            logger.error('Error setting up request to GenieACS:', error.message);
+        }
         const settings = loadSettings();
         res.render('admin/devices', {
             title: 'Device Management',
             devices: [],
             settings,
-            error: 'Failed to load devices',
+            error: 'Failed to load devices. Please check GenieACS connection and logs.',
             user: req.session.user
         });
     }
@@ -1258,9 +1266,9 @@ router.post('/api/devices/:deviceId/tags', async (req, res) => {
         }
 
         // Dapatkan konfigurasi GenieACS
-        const genieacsUrl = global.appSettings?.genieacsUrl || process.env.GENIEACS_URL;
-        const genieacsUsername = global.appSettings?.genieacsUsername || process.env.GENIEACS_USERNAME;
-        const genieacsPassword = global.appSettings?.genieacsPassword || process.env.GENIEACS_PASSWORD;
+        const genieacsUrl = global.appSettings?.genieacsUrl;
+        const genieacsUsername = global.appSettings?.genieacsUsername;
+        const genieacsPassword = global.appSettings?.genieacsPassword;
 
         // Tambahkan tag ke perangkat
         const response = await axios.post(
@@ -1307,9 +1315,9 @@ router.put('/api/devices/:deviceId/tags/:oldTag', async (req, res) => {
         }
 
         // Dapatkan konfigurasi GenieACS
-        const genieacsUrl = global.appSettings?.genieacsUrl || process.env.GENIEACS_URL;
-        const genieacsUsername = global.appSettings?.genieacsUsername || process.env.GENIEACS_USERNAME;
-        const genieacsPassword = global.appSettings?.genieacsPassword || process.env.GENIEACS_PASSWORD;
+        const genieacsUrl = global.appSettings?.genieacsUrl;
+        const genieacsUsername = global.appSettings?.genieacsUsername;
+        const genieacsPassword = global.appSettings?.genieacsPassword;
 
         // Hapus tag lama
         await axios.delete(
@@ -1351,9 +1359,9 @@ router.delete('/api/devices/:deviceId/tags/:tag', async (req, res) => {
         const tag = decodeURIComponent(req.params.tag);
 
         // Dapatkan konfigurasi GenieACS
-        const genieacsUrl = global.appSettings?.genieacsUrl || process.env.GENIEACS_URL;
-        const genieacsUsername = global.appSettings?.genieacsUsername || process.env.GENIEACS_USERNAME;
-        const genieacsPassword = global.appSettings?.genieacsPassword || process.env.GENIEACS_PASSWORD;
+        const genieacsUrl = global.appSettings?.genieacsUrl;
+        const genieacsUsername = global.appSettings?.genieacsUsername;
+        const genieacsPassword = global.appSettings?.genieacsPassword;
 
         // Hapus tag dari perangkat
         await axios.delete(

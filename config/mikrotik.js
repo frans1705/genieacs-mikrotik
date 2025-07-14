@@ -16,10 +16,10 @@ function setSock(sockInstance) {
 function getMikrotikConfig() {
     // Prioritaskan settings.json, fallback ke environment variables
     return {
-        host: global.appSettings?.mikrotikHost || process.env.MIKROTIK_HOST,
-        user: global.appSettings?.mikrotikUser || process.env.MIKROTIK_USER,
-        password: global.appSettings?.mikrotikPassword || process.env.MIKROTIK_PASSWORD,
-        port: global.appSettings?.mikrotikPort || process.env.MIKROTIK_PORT || 8728
+        host: global.appSettings?.mikrotikHost,
+        user: global.appSettings?.mikrotikUser,
+        password: global.appSettings?.mikrotikPassword,
+        port: global.appSettings?.mikrotikPort || 8728
     };
 }
 
@@ -255,7 +255,7 @@ function parseMemoryValue(value) {
 // Fungsi untuk mendapatkan informasi resource yang diformat
 async function getResourceInfo() {
     // Ambil traffic interface utama (default ether1)
-    const interfaceName = process.env.MAIN_INTERFACE || 'ether1';
+    const interfaceName = global.appSettings.mainInterface || 'ether1';
     let traffic = { rx: 0, tx: 0 };
     try {
         traffic = await getInterfaceTraffic(interfaceName);
@@ -519,7 +519,7 @@ async function monitorPPPoEConnections() {
             return;
         }
         // Dapatkan interval monitoring dari konfigurasi
-        const interval = parseInt(global.appSettings.pppoeMonitorInterval || process.env.PPPOE_MONITOR_INTERVAL || '60000');
+        const interval = parseInt(global.appSettings.pppoeMonitorInterval || '60000');
         
         // Bersihkan interval sebelumnya jika ada
         if (monitorInterval) {

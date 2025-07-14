@@ -25,7 +25,7 @@ async function handleAddWAN(remoteJid, params, sock) {
         }
         
         // Dapatkan URL GenieACS
-        const genieacsUrl = global.appSettings.genieacsUrl || process.env.GENIEACS_URL;
+        const genieacsUrl = global.appSettings.genieacsUrl;
         if (!genieacsUrl) {
             await sock.sendMessage(remoteJid, {
                 text: `❌ *Konfigurasi tidak lengkap*\n\nURL GenieACS tidak dikonfigurasi`
@@ -58,8 +58,8 @@ async function handleAddWAN(remoteJid, params, sock) {
                 task,
                 {
                     auth: {
-                        username: global.appSettings.genieacsUsername || process.env.GENIEACS_USERNAME,
-                        password: global.appSettings.genieacsPassword || process.env.GENIEACS_PASSWORD
+                        username: global.appSettings.genieacsUsername,
+                        password: global.appSettings.genieacsPassword
                     }
                 }
             );
@@ -102,7 +102,7 @@ async function handleAddWAN(remoteJid, params, sock) {
 async function findDeviceByTag(customerNumber) {
     try {
         // Dapatkan URL GenieACS
-        const genieacsUrl = global.appSettings.genieacsUrl || process.env.GENIEACS_URL;
+        const genieacsUrl = global.appSettings.genieacsUrl;
         if (!genieacsUrl) {
             logger.error('GenieACS URL not configured');
             return null;
@@ -116,8 +116,8 @@ async function findDeviceByTag(customerNumber) {
         // Ambil perangkat dari GenieACS
         const response = await axios.get(`${genieacsUrl}/devices/?query=${encodedQuery}`, {
             auth: {
-                username: global.appSettings.genieacsUsername || process.env.GENIEACS_USERNAME,
-                password: global.appSettings.genieacsPassword || process.env.GENIEACS_PASSWORD
+                username: global.appSettings.genieacsUsername,
+                password: global.appSettings.genieacsPassword
             },
             headers: {
                 'Accept': 'application/json'

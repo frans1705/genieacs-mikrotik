@@ -16,7 +16,7 @@ const logFormat = winston.format.printf(({ level, message, timestamp }) => {
 
 // Konfigurasi logger
 const logger = winston.createLogger({
-    level: process.env.LOG_LEVEL || 'info',
+    level: global.appSettings?.logLevel || 'info',
     format: winston.format.combine(
         winston.format.timestamp({
             format: 'YYYY-MM-DD HH:mm:ss'

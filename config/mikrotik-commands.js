@@ -180,7 +180,7 @@ async function handleResourceInfo(remoteJid) {
     }
 
     // Format Traffic info
-    let trafficInfo = `📶 *TRAFFIC* (${process.env.MAIN_INTERFACE || 'ether1'})\n`;
+    let trafficInfo = `📶 *TRAFFIC* (${global.appSettings.mainInterface || 'ether1'})\n`;
     trafficInfo += `• RX: ${data.trafficRX} Mbps\n`;
     trafficInfo += `• TX: ${data.trafficTX} Mbps\n`;
 
