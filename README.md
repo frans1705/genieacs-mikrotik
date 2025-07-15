@@ -44,7 +44,12 @@ npm install
 pm2 start app-whatsapp-only.js
 ```
 
-Scan QR code yang muncul di terminal untuk login WhatsApp.<br>
+Scan QR code di web setting admin<br>
+## link akses web admin
+ipserver:3100/admin<br>
+## link akses pelanggan
+ipserver:3100<br>
+
 siapkan dua nomer whatsapp <br>
 untuk scan QRCode sebagai BOT <br>
 untuk perintah ADMIN 
