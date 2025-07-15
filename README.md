@@ -37,43 +37,6 @@ cd genieacs-mikrotik
 ```bash
 npm install
 ```
-### 2. Konfigurasi Environment Variables
-
-Salin file `.env.example` menjadi `.env` dan sesuaikan:
-
-```bash
-cp env-example.txt .env
-```
-
-Edit file `.env` dengan pengaturan yang sesuai:
-
-```
-# Konfigurasi Server
-PORT=4500
-HOST=localhost
-
-# Konfigurasi Admin
-ADMIN_USERNAME=admin
-ADMIN_PASSWORD=password
-
-# Konfigurasi GenieACS
-GENIEACS_URL=http://your-genieacs-server:7557
-GENIEACS_USERNAME=username
-GENIEACS_PASSWORD=password
-
-# Konfigurasi Mikrotik (opsional)
-MIKROTIK_HOST=192.168.1.1
-MIKROTIK_PORT=8728
-MIKROTIK_USER=admin
-MIKROTIK_PASSWORD=password
-
-# Konfigurasi WhatsApp
-ADMIN_NUMBER=6281234567890
-TECHNICIAN_NUMBERS=6281234567890,6287654321098
-WHATSAPP_SESSION_PATH=./whatsapp-session
-WHATSAPP_KEEP_ALIVE=true
-WHATSAPP_RESTART_ON_ERROR=true
-```
 
 ### 3. Menjalankan Aplikasi
 
