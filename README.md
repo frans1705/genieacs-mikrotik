@@ -50,7 +50,7 @@ untuk scan QRCode sebagai BOT <br>
 untuk perintah ADMIN 
 
 ## Akses Web Admin dan Pelanggan
-ipserver:3200 untuk pelanggan
+ipserver:3200 untuk pelanggan <br>
 ipserver:3200/auth/admin (untuk admin)
 
 
