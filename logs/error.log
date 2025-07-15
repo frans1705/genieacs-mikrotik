@@ -682,3 +682,65 @@ Or, if you meant to create an async function, pass `async: true` as an option.
 2025-07-14 20:47:55 error: Mikrotik connection error: Timed out after 10 seconds
 2025-07-14 20:48:25 error: Mikrotik connection error: Timed out after 10 seconds
 2025-07-14 20:48:55 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-14 21:15:25 error: ❌ Port 3100 is already in use!
+2025-07-15 09:22:40 error: ❌ Port 3100 is already in use!
+2025-07-15 09:23:17 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:17 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 09:23:19 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:19 error: No Mikrotik connection available
+2025-07-15 09:23:21 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:21 error: No Mikrotik connection available
+2025-07-15 09:23:23 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:23 error: No Mikrotik connection available
+2025-07-15 09:23:25 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:27 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:27 error: No Mikrotik connection available
+2025-07-15 09:23:29 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:29 error: No Mikrotik connection available
+2025-07-15 09:23:31 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:31 error: No Mikrotik connection available
+2025-07-15 09:23:34 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:34 error: No Mikrotik connection available
+2025-07-15 09:23:36 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:36 error: No Mikrotik connection available
+2025-07-15 09:23:36 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:36 error: No Mikrotik connection available
+2025-07-15 09:23:38 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:38 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:38 error: No Mikrotik connection available
+2025-07-15 09:23:39 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:39 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 09:23:40 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:40 error: No Mikrotik connection available
+2025-07-15 09:23:40 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:40 error: No Mikrotik connection available
+2025-07-15 09:23:41 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:41 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 09:23:41 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:41 error: No Mikrotik connection available
+2025-07-15 09:23:42 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:44 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:44 error: No Mikrotik connection available
+2025-07-15 09:23:46 error: Error connecting to Mikrotik: 
+2025-07-15 09:23:46 error: No Mikrotik connection available
+2025-07-15 09:24:52 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 09:27:54 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 09:33:16 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 09:36:52 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 09:42:20 error: ❌ Port 3100 is already in use!
+2025-07-15 09:42:53 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 09:43:15 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 09:43:46 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 09:44:16 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 09:44:46 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 09:45:16 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 09:45:46 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 09:46:16 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 09:46:46 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 09:47:27 error: ❌ Port 3100 is already in use!
+2025-07-15 09:47:55 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 09:48:22 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 09:48:37 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 09:48:50 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 09:48:51 error: Error getting interface traffic:
+2025-07-15 09:49:14 error: Mikrotik connection error: Timed out after 10 seconds

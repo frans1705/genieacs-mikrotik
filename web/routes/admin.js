@@ -493,15 +493,12 @@ async function getActiveHotspotUsers() {
 
 async function getAllHotspotUsers() {
     try {
-        // Use the correct MikroTik API function for all users (includes hotspot users)
-        const { getAllUsers } = require('../../config/mikrotik');
-        const result = await getAllUsers();
-
-        if (result && result.success && result.data) {
-            // Filter for hotspot users if needed, or return all users
-            return result.data.hotspotUsers || result.data || [];
-        }
-        return [];
+        // Ambil seluruh user hotspot dari Mikrotik
+        const mikrotik = require('../../config/mikrotik');
+        const conn = await mikrotik.getMikrotikConnection();
+        if (!conn) return [];
+        const allHotspotUsers = await conn.write('/ip/hotspot/user/print');
+        return allHotspotUsers || [];
     } catch (error) {
         logger.error(`Error getting all hotspot users: ${error.message}`);
         return [];

@@ -2084,6 +2084,7 @@
         // Initial load
         updateSystemInfo();
         updateHotspotStats();
+        loadAllHotspotUsers(); // Pastikan ini dipanggil otomatis
 
         // Add event listeners for voucher preview updates
         document.getElementById('voucherModel').addEventListener('change', updateVoucherPreview);

@@ -192,13 +192,28 @@ function startWebServer() {
 
         server.on('error', (err) => {
             if (err.code === 'EADDRINUSE') {
-                logger.error(`❌ Port ${PORT} sudah digunakan!`);
-                logger.info(`💡 Untuk mengatasinya, Anda bisa:`);
-                logger.info(`   1. Atur environment variable WEB_PORT: WEB_PORT=3200`);
-                logger.info(`   2. Ubah "web_port": 3200 di settings.json`);
-                logger.info(`   3. Hentikan service lain yang menggunakan port ${PORT}`);
+                logger.error(`❌ Port ${PORT} is already in use!`);
+                logger.info(`💡 To fix this, you can:`);
+                logger.info(`   1. Set WEB_PORT environment variable: WEB_PORT=3200`);
+                logger.info(`   2. Add "web_port": 3200 to settings.json`);
+                logger.info(`   3. Stop the service using port ${PORT}`);
+
+                // Try alternative port
+                const alternativePort = PORT + 100;
+                logger.info(`🔄 Trying alternative port: ${alternativePort}`);
+
+                const altServer = app.listen(alternativePort, () => {
+                    logger.info(`✅ Web interface started on alternative port ${alternativePort}`);
+                    logger.info(`🔗 Admin dashboard: http://localhost:${alternativePort}/admin`);
+                    logger.info(`👤 Customer portal: http://localhost:${alternativePort}/customer`);
+                });
+
+                altServer.on('error', (altErr) => {
+                    logger.error(`❌ Failed to start web server on alternative port ${alternativePort}: ${altErr.message}`);
+                    logger.error(`💡 Please configure a different port in WEB_PORT environment variable or settings.json`);
+                });
             } else {
-                logger.error(`❌ Gagal menjalankan web server: ${err.message}`);
+                logger.error(`❌ Failed to start web server: ${err.message}`);
             }
         });
 
