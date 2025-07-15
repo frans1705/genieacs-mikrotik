@@ -453,3 +453,35 @@ Require stack:
     at Module._compile (node:internal/modules/cjs/loader:1562:14)
     at Object..js (node:internal/modules/cjs/loader:1699:10)
     at Module.load (node:internal/modules/cjs/loader:1313:32)
+2025-07-15 13:39:13 error: uncaughtException: Identifier 'getAppSettings' has already been declared
+E:\genieacs-mikrotik\config\whatsapp.js:5196
+function getAppSettings() {
+^
+
+SyntaxError: Identifier 'getAppSettings' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1512:18)
+    at Module._compile (node:internal/modules/cjs/loader:1534:20)
+    at Object..js (node:internal/modules/cjs/loader:1699:10)
+    at Module.load (node:internal/modules/cjs/loader:1313:32)
+    at Function._load (node:internal/modules/cjs/loader:1123:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)
+    at Module.require (node:internal/modules/cjs/loader:1335:12)
+    at require (node:internal/modules/helpers:136:16)
+    at Object.<anonymous> (E:\genieacs-mikrotik\app-whatsapp-only.js:6:18)
+2025-07-15 13:49:03 error: uncaughtException: Identifier 'getAppSettings' has already been declared
+E:\genieacs-mikrotik\config\whatsapp.js:5196
+function getAppSettings() {
+^
+
+SyntaxError: Identifier 'getAppSettings' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1512:18)
+    at Module._compile (node:internal/modules/cjs/loader:1534:20)
+    at Object..js (node:internal/modules/cjs/loader:1699:10)
+    at Module.load (node:internal/modules/cjs/loader:1313:32)
+    at Function._load (node:internal/modules/cjs/loader:1123:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)
+    at Module.require (node:internal/modules/cjs/loader:1335:12)
+    at require (node:internal/modules/helpers:136:16)
+    at Object.<anonymous> (E:\genieacs-mikrotik\app-whatsapp-only.js:6:18)

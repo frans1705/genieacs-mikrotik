@@ -7488,182 +7488,462 @@ Or, if you meant to create an async function, pass `async: true` as an option.
 2025-07-14 21:15:25 info: WhatsApp connected successfully
 2025-07-14 21:15:45 info: Auth settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
 2025-07-14 21:15:51 info: Admin login successful: admin
-2025-07-15 09:22:40 info: Attempting to start server on configured port: 3100
-2025-07-15 09:22:40 info: Mencoba memulai server pada port 3100...
-2025-07-15 09:22:40 info: Web interface started successfully
-2025-07-15 09:22:40 info: Server berhasil berjalan pada port 3100
-2025-07-15 09:22:40 info: Environment: development
-2025-07-15 09:22:40 error: ❌ Port 3100 is already in use!
-2025-07-15 09:22:40 info: 💡 To fix this, you can:
-2025-07-15 09:22:40 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
-2025-07-15 09:22:40 info:    2. Add "web_port": 3200 to settings.json
-2025-07-15 09:22:40 info:    3. Stop the service using port 3100
-2025-07-15 09:22:40 info: 🔄 Trying alternative port: 3200
-2025-07-15 09:22:40 info: ✅ Web interface started on alternative port 3200
-2025-07-15 09:22:40 info: 🔗 Admin dashboard: http://localhost:3200/admin
-2025-07-15 09:22:40 info: 👤 Customer portal: http://localhost:3200/customer
-2025-07-15 09:22:40 info: WhatsApp socket set in pppoe-notifications module
-2025-07-15 09:22:40 info: WhatsApp socket set in pppoe-commands module
-2025-07-15 09:22:40 info: WhatsApp socket set in genieacs-commands module
-2025-07-15 09:22:40 info: WhatsApp connected successfully
-2025-07-15 09:23:06 info: Auth settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:23:10 info: Admin login successful: admin
-2025-07-15 09:23:15 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:23:15 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:17 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:17 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:17 error: No Mikrotik connection available for PPPoE monitoring
-2025-07-15 09:23:19 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:19 error: No Mikrotik connection available
-2025-07-15 09:23:19 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:21 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:21 error: No Mikrotik connection available
-2025-07-15 09:23:21 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:23 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:23 error: No Mikrotik connection available
-2025-07-15 09:23:23 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:25 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:25 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:27 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:27 error: No Mikrotik connection available
-2025-07-15 09:23:27 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:29 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:29 error: No Mikrotik connection available
-2025-07-15 09:23:29 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:23:29 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:31 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:31 error: No Mikrotik connection available
-2025-07-15 09:23:31 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:34 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:34 error: No Mikrotik connection available
-2025-07-15 09:23:34 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:34 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:36 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:36 error: No Mikrotik connection available
-2025-07-15 09:23:36 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:36 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:36 error: No Mikrotik connection available
-2025-07-15 09:23:36 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:37 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:38 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:38 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:38 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:38 error: No Mikrotik connection available
-2025-07-15 09:23:38 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:39 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:39 error: No Mikrotik connection available for PPPoE monitoring
-2025-07-15 09:23:39 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:23:39 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:39 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:40 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:40 error: No Mikrotik connection available
-2025-07-15 09:23:40 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:40 error: No Mikrotik connection available
-2025-07-15 09:23:40 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:41 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:41 error: No Mikrotik connection available for PPPoE monitoring
-2025-07-15 09:23:41 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:41 error: No Mikrotik connection available
-2025-07-15 09:23:42 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:42 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:44 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:44 error: No Mikrotik connection available
-2025-07-15 09:23:44 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:23:46 error: Error connecting to Mikrotik: 
-2025-07-15 09:23:46 error: No Mikrotik connection available
-2025-07-15 09:23:46 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:24:30 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:24:31 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:24:37 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:24:41 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:24:52 error: Mikrotik connection error: Timed out after 10 seconds
-2025-07-15 09:27:44 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:27:54 error: Mikrotik connection error: Timed out after 10 seconds
-2025-07-15 09:33:04 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:33:05 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:33:16 error: Mikrotik connection error: Timed out after 10 seconds
-2025-07-15 09:36:40 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:36:41 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:36:52 error: Mikrotik connection error: Timed out after 10 seconds
-2025-07-15 09:42:20 info: Attempting to start server on configured port: 3100
-2025-07-15 09:42:20 info: Mencoba memulai server pada port 3100...
-2025-07-15 09:42:20 info: Web interface started successfully
-2025-07-15 09:42:20 info: Server berhasil berjalan pada port 3100
-2025-07-15 09:42:20 info: Environment: development
-2025-07-15 09:42:20 error: ❌ Port 3100 is already in use!
-2025-07-15 09:42:20 info: 💡 To fix this, you can:
-2025-07-15 09:42:20 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
-2025-07-15 09:42:20 info:    2. Add "web_port": 3200 to settings.json
-2025-07-15 09:42:20 info:    3. Stop the service using port 3100
-2025-07-15 09:42:20 info: 🔄 Trying alternative port: 3200
-2025-07-15 09:42:20 info: ✅ Web interface started on alternative port 3200
-2025-07-15 09:42:20 info: 🔗 Admin dashboard: http://localhost:3200/admin
-2025-07-15 09:42:20 info: 👤 Customer portal: http://localhost:3200/customer
-2025-07-15 09:42:20 info: WhatsApp socket set in pppoe-notifications module
-2025-07-15 09:42:20 info: WhatsApp socket set in pppoe-commands module
-2025-07-15 09:42:20 info: WhatsApp socket set in genieacs-commands module
-2025-07-15 09:42:20 info: WhatsApp connected successfully
-2025-07-15 09:42:39 info: Auth settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:42:41 info: Admin login successful: admin
-2025-07-15 09:42:41 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:42:42 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:42:53 error: Mikrotik connection error: Timed out after 10 seconds
-2025-07-15 09:43:05 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:43:05 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:43:15 error: Mikrotik connection error: Timed out after 10 seconds
-2025-07-15 09:43:36 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:43:46 error: Mikrotik connection error: Timed out after 10 seconds
-2025-07-15 09:44:06 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:44:16 error: Mikrotik connection error: Timed out after 10 seconds
-2025-07-15 09:44:36 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:44:46 error: Mikrotik connection error: Timed out after 10 seconds
-2025-07-15 09:45:06 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:45:16 error: Mikrotik connection error: Timed out after 10 seconds
-2025-07-15 09:45:36 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:45:46 error: Mikrotik connection error: Timed out after 10 seconds
-2025-07-15 09:46:06 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:46:16 error: Mikrotik connection error: Timed out after 10 seconds
-2025-07-15 09:46:36 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:46:46 error: Mikrotik connection error: Timed out after 10 seconds
-2025-07-15 09:47:27 info: Attempting to start server on configured port: 3100
-2025-07-15 09:47:27 info: Mencoba memulai server pada port 3100...
-2025-07-15 09:47:27 info: Web interface started successfully
-2025-07-15 09:47:27 info: Server berhasil berjalan pada port 3100
-2025-07-15 09:47:27 info: Environment: development
-2025-07-15 09:47:27 error: ❌ Port 3100 is already in use!
-2025-07-15 09:47:27 info: 💡 To fix this, you can:
-2025-07-15 09:47:27 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
-2025-07-15 09:47:27 info:    2. Add "web_port": 3200 to settings.json
-2025-07-15 09:47:27 info:    3. Stop the service using port 3100
-2025-07-15 09:47:27 info: 🔄 Trying alternative port: 3200
-2025-07-15 09:47:27 info: ✅ Web interface started on alternative port 3200
-2025-07-15 09:47:27 info: 🔗 Admin dashboard: http://localhost:3200/admin
-2025-07-15 09:47:27 info: 👤 Customer portal: http://localhost:3200/customer
-2025-07-15 09:47:27 info: WhatsApp socket set in pppoe-notifications module
-2025-07-15 09:47:27 info: WhatsApp socket set in pppoe-commands module
-2025-07-15 09:47:27 info: WhatsApp socket set in genieacs-commands module
-2025-07-15 09:47:27 info: WhatsApp connected successfully
-2025-07-15 09:47:27 info: Auth settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:47:27 info: Auth settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:47:35 info: Auth settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:47:35 info: Auth settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:47:36 info: Auth settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:47:38 info: Admin login successful: admin
-2025-07-15 09:47:38 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:47:38 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:47:44 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:47:55 error: Mikrotik connection error: Timed out after 10 seconds
-2025-07-15 09:48:12 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:48:22 error: Mikrotik connection error: Timed out after 10 seconds
-2025-07-15 09:48:26 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:48:37 error: Mikrotik connection error: Timed out after 10 seconds
-2025-07-15 09:48:40 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:48:40 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:48:47 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:48:50 error: Mikrotik connection error: Timed out after 10 seconds
-2025-07-15 09:48:51 info: No existing Mikrotik connection, attempting to connect...
-2025-07-15 09:48:51 error: Error getting interface traffic:
-2025-07-15 09:48:51 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:48:56 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:49:03 info: Settings loaded from C:\Users\DELL\Documents\genieacs-mikrotik-main\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
-2025-07-15 09:49:14 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 12:18:49 info: Direktori sesi WhatsApp dibuat: ./whatsapp-session
+2025-07-15 12:18:49 info: Attempting to start server on configured port: 3100
+2025-07-15 12:18:49 info: Mencoba memulai server pada port 3100...
+2025-07-15 12:18:49 info: Web interface started successfully
+2025-07-15 12:18:49 info: Server berhasil berjalan pada port 3100
+2025-07-15 12:18:49 info: Environment: development
+2025-07-15 12:18:49 error: ❌ Port 3100 is already in use!
+2025-07-15 12:18:49 info: 💡 To fix this, you can:
+2025-07-15 12:18:49 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-15 12:18:49 info:    2. Add "web_port": 3200 to settings.json
+2025-07-15 12:18:49 info:    3. Stop the service using port 3100
+2025-07-15 12:18:49 info: 🔄 Trying alternative port: 3200
+2025-07-15 12:18:49 info: ✅ Web interface started on alternative port 3200
+2025-07-15 12:18:49 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-15 12:18:49 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-15 12:18:49 info: WhatsApp socket set in pppoe-notifications module
+2025-07-15 12:18:49 info: WhatsApp socket set in pppoe-commands module
+2025-07-15 12:18:49 info: WhatsApp socket set in genieacs-commands module
+2025-07-15 12:18:49 info: WhatsApp connected successfully
+2025-07-15 12:19:05 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:19:08 info: Admin login successful: admin
+2025-07-15 12:19:13 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:19:13 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:19:15 error: Error connecting to Mikrotik: 
+2025-07-15 12:19:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 12:19:40 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:19:42 error: Error connecting to Mikrotik: 
+2025-07-15 12:19:42 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 12:19:42 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:19:43 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:19:43 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:19:45 error: Error connecting to Mikrotik: 
+2025-07-15 12:19:45 error: No Mikrotik connection available
+2025-07-15 12:19:45 error: Error connecting to Mikrotik: 
+2025-07-15 12:19:45 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 12:19:47 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:19:49 error: Error connecting to Mikrotik: 
+2025-07-15 12:19:49 error: No Mikrotik connection available
+2025-07-15 12:19:49 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:19:51 error: Error connecting to Mikrotik: 
+2025-07-15 12:19:51 error: No Mikrotik connection available
+2025-07-15 12:19:51 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:19:53 error: Error connecting to Mikrotik: 
+2025-07-15 12:19:53 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:19:55 error: Error connecting to Mikrotik: 
+2025-07-15 12:19:55 error: No Mikrotik connection available
+2025-07-15 12:19:55 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:19:57 error: Error connecting to Mikrotik: 
+2025-07-15 12:20:13 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:20:15 error: Error connecting to Mikrotik: 
+2025-07-15 12:20:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 12:22:13 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:22:14 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:22:17 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:22:22 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:22:28 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:22:42 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 12:23:53 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:24:03 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 12:32:48 info: Attempting to start server on configured port: 3100
+2025-07-15 12:32:48 info: Mencoba memulai server pada port 3100...
+2025-07-15 12:32:48 info: Web interface started successfully
+2025-07-15 12:32:48 info: Server berhasil berjalan pada port 3100
+2025-07-15 12:32:48 info: Environment: development
+2025-07-15 12:32:48 error: ❌ Port 3100 is already in use!
+2025-07-15 12:32:48 info: 💡 To fix this, you can:
+2025-07-15 12:32:48 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-15 12:32:48 info:    2. Add "web_port": 3200 to settings.json
+2025-07-15 12:32:48 info:    3. Stop the service using port 3100
+2025-07-15 12:32:48 info: 🔄 Trying alternative port: 3200
+2025-07-15 12:32:48 info: ✅ Web interface started on alternative port 3200
+2025-07-15 12:32:48 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-15 12:32:48 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-15 12:32:48 info: WhatsApp socket set in pppoe-notifications module
+2025-07-15 12:32:48 info: WhatsApp socket set in pppoe-commands module
+2025-07-15 12:32:48 info: WhatsApp socket set in genieacs-commands module
+2025-07-15 12:32:48 info: WhatsApp connected successfully
+2025-07-15 12:33:13 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:33:16 info: Admin login successful: admin
+2025-07-15 12:33:21 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:33:22 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:33:26 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:33:36 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 12:33:46 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:33:46 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:33:50 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:33:51 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:34:05 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 12:35:21 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:35:22 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:35:28 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:35:33 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:35:43 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 12:37:52 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:38:02 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 12:38:35 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:38:36 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:38:50 info: Attempting to start server on configured port: 3100
+2025-07-15 12:38:50 info: Mencoba memulai server pada port 3100...
+2025-07-15 12:38:50 info: Web interface started successfully
+2025-07-15 12:38:50 info: Server berhasil berjalan pada port 3100
+2025-07-15 12:38:50 info: Environment: development
+2025-07-15 12:38:50 error: ❌ Port 3100 is already in use!
+2025-07-15 12:38:50 info: 💡 To fix this, you can:
+2025-07-15 12:38:50 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-15 12:38:50 info:    2. Add "web_port": 3200 to settings.json
+2025-07-15 12:38:50 info:    3. Stop the service using port 3100
+2025-07-15 12:38:50 info: 🔄 Trying alternative port: 3200
+2025-07-15 12:38:50 info: ✅ Web interface started on alternative port 3200
+2025-07-15 12:38:50 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-15 12:38:50 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-15 12:38:50 info: WhatsApp socket set in pppoe-notifications module
+2025-07-15 12:38:50 info: WhatsApp socket set in pppoe-commands module
+2025-07-15 12:38:50 info: WhatsApp socket set in genieacs-commands module
+2025-07-15 12:38:50 info: WhatsApp connected successfully
+2025-07-15 12:38:53 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:38:54 info: Admin login successful: admin
+2025-07-15 12:38:54 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:38:55 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:39:06 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 12:39:09 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:39:20 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 12:39:32 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:39:32 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:39:37 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:39:45 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 12:39:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 12:43:54 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 12:44:04 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 13:15:12 info: Attempting to start server on configured port: 3100
+2025-07-15 13:15:12 info: Mencoba memulai server pada port 3100...
+2025-07-15 13:15:12 info: Web interface started successfully
+2025-07-15 13:15:12 info: Server berhasil berjalan pada port 3100
+2025-07-15 13:15:12 info: Environment: development
+2025-07-15 13:15:12 error: ❌ Port 3100 is already in use!
+2025-07-15 13:15:12 info: 💡 To fix this, you can:
+2025-07-15 13:15:12 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-15 13:15:12 info:    2. Add "web_port": 3200 to settings.json
+2025-07-15 13:15:12 info:    3. Stop the service using port 3100
+2025-07-15 13:15:12 info: 🔄 Trying alternative port: 3200
+2025-07-15 13:15:12 info: ✅ Web interface started on alternative port 3200
+2025-07-15 13:15:12 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-15 13:15:12 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-15 13:15:12 info: WhatsApp socket set in pppoe-notifications module
+2025-07-15 13:15:12 info: WhatsApp socket set in pppoe-commands module
+2025-07-15 13:15:12 info: WhatsApp socket set in genieacs-commands module
+2025-07-15 13:15:12 info: WhatsApp connected successfully
+2025-07-15 13:15:17 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 13:15:18 info: Admin login successful: admin
+2025-07-15 13:20:31 info: Attempting to start server on configured port: 3100
+2025-07-15 13:20:31 info: Mencoba memulai server pada port 3100...
+2025-07-15 13:20:31 info: Web interface started successfully
+2025-07-15 13:20:31 info: Server berhasil berjalan pada port 3100
+2025-07-15 13:20:31 info: Environment: development
+2025-07-15 13:20:31 error: ❌ Port 3100 is already in use!
+2025-07-15 13:20:31 info: 💡 To fix this, you can:
+2025-07-15 13:20:31 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-15 13:20:31 info:    2. Add "web_port": 3200 to settings.json
+2025-07-15 13:20:31 info:    3. Stop the service using port 3100
+2025-07-15 13:20:31 info: 🔄 Trying alternative port: 3200
+2025-07-15 13:20:31 info: ✅ Web interface started on alternative port 3200
+2025-07-15 13:20:31 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-15 13:20:31 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-15 13:20:31 info: WhatsApp socket set in pppoe-notifications module
+2025-07-15 13:20:31 info: WhatsApp socket set in pppoe-commands module
+2025-07-15 13:20:31 info: WhatsApp socket set in genieacs-commands module
+2025-07-15 13:20:31 info: WhatsApp connected successfully
+2025-07-15 13:20:34 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 13:20:36 info: Admin login successful: admin
+2025-07-15 13:21:21 info: Message received
+2025-07-15 13:21:35 info: Message received
+2025-07-15 13:25:37 info: Attempting to start server on configured port: 3100
+2025-07-15 13:25:37 info: Mencoba memulai server pada port 3100...
+2025-07-15 13:25:37 info: Web interface started successfully
+2025-07-15 13:25:37 info: Server berhasil berjalan pada port 3100
+2025-07-15 13:25:37 info: Environment: development
+2025-07-15 13:25:37 error: ❌ Port 3100 is already in use!
+2025-07-15 13:25:37 info: 💡 To fix this, you can:
+2025-07-15 13:25:37 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-15 13:25:37 info:    2. Add "web_port": 3200 to settings.json
+2025-07-15 13:25:37 info:    3. Stop the service using port 3100
+2025-07-15 13:25:37 info: 🔄 Trying alternative port: 3200
+2025-07-15 13:25:37 info: ✅ Web interface started on alternative port 3200
+2025-07-15 13:25:37 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-15 13:25:37 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-15 13:25:37 info: WhatsApp socket set in pppoe-notifications module
+2025-07-15 13:25:37 info: WhatsApp socket set in pppoe-commands module
+2025-07-15 13:25:37 info: WhatsApp socket set in genieacs-commands module
+2025-07-15 13:25:37 info: WhatsApp connected successfully
+2025-07-15 13:25:43 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 13:25:45 info: Admin login successful: admin
+2025-07-15 13:30:56 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:31:06 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 13:55:06 info: Attempting to start server on configured port: 3100
+2025-07-15 13:55:06 info: Mencoba memulai server pada port 3100...
+2025-07-15 13:55:06 info: Web interface started successfully
+2025-07-15 13:55:06 info: Server berhasil berjalan pada port 3100
+2025-07-15 13:55:06 info: Environment: development
+2025-07-15 13:55:06 error: ❌ Port 3100 is already in use!
+2025-07-15 13:55:06 info: 💡 To fix this, you can:
+2025-07-15 13:55:06 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-15 13:55:06 info:    2. Add "web_port": 3200 to settings.json
+2025-07-15 13:55:06 info:    3. Stop the service using port 3100
+2025-07-15 13:55:06 info: 🔄 Trying alternative port: 3200
+2025-07-15 13:55:06 info: ✅ Web interface started on alternative port 3200
+2025-07-15 13:55:06 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-15 13:55:06 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-15 13:55:06 info: WhatsApp socket set in pppoe-notifications module
+2025-07-15 13:55:06 info: WhatsApp socket set in pppoe-commands module
+2025-07-15 13:55:06 info: WhatsApp socket set in genieacs-commands module
+2025-07-15 13:55:06 info: WhatsApp connected successfully
+2025-07-15 13:55:14 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 13:55:15 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 13:55:15 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 13:55:17 info: Admin login successful: admin
+2025-07-15 13:56:20 info: Message received
+2025-07-15 13:56:33 info: Message received
+2025-07-15 13:56:38 info: Message received
+2025-07-15 13:56:38 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:56:38 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:56:38 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:56:38 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:56:38 error: No Mikrotik connection available
+2025-07-15 13:56:58 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:56:58 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:56:58 error: No Mikrotik connection available
+2025-07-15 13:56:58 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:56:58 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:56:58 error: No Mikrotik connection available
+2025-07-15 13:56:58 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:56:58 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:56:58 error: No Mikrotik connection available
+2025-07-15 13:56:58 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 13:56:58 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:56:58 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:56:58 error: No Mikrotik connection available
+2025-07-15 13:56:58 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:56:58 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:56:58 error: No Mikrotik connection available
+2025-07-15 13:57:03 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:03 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:03 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:03 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:03 error: No Mikrotik connection available
+2025-07-15 13:57:03 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:03 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:03 error: No Mikrotik connection available
+2025-07-15 13:57:03 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:03 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:03 error: No Mikrotik connection available
+2025-07-15 13:57:03 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:03 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:03 error: No Mikrotik connection available
+2025-07-15 13:57:03 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 13:57:06 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:06 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:06 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 13:57:06 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 13:57:06 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:06 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:06 error: No Mikrotik connection available
+2025-07-15 13:57:06 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:06 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:06 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 13:57:10 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:10 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:10 error: No Mikrotik connection available
+2025-07-15 13:57:10 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:10 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:10 error: No Mikrotik connection available
+2025-07-15 13:57:10 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:10 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:10 error: No Mikrotik connection available
+2025-07-15 13:57:10 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 13:57:11 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:11 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:11 error: No Mikrotik connection available
+2025-07-15 13:57:11 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:11 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:11 error: No Mikrotik connection available
+2025-07-15 13:57:15 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:15 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 13:57:15 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 13:57:15 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:15 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:15 error: No Mikrotik connection available
+2025-07-15 13:57:15 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:15 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:15 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 13:57:24 info: Message received
+2025-07-15 13:57:24 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:24 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:24 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:24 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:24 error: No Mikrotik connection available
+2025-07-15 13:57:46 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:57:46 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:57:46 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 13:58:16 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:58:16 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:58:16 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 13:58:46 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:58:46 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:58:46 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 13:59:16 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:59:16 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:59:16 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 13:59:46 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 13:59:46 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 13:59:46 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 14:00:10 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 14:00:10 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 14:00:16 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 14:00:16 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 14:00:16 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 14:00:46 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 14:00:46 error: Error connecting to Mikrotik: MikroTik configuration not available
+2025-07-15 14:00:46 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-15 14:00:58 info: Attempting to start server on configured port: 3100
+2025-07-15 14:00:58 info: Mencoba memulai server pada port 3100...
+2025-07-15 14:00:58 info: Web interface started successfully
+2025-07-15 14:00:58 info: Server berhasil berjalan pada port 3100
+2025-07-15 14:00:58 info: Environment: development
+2025-07-15 14:00:58 error: ❌ Port 3100 is already in use!
+2025-07-15 14:00:58 info: 💡 To fix this, you can:
+2025-07-15 14:00:58 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-15 14:00:58 info:    2. Add "web_port": 3200 to settings.json
+2025-07-15 14:00:58 info:    3. Stop the service using port 3100
+2025-07-15 14:00:58 info: 🔄 Trying alternative port: 3200
+2025-07-15 14:00:58 info: ✅ Web interface started on alternative port 3200
+2025-07-15 14:00:58 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-15 14:00:58 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-15 14:00:58 info: WhatsApp socket set in pppoe-notifications module
+2025-07-15 14:00:58 info: WhatsApp socket set in pppoe-commands module
+2025-07-15 14:00:58 info: WhatsApp socket set in genieacs-commands module
+2025-07-15 14:00:58 info: WhatsApp connected successfully
+2025-07-15 14:01:10 info: Message received
+2025-07-15 14:01:10 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 14:01:15 info: Message received
+2025-07-15 14:01:15 error: Error getting interface traffic:
+2025-07-15 14:01:25 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 14:01:27 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:01:27 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:02:27 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:02:27 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:03:27 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:03:27 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:04:04 info: Attempting to start server on configured port: 3100
+2025-07-15 14:04:04 info: Mencoba memulai server pada port 3100...
+2025-07-15 14:04:04 info: Web interface started successfully
+2025-07-15 14:04:04 info: Server berhasil berjalan pada port 3100
+2025-07-15 14:04:04 info: Environment: development
+2025-07-15 14:04:04 error: ❌ Port 3100 is already in use!
+2025-07-15 14:04:04 info: 💡 To fix this, you can:
+2025-07-15 14:04:04 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-15 14:04:04 info:    2. Add "web_port": 3200 to settings.json
+2025-07-15 14:04:04 info:    3. Stop the service using port 3100
+2025-07-15 14:04:04 info: 🔄 Trying alternative port: 3200
+2025-07-15 14:04:04 info: ✅ Web interface started on alternative port 3200
+2025-07-15 14:04:04 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-15 14:04:04 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-15 14:04:04 info: WhatsApp socket set in pppoe-notifications module
+2025-07-15 14:04:04 info: WhatsApp socket set in pppoe-commands module
+2025-07-15 14:04:04 info: WhatsApp socket set in genieacs-commands module
+2025-07-15 14:04:04 info: WhatsApp connected successfully
+2025-07-15 14:04:20 info: Message received
+2025-07-15 14:04:27 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:04:27 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:04:28 info: Message received
+2025-07-15 14:04:54 info: Message received
+2025-07-15 14:04:55 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 14:05:05 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 14:05:23 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:05:23 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:05:25 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:05:26 info: Admin login successful: admin
+2025-07-15 14:05:31 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:05:31 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 14:05:38 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:05:41 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 14:05:42 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 14:05:42 error: Error getting interface traffic:
+2025-07-15 14:05:42 error: Error: ambiguous value of interface, more than one possible value matches input
+    at Channel.<anonymous> (E:\genieacs-mikrotik\node_modules\node-routeros\dist\Channel.js:70:52)
+    at Object.onceWrapper (node:events:639:26)
+    at Channel.emit (node:events:524:28)
+    at Channel.processPacket (E:\genieacs-mikrotik\node_modules\node-routeros\dist\Channel.js:117:18)
+    at Object.callback (E:\genieacs-mikrotik\node_modules\node-routeros\dist\Channel.js:99:55)
+    at Receiver.sendTagData (E:\genieacs-mikrotik\node_modules\node-routeros\dist\connector\Receiver.js:248:17)
+    at process (E:\genieacs-mikrotik\node_modules\node-routeros\dist\connector\Receiver.js:210:34)
+    at Receiver.processSentence (E:\genieacs-mikrotik\node_modules\node-routeros\dist\connector\Receiver.js:237:13)
+    at Receiver.processRawData (E:\genieacs-mikrotik\node_modules\node-routeros\dist\connector\Receiver.js:165:26)
+    at Connector.onData (E:\genieacs-mikrotik\node_modules\node-routeros\dist\connector\Connector.js:199:23)
+2025-07-15 14:05:42 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:05:46 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:05:52 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:06:07 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 14:06:16 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 14:06:27 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 14:06:28 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 14:06:39 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 14:09:08 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 14:09:18 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 14:10:50 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 14:10:50 error: Error getting interface traffic:
+2025-07-15 14:10:50 error: Error: ambiguous value of interface, more than one possible value matches input
+    at Channel.<anonymous> (E:\genieacs-mikrotik\node_modules\node-routeros\dist\Channel.js:70:52)
+    at Object.onceWrapper (node:events:639:26)
+    at Channel.emit (node:events:524:28)
+    at Channel.processPacket (E:\genieacs-mikrotik\node_modules\node-routeros\dist\Channel.js:117:18)
+    at Object.callback (E:\genieacs-mikrotik\node_modules\node-routeros\dist\Channel.js:99:55)
+    at Receiver.sendTagData (E:\genieacs-mikrotik\node_modules\node-routeros\dist\connector\Receiver.js:248:17)
+    at process (E:\genieacs-mikrotik\node_modules\node-routeros\dist\connector\Receiver.js:210:34)
+    at Receiver.processSentence (E:\genieacs-mikrotik\node_modules\node-routeros\dist\connector\Receiver.js:237:13)
+    at Receiver.processRawData (E:\genieacs-mikrotik\node_modules\node-routeros\dist\connector\Receiver.js:165:26)
+    at Connector.onData (E:\genieacs-mikrotik\node_modules\node-routeros\dist\connector\Connector.js:199:23)
+2025-07-15 14:10:50 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:10:55 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:11:06 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 14:11:20 info: No existing Mikrotik connection, attempting to connect...
+2025-07-15 14:11:22 info: Settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:11:33 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-15 14:23:06 info: Attempting to start server on configured port: 3100
+2025-07-15 14:23:06 info: Mencoba memulai server pada port 3100...
+2025-07-15 14:23:06 info: Web interface started successfully
+2025-07-15 14:23:06 info: Server berhasil berjalan pada port 3100
+2025-07-15 14:23:06 info: Environment: development
+2025-07-15 14:23:06 error: ❌ Port 3100 is already in use!
+2025-07-15 14:23:06 info: 💡 To fix this, you can:
+2025-07-15 14:23:06 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-15 14:23:06 info:    2. Add "web_port": 3200 to settings.json
+2025-07-15 14:23:06 info:    3. Stop the service using port 3100
+2025-07-15 14:23:06 info: 🔄 Trying alternative port: 3200
+2025-07-15 14:23:06 info: ✅ Web interface started on alternative port 3200
+2025-07-15 14:23:06 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-15 14:23:06 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-15 14:23:07 info: WhatsApp socket set in pppoe-notifications module
+2025-07-15 14:23:07 info: WhatsApp socket set in pppoe-commands module
+2025-07-15 14:23:07 info: WhatsApp socket set in genieacs-commands module
+2025-07-15 14:23:07 info: WhatsApp connected successfully
+2025-07-15 14:23:24 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:23:29 info: Auth settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:23:44 info: Customer direct login successful: 081321960111
+2025-07-15 14:23:44 info: Customer settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:23:52 info: Customer settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:24:00 info: Customer settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:24:12 info: Customer settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:24:14 info: Customer settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:24:15 info: Customer 081321960111 ran ping speed test: {"type":"ping","value":19,"unit":"ms"}
+2025-07-15 14:24:17 info: Customer 081321960111 ran download speed test: {"type":"download","value":65.2,"unit":"Mbps"}
+2025-07-15 14:24:21 info: Customer 081321960111 ran upload speed test: {"type":"upload","value":33.1,"unit":"Mbps"}
+2025-07-15 14:24:29 info: Customer settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:25:00 info: Customer settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:25:31 info: Customer settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:26:02 info: Customer settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:26:33 info: Customer settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:27:04 info: Customer settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-15 14:27:35 info: Customer settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net

@@ -3,6 +3,7 @@ require('dotenv').config();
 const { sendTechnicianMessage } = require('./sendMessage');
 const mikrotik = require('./mikrotik');
 const { getMikrotikConnection } = require('./mikrotik');
+const { getAppSettings } = require('./settings');
 
 // Konfigurasi GenieACS API
 const GENIEACS_HOST = global.appSettings?.genieacsHost || '192.168.8.89';
@@ -14,11 +15,12 @@ const GENIEACS_PASSWORD = global.appSettings?.genieacsPassword || '';
 console.log(`GenieACS configuration: ${GENIEACS_URL}`);
 
 function getAxiosInstance() {
+    const settings = getAppSettings();
     return axios.create({
-        baseURL: global.appSettings?.genieacsUrl,
+        baseURL: settings.genieacs_url,
         auth: {
-            username: global.appSettings?.genieacsUsername || '',
-            password: global.appSettings?.genieacsPassword || ''
+            username: settings.genieacs_username || '',
+            password: settings.genieacs_password || ''
         },
         headers: {
             'Accept': 'application/json',

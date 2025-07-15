@@ -493,12 +493,27 @@ async function getActiveHotspotUsers() {
 
 async function getAllHotspotUsers() {
     try {
-        // Ambil seluruh user hotspot dari Mikrotik
         const mikrotik = require('../../config/mikrotik');
         const conn = await mikrotik.getMikrotikConnection();
-        if (!conn) return [];
+        if (!conn) {
+            logger.error('No Mikrotik connection available');
+            return [];
+        }
+        // Ambil semua user hotspot terdaftar
         const allHotspotUsers = await conn.write('/ip/hotspot/user/print');
-        return allHotspotUsers || [];
+        // Format data jika perlu (misal: tambahkan status aktif)
+        // Ambil user aktif
+        let activeUsers = [];
+        try {
+            const activeResult = await conn.write('/ip/hotspot/active/print');
+            activeUsers = activeResult.map(u => u.name);
+        } catch (e) {}
+        // Tandai user yang sedang aktif
+        return allHotspotUsers.map(user => ({
+            ...user,
+            isActive: activeUsers.includes(user.name),
+            status: activeUsers.includes(user.name) ? 'Active' : 'Offline'
+        }));
     } catch (error) {
         logger.error(`Error getting all hotspot users: ${error.message}`);
         return [];
@@ -1448,28 +1463,13 @@ router.get('/settings', (req, res) => {
 // API: GET WhatsApp QRCode
 router.get('/api/whatsapp/qrcode', async (req, res) => {
     try {
-        // Cek apakah QRCode tersedia di global.whatsappStatus
         if (global.whatsappStatus && global.whatsappStatus.qrCode) {
-            // Jika QRCode berupa data URI
-            if (global.whatsappStatus.qrCode.startsWith('data:image')) {
-                const data = global.whatsappStatus.qrCode.split(',')[1];
-                const img = Buffer.from(data, 'base64');
-                res.writeHead(200, {
-                    'Content-Type': 'image/png',
-                    'Content-Length': img.length
-                });
-                return res.end(img);
-            }
+            // Kirim string QR code saja (bukan gambar)
+            return res.json({ qr: global.whatsappStatus.qrCode });
         }
-        // Jika tidak ada, cek file logs/wa_qrcode.png
-        const qrcodePath = path.join(__dirname, '../../logs/wa_qrcode.png');
-        if (fs.existsSync(qrcodePath)) {
-            res.sendFile(qrcodePath);
-        } else {
-            res.status(404).send('QR code not available');
-        }
+        res.status(404).json({ error: 'QR code not available' });
     } catch (error) {
-        res.status(500).send('Failed to get QR code');
+        res.status(500).json({ error: 'Failed to get QR code' });
     }
 });
 
@@ -1496,6 +1496,16 @@ router.post('/api/whatsapp/delete-session', async (req, res) => {
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
+});
+
+router.get('/api/whatsapp/status', (req, res) => {
+    const status = global.whatsappStatus || {};
+    res.json({
+        connected: !!status.connected,
+        phoneNumber: status.phoneNumber || null,
+        connectedSince: status.connectedSince || null,
+        qr: !status.connected && status.qrCode ? status.qrCode : null
+    });
 });
 
 module.exports = router;

@@ -4,6 +4,7 @@ const { logger } = require('./logger');
 require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
+const { getAppSettings } = require('./settings');
 
 let sock = null;
 let mikrotikConnection = null;
@@ -16,21 +17,24 @@ function setSock(sockInstance) {
 
 // Fungsi untuk mendapatkan konfigurasi MikroTik dari settings.json
 function getMikrotikConfig() {
-    // Selalu baca settings.json langsung
-    let settings = {};
     try {
-        const settingsPath = path.join(__dirname, '..', 'settings.json');
-        settings = JSON.parse(fs.readFileSync(settingsPath, 'utf8'));
+        const settings = getAppSettings();
+        return {
+            host: settings.mikrotik_host,
+            user: settings.mikrotik_user,
+            password: settings.mikrotik_password,
+            port: settings.mikrotik_port || 8728
+        };
     } catch (e) {
         // fallback ke global jika gagal
-        settings = global.appSettings || {};
+        const settings = global.appSettings || {};
+        return {
+            host: settings.mikrotik_host,
+            user: settings.mikrotik_user,
+            password: settings.mikrotik_password,
+            port: settings.mikrotik_port || 8728
+        };
     }
-    return {
-        host: settings.mikrotik_host,
-        user: settings.mikrotik_user,
-        password: settings.mikrotik_password,
-        port: settings.mikrotik_port || 8728
-    };
 }
 
 // Perbaiki fungsi connectToMikrotik
@@ -636,7 +640,8 @@ async function getInterfaceTraffic(interfaceName = 'ether1') {
             tx: res[0]['tx-bits-per-second'] || 0
         };
     } catch (error) {
-        logger.error('Error getting interface traffic:', error.message, error);
+        logger.error('Error getting interface traffic:', error && error.message ? error.message : error);
+        if (error && error.stack) logger.error(error.stack);
         return { rx: 0, tx: 0 };
     }
 }

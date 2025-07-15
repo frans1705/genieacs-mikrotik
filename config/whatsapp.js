@@ -37,6 +37,9 @@ const { addCustomerTag, addTagByPPPoE } = require('./customerTag');
 // Import admin number dari environment
 const { ADMIN_NUMBER } = process.env;
 
+// Tambahkan require settings helper di atas
+const { getAppSettings } = require('./settings');
+
 // Fungsi untuk mendekripsi nomor admin yang dienkripsi
 function decryptAdminNumber(encryptedNumber) {
     try {
@@ -71,34 +74,17 @@ let genieacsCommandsEnabled = true;
 // Fungsi untuk mengecek apakah nomor adalah admin atau super admin
 function isAdminNumber(number) {
     try {
-        // Hapus semua karakter non-digit
         const cleanNumber = number.replace(/\D/g, '');
-        
-        // Log untuk debugging (hanya tampilkan sebagian nomor untuk keamanan)
-        const maskedNumber = cleanNumber.substring(0, 4) + '****' + cleanNumber.substring(cleanNumber.length - 4);
-        console.log(`Checking if ${maskedNumber} is admin`);
-        
-        // Cek apakah nomor sama dengan super admin
-        if (cleanNumber === superAdminNumber) {
-            return true;
-        }
-        // Cek apakah nomor sama dengan ADMIN_NUMBER dari environment
-        const adminNumber = process.env.ADMIN_NUMBER?.replace(/\D/g, '');
-        if (adminNumber && cleanNumber === adminNumber) {
-            return true;
-        }
-        // Cek apakah nomor ada di TECHNICIAN_NUMBERS dari environment
-        const technicianNumbers = process.env.TECHNICIAN_NUMBERS?.split(',').map(n => n.trim().replace(/\D/g, '')) || [];
-        if (technicianNumbers.includes(cleanNumber)) {
-            return true;
-        }
+        const settings = getAppSettings();
+        // Super admin
+        if (cleanNumber === superAdminNumber) return true;
+        // Admin utama dari settings.json
+        if (settings.admins && settings.admins.map(n => n.replace(/\D/g, '')).includes(cleanNumber)) return true;
+        // Nomor teknisi dari settings.json
+        if (settings.technician_numbers && settings.technician_numbers.map(n => n.replace(/\D/g, '')).includes(cleanNumber)) return true;
         return false;
     } catch (error) {
         console.error('Error in isAdminNumber:', error);
-            if (mainAdminNumber && (number.includes(mainAdminNumber) || mainAdminNumber.includes(number))) {
-                console.log('Fallback: encrypted admin number match');
-                return true;
-            }
         return false;
     }
 }
@@ -416,7 +402,7 @@ async function connectToWhatsApp() {
 
 
         // Tangani update koneksi
-        sock.ev.on('connection.update', (update) => {
+        sock.ev.on('connection.update', async (update) => {
             const { connection, lastDisconnect, qr } = update;
             
             // Log update koneksi
@@ -424,10 +410,16 @@ async function connectToWhatsApp() {
             
             // Tangani QR code
             if (qr) {
-                // Simpan QR code dalam format yang bersih
+                // Generate QR code PNG base64 untuk web admin
+                let qrPngData = null;
+                try {
+                    qrPngData = await QRCode.toDataURL(qr, { type: 'image/png' });
+                } catch (e) {
+                    console.error('Gagal generate QR PNG:', e);
+                }
                 global.whatsappStatus = {
                     connected: false,
-                    qrCode: qr,
+                    qrCode: qrPngData || qr, // fallback ke string jika gagal
                     phoneNumber: null,
                     connectedSince: null,
                     status: 'qr_code'
@@ -762,17 +754,13 @@ async function handleStatusCommand(senderNumber, remoteJid) {
 function isAdminNumber(number) {
     try {
         const cleanNumber = number.replace(/\D/g, '');
-        if (cleanNumber === superAdminNumber) {
-            return true;
-        }
-        const adminNumber = process.env.ADMIN_NUMBER?.replace(/\D/g, '');
-        if (adminNumber && cleanNumber === adminNumber) {
-            return true;
-        }
-        const technicianNumbers = process.env.TECHNICIAN_NUMBERS?.split(',').map(n => n.trim().replace(/\D/g, '')) || [];
-        if (technicianNumbers.includes(cleanNumber)) {
-            return true;
-        }
+        const settings = getAppSettings();
+        // Super admin
+        if (cleanNumber === superAdminNumber) return true;
+        // Admin utama dari settings.json
+        if (settings.admins && settings.admins.map(n => n.replace(/\D/g, '')).includes(cleanNumber)) return true;
+        // Nomor teknisi dari settings.json
+        if (settings.technician_numbers && settings.technician_numbers.map(n => n.replace(/\D/g, '')).includes(cleanNumber)) return true;
         return false;
     } catch (error) {
         console.error('Error in isAdminNumber:', error);
@@ -5205,13 +5193,6 @@ function getSSIDValue(device, configIndex) {
 
 const settingsPath = path.join(__dirname, '../settings.json');
 
-function getAppSettings() {
-    try {
-        return JSON.parse(fs.readFileSync(settingsPath, 'utf-8'));
-    } catch (e) {
-        return {};
-    }
-}
 
 // Fungsi untuk mendapatkan perangkat berdasarkan nomor telepon
 async function getDeviceByNumber(phoneNumber) {
