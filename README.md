@@ -41,7 +41,7 @@ npm install
 ### 3. Menjalankan Aplikasi
 
 ```bash
-pm2 start app-whatsapp-only.js
+pm2 start app.js
 ```
 
 Scan QR code yang muncul di terminal untuk login WhatsApp.<br>
