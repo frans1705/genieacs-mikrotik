@@ -818,3 +818,60 @@ Or, if you meant to create an async function, pass `async: true` as an option.
 2025-07-15 14:11:06 error: Mikrotik connection error: Timed out after 10 seconds
 2025-07-15 14:11:33 error: Mikrotik connection error: Timed out after 10 seconds
 2025-07-15 14:23:06 error: ❌ Port 3100 is already in use!
+2025-07-16 10:16:23 error: ❌ Port 3100 is already in use!
+2025-07-16 10:17:08 error: Error connecting to Mikrotik: 
+2025-07-16 10:17:08 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-16 10:21:29 error: Error connecting to Mikrotik: 
+2025-07-16 10:26:08 error: ❌ Port 3100 is already in use!
+2025-07-16 10:26:29 error: Error connecting to Mikrotik: 
+2025-07-16 10:26:29 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-16 10:27:24 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:29:16 error: Web interface error: Cannot read properties of undefined (reading 'indexOf')
+2025-07-16 10:30:44 error: ❌ Port 3100 is already in use!
+2025-07-16 10:31:38 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:32:36 error: Error getting interface traffic:
+2025-07-16 10:32:36 error: Error: ambiguous value of interface, more than one possible value matches input
+    at Channel.<anonymous> (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\Channel.js:70:52)
+    at Object.onceWrapper (node:events:639:26)
+    at Channel.emit (node:events:524:28)
+    at Channel.processPacket (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\Channel.js:117:18)
+    at Object.callback (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\Channel.js:99:55)
+    at Receiver.sendTagData (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Receiver.js:248:17)
+    at process (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Receiver.js:210:34)
+    at Receiver.processSentence (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Receiver.js:237:13)
+    at Receiver.processRawData (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Receiver.js:165:26)
+    at Connector.onData (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Connector.js:199:23)
+2025-07-16 10:32:37 error: Error getting interface traffic:
+2025-07-16 10:32:37 error: Error: ambiguous value of interface, more than one possible value matches input
+    at Channel.<anonymous> (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\Channel.js:70:52)
+    at Object.onceWrapper (node:events:639:26)
+    at Channel.emit (node:events:524:28)
+    at Channel.processPacket (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\Channel.js:117:18)
+    at Object.callback (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\Channel.js:99:55)
+    at Receiver.sendTagData (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Receiver.js:248:17)
+    at process (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Receiver.js:210:34)
+    at Receiver.processSentence (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Receiver.js:237:13)
+    at Receiver.processRawData (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Receiver.js:165:26)
+    at Connector.onData (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Connector.js:199:23)
+2025-07-16 10:32:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:35:58 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:41:35 error: ❌ Port 3100 is already in use!
+2025-07-16 10:42:12 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:46:49 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:49:01 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:50:09 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:50:35 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:52:24 error: ❌ Port 3100 is already in use!
+2025-07-16 10:55:15 error: ❌ Port 3100 is already in use!
+2025-07-16 10:56:04 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:56:21 error: ❌ Port 3100 is already in use!
+2025-07-16 10:57:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:57:28 error: ❌ Port 3100 is already in use!
+2025-07-16 10:57:50 error: ❌ Port 3100 is already in use!
+2025-07-16 11:01:31 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 11:05:31 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 11:07:52 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 11:09:32 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 11:12:58 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 11:16:55 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 11:21:31 error: Mikrotik connection error: Timed out after 10 seconds

@@ -1,6 +1,7 @@
 const { Boom } = require('@hapi/boom');
 const { default: makeWASocket, DisconnectReason, useMultiFileAuthState } = require('@whiskeysockets/baileys');
 const qrcode = require('qrcode-terminal');
+const QRCode = require('qrcode');
 const path = require('path');
 const axios = require('axios');
 const fs = require('fs');

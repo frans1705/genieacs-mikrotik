@@ -7947,3 +7947,457 @@ Or, if you meant to create an async function, pass `async: true` as an option.
 2025-07-15 14:26:33 info: Customer settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
 2025-07-15 14:27:04 info: Customer settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
 2025-07-15 14:27:35 info: Customer settings loaded from E:\genieacs-mikrotik\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:16:23 info: Direktori sesi WhatsApp dibuat: ./whatsapp-session
+2025-07-16 10:16:23 info: Attempting to start server on configured port: 3100
+2025-07-16 10:16:23 info: Mencoba memulai server pada port 3100...
+2025-07-16 10:16:23 info: Web interface started successfully
+2025-07-16 10:16:23 info: Server berhasil berjalan pada port 3100
+2025-07-16 10:16:23 info: Environment: development
+2025-07-16 10:16:23 error: ❌ Port 3100 is already in use!
+2025-07-16 10:16:23 info: 💡 To fix this, you can:
+2025-07-16 10:16:23 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-16 10:16:23 info:    2. Add "web_port": 3200 to settings.json
+2025-07-16 10:16:23 info:    3. Stop the service using port 3100
+2025-07-16 10:16:23 info: 🔄 Trying alternative port: 3200
+2025-07-16 10:16:23 info: ✅ Web interface started on alternative port 3200
+2025-07-16 10:16:23 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-16 10:16:23 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-16 10:16:23 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 10:16:23 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 10:16:23 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 10:16:23 info: WhatsApp connected successfully
+2025-07-16 10:16:35 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:16:35 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:16:49 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:16:49 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:16:57 info: Admin login successful: admin
+2025-07-16 10:17:01 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:17:05 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:17:06 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 10:17:08 error: Error connecting to Mikrotik: 
+2025-07-16 10:17:08 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-16 10:18:19 info: Message received
+2025-07-16 10:21:27 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 10:21:29 error: Error connecting to Mikrotik: 
+2025-07-16 10:26:08 info: Attempting to start server on configured port: 3100
+2025-07-16 10:26:08 info: Mencoba memulai server pada port 3100...
+2025-07-16 10:26:08 info: Web interface started successfully
+2025-07-16 10:26:08 info: Server berhasil berjalan pada port 3100
+2025-07-16 10:26:08 info: Environment: development
+2025-07-16 10:26:08 error: ❌ Port 3100 is already in use!
+2025-07-16 10:26:08 info: 💡 To fix this, you can:
+2025-07-16 10:26:08 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-16 10:26:08 info:    2. Add "web_port": 3200 to settings.json
+2025-07-16 10:26:08 info:    3. Stop the service using port 3100
+2025-07-16 10:26:08 info: 🔄 Trying alternative port: 3200
+2025-07-16 10:26:08 info: ✅ Web interface started on alternative port 3200
+2025-07-16 10:26:08 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-16 10:26:08 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-16 10:26:08 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 10:26:08 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 10:26:08 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 10:26:08 info: WhatsApp connected successfully
+2025-07-16 10:26:15 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:26:15 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:26:22 info: Admin login successful: admin
+2025-07-16 10:26:26 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:26:27 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 10:26:29 error: Error connecting to Mikrotik: 
+2025-07-16 10:26:29 error: No Mikrotik connection available for PPPoE monitoring
+2025-07-16 10:27:13 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 10:27:14 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:27:14 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:27:24 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:29:16 error: Web interface error: Cannot read properties of undefined (reading 'indexOf')
+2025-07-16 10:30:44 info: Attempting to start server on configured port: 3100
+2025-07-16 10:30:44 info: Mencoba memulai server pada port 3100...
+2025-07-16 10:30:44 info: Web interface started successfully
+2025-07-16 10:30:44 info: Server berhasil berjalan pada port 3100
+2025-07-16 10:30:44 info: Environment: development
+2025-07-16 10:30:44 error: ❌ Port 3100 is already in use!
+2025-07-16 10:30:44 info: 💡 To fix this, you can:
+2025-07-16 10:30:44 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-16 10:30:44 info:    2. Add "web_port": 3200 to settings.json
+2025-07-16 10:30:44 info:    3. Stop the service using port 3100
+2025-07-16 10:30:44 info: 🔄 Trying alternative port: 3200
+2025-07-16 10:30:44 info: ✅ Web interface started on alternative port 3200
+2025-07-16 10:30:44 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-16 10:30:44 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-16 10:30:44 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 10:30:44 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 10:30:44 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 10:30:44 info: WhatsApp connected successfully
+2025-07-16 10:30:48 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:30:49 info: Message received
+2025-07-16 10:30:58 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:31:08 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:31:17 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:31:17 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:31:24 info: Admin login successful: admin
+2025-07-16 10:31:28 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:31:28 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 10:31:38 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:32:19 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 10:32:20 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:32:21 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:32:29 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:32:29 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:32:36 error: Error getting interface traffic:
+2025-07-16 10:32:36 error: Error: ambiguous value of interface, more than one possible value matches input
+    at Channel.<anonymous> (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\Channel.js:70:52)
+    at Object.onceWrapper (node:events:639:26)
+    at Channel.emit (node:events:524:28)
+    at Channel.processPacket (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\Channel.js:117:18)
+    at Object.callback (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\Channel.js:99:55)
+    at Receiver.sendTagData (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Receiver.js:248:17)
+    at process (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Receiver.js:210:34)
+    at Receiver.processSentence (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Receiver.js:237:13)
+    at Receiver.processRawData (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Receiver.js:165:26)
+    at Connector.onData (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Connector.js:199:23)
+2025-07-16 10:32:37 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:32:37 error: Error getting interface traffic:
+2025-07-16 10:32:37 error: Error: ambiguous value of interface, more than one possible value matches input
+    at Channel.<anonymous> (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\Channel.js:70:52)
+    at Object.onceWrapper (node:events:639:26)
+    at Channel.emit (node:events:524:28)
+    at Channel.processPacket (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\Channel.js:117:18)
+    at Object.callback (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\Channel.js:99:55)
+    at Receiver.sendTagData (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Receiver.js:248:17)
+    at process (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Receiver.js:210:34)
+    at Receiver.processSentence (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Receiver.js:237:13)
+    at Receiver.processRawData (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Receiver.js:165:26)
+    at Connector.onData (E:\genieacs-mikrotik-bot\node_modules\node-routeros\dist\connector\Connector.js:199:23)
+2025-07-16 10:32:37 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:32:47 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:35:48 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 10:35:58 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:41:35 info: Attempting to start server on configured port: 3100
+2025-07-16 10:41:35 info: Mencoba memulai server pada port 3100...
+2025-07-16 10:41:35 info: Web interface started successfully
+2025-07-16 10:41:35 info: Server berhasil berjalan pada port 3100
+2025-07-16 10:41:35 info: Environment: development
+2025-07-16 10:41:35 error: ❌ Port 3100 is already in use!
+2025-07-16 10:41:35 info: 💡 To fix this, you can:
+2025-07-16 10:41:35 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-16 10:41:35 info:    2. Add "web_port": 3200 to settings.json
+2025-07-16 10:41:35 info:    3. Stop the service using port 3100
+2025-07-16 10:41:35 info: 🔄 Trying alternative port: 3200
+2025-07-16 10:41:35 info: ✅ Web interface started on alternative port 3200
+2025-07-16 10:41:35 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-16 10:41:35 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-16 10:41:35 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 10:41:35 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 10:41:35 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 10:41:35 info: WhatsApp connected successfully
+2025-07-16 10:41:36 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:41:46 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:41:51 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:41:51 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:41:57 info: Admin login successful: admin
+2025-07-16 10:42:02 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:42:02 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 10:42:12 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:46:39 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 10:46:49 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:48:36 info: Message received
+2025-07-16 10:48:43 info: Message received
+2025-07-16 10:48:51 info: Message received
+2025-07-16 10:48:51 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 10:48:59 info: Message received
+2025-07-16 10:49:01 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:49:55 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:49:59 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:49:59 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 10:50:03 info: admin logout: admin
+2025-07-16 10:50:03 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:50:03 info: customer logout: undefined
+2025-07-16 10:50:03 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:50:09 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:50:10 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:50:10 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:50:16 info: Admin login successful: admin
+2025-07-16 10:50:20 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:50:25 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:50:25 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 10:50:35 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:50:52 info: Message received
+2025-07-16 10:52:24 info: Direktori sesi WhatsApp dibuat: ./whatsapp-session
+2025-07-16 10:52:24 info: Attempting to start server on configured port: 3100
+2025-07-16 10:52:24 info: Mencoba memulai server pada port 3100...
+2025-07-16 10:52:24 info: Web interface started successfully
+2025-07-16 10:52:24 info: Server berhasil berjalan pada port 3100
+2025-07-16 10:52:24 info: Environment: development
+2025-07-16 10:52:24 error: ❌ Port 3100 is already in use!
+2025-07-16 10:52:24 info: 💡 To fix this, you can:
+2025-07-16 10:52:24 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-16 10:52:24 info:    2. Add "web_port": 3200 to settings.json
+2025-07-16 10:52:24 info:    3. Stop the service using port 3100
+2025-07-16 10:52:24 info: 🔄 Trying alternative port: 3200
+2025-07-16 10:52:24 info: ✅ Web interface started on alternative port 3200
+2025-07-16 10:52:24 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-16 10:52:24 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-16 10:52:24 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 10:52:24 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 10:52:24 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 10:52:24 info: WhatsApp connected successfully
+2025-07-16 10:52:34 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:52:36 info: Admin login successful: admin
+2025-07-16 10:55:15 info: Attempting to start server on configured port: 3100
+2025-07-16 10:55:15 info: Mencoba memulai server pada port 3100...
+2025-07-16 10:55:15 info: Web interface started successfully
+2025-07-16 10:55:15 info: Server berhasil berjalan pada port 3100
+2025-07-16 10:55:15 info: Environment: development
+2025-07-16 10:55:15 error: ❌ Port 3100 is already in use!
+2025-07-16 10:55:15 info: 💡 To fix this, you can:
+2025-07-16 10:55:15 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-16 10:55:15 info:    2. Add "web_port": 3200 to settings.json
+2025-07-16 10:55:15 info:    3. Stop the service using port 3100
+2025-07-16 10:55:15 info: 🔄 Trying alternative port: 3200
+2025-07-16 10:55:15 info: ✅ Web interface started on alternative port 3200
+2025-07-16 10:55:15 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-16 10:55:15 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-16 10:55:16 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 10:55:16 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 10:55:16 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 10:55:16 info: WhatsApp connected successfully
+2025-07-16 10:55:30 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:55:30 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:55:38 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:55:38 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:55:44 info: Admin login successful: admin
+2025-07-16 10:55:49 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:55:53 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:55:54 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 10:56:04 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:56:21 info: Attempting to start server on configured port: 3100
+2025-07-16 10:56:21 info: Mencoba memulai server pada port 3100...
+2025-07-16 10:56:21 info: Web interface started successfully
+2025-07-16 10:56:21 info: Server berhasil berjalan pada port 3100
+2025-07-16 10:56:21 info: Environment: development
+2025-07-16 10:56:21 error: ❌ Port 3100 is already in use!
+2025-07-16 10:56:21 info: 💡 To fix this, you can:
+2025-07-16 10:56:21 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-16 10:56:21 info:    2. Add "web_port": 3200 to settings.json
+2025-07-16 10:56:21 info:    3. Stop the service using port 3100
+2025-07-16 10:56:21 info: 🔄 Trying alternative port: 3200
+2025-07-16 10:56:21 info: ✅ Web interface started on alternative port 3200
+2025-07-16 10:56:21 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-16 10:56:21 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-16 10:56:22 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 10:56:22 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 10:56:22 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 10:56:22 info: WhatsApp connected successfully
+2025-07-16 10:56:22 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:56:31 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:56:41 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:56:51 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:56:55 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:56:55 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:57:02 info: Admin login successful: admin
+2025-07-16 10:57:07 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:57:07 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 10:57:17 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 10:57:28 info: Attempting to start server on configured port: 3100
+2025-07-16 10:57:28 info: Mencoba memulai server pada port 3100...
+2025-07-16 10:57:28 info: Web interface started successfully
+2025-07-16 10:57:28 info: Server berhasil berjalan pada port 3100
+2025-07-16 10:57:28 info: Environment: development
+2025-07-16 10:57:28 error: ❌ Port 3100 is already in use!
+2025-07-16 10:57:28 info: 💡 To fix this, you can:
+2025-07-16 10:57:28 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-16 10:57:28 info:    2. Add "web_port": 3200 to settings.json
+2025-07-16 10:57:28 info:    3. Stop the service using port 3100
+2025-07-16 10:57:28 info: 🔄 Trying alternative port: 3200
+2025-07-16 10:57:28 info: ✅ Web interface started on alternative port 3200
+2025-07-16 10:57:28 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-16 10:57:28 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-16 10:57:28 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 10:57:28 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 10:57:28 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 10:57:28 info: WhatsApp connected successfully
+2025-07-16 10:57:28 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:57:38 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:57:50 info: Attempting to start server on configured port: 3100
+2025-07-16 10:57:50 info: Mencoba memulai server pada port 3100...
+2025-07-16 10:57:50 info: Web interface started successfully
+2025-07-16 10:57:50 info: Server berhasil berjalan pada port 3100
+2025-07-16 10:57:50 info: Environment: development
+2025-07-16 10:57:50 error: ❌ Port 3100 is already in use!
+2025-07-16 10:57:50 info: 💡 To fix this, you can:
+2025-07-16 10:57:50 info:    1. Set WEB_PORT environment variable: WEB_PORT=3200
+2025-07-16 10:57:50 info:    2. Add "web_port": 3200 to settings.json
+2025-07-16 10:57:50 info:    3. Stop the service using port 3100
+2025-07-16 10:57:50 info: 🔄 Trying alternative port: 3200
+2025-07-16 10:57:50 info: ✅ Web interface started on alternative port 3200
+2025-07-16 10:57:50 info: 🔗 Admin dashboard: http://localhost:3200/admin
+2025-07-16 10:57:50 info: 👤 Customer portal: http://localhost:3200/customer
+2025-07-16 10:57:50 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 10:57:50 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 10:57:50 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 10:57:50 info: WhatsApp connected successfully
+2025-07-16 10:57:50 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:57:58 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:58:23 info: Attempting to start server on configured port: 3100
+2025-07-16 10:58:23 info: Mencoba memulai server pada port 3100...
+2025-07-16 10:58:23 info: Web interface started successfully
+2025-07-16 10:58:23 info: Server berhasil berjalan pada port 3100
+2025-07-16 10:58:23 info: Environment: development
+2025-07-16 10:58:23 info: ✅ Web interface started successfully on port 3201
+2025-07-16 10:58:23 info: 🔗 Admin dashboard: http://localhost:3201/admin
+2025-07-16 10:58:23 info: 👤 Customer portal: http://localhost:3201/customer
+2025-07-16 10:58:23 info: 🔐 Login page: http://localhost:3201/auth/login
+2025-07-16 10:58:23 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 10:58:23 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 10:58:23 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 10:58:23 info: WhatsApp connected successfully
+2025-07-16 10:58:32 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 10:58:32 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:00:05 info: Attempting to start server on configured port: 3100
+2025-07-16 11:00:05 info: Mencoba memulai server pada port 3100...
+2025-07-16 11:00:05 info: Web interface started successfully
+2025-07-16 11:00:05 info: Server berhasil berjalan pada port 3100
+2025-07-16 11:00:05 info: Environment: development
+2025-07-16 11:00:05 info: ✅ Web interface started successfully on port 3201
+2025-07-16 11:00:05 info: 🔗 Admin dashboard: http://localhost:3201/admin
+2025-07-16 11:00:05 info: 👤 Customer portal: http://localhost:3201/customer
+2025-07-16 11:00:05 info: 🔐 Login page: http://localhost:3201/auth/login
+2025-07-16 11:00:05 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 11:00:05 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 11:00:05 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 11:00:05 info: WhatsApp connected successfully
+2025-07-16 11:00:23 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:00:23 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:01:05 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:01:05 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:01:12 info: Admin login successful: admin
+2025-07-16 11:01:16 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:01:20 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:01:21 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 11:01:31 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 11:03:11 info: Attempting to start server on configured port: 3100
+2025-07-16 11:03:11 info: Mencoba memulai server pada port 3100...
+2025-07-16 11:03:11 info: Web interface started successfully
+2025-07-16 11:03:11 info: Server berhasil berjalan pada port 3100
+2025-07-16 11:03:11 info: Environment: development
+2025-07-16 11:03:11 info: ✅ Web interface started successfully on port 3201
+2025-07-16 11:03:11 info: 🔗 Admin dashboard: http://localhost:3201/admin
+2025-07-16 11:03:11 info: 👤 Customer portal: http://localhost:3201/customer
+2025-07-16 11:03:11 info: 🔐 Login page: http://localhost:3201/auth/login
+2025-07-16 11:03:12 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 11:03:12 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 11:03:12 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 11:03:12 info: WhatsApp connected successfully
+2025-07-16 11:03:28 info: Attempting to start server on configured port: 3100
+2025-07-16 11:03:28 info: Mencoba memulai server pada port 3100...
+2025-07-16 11:03:28 info: Web interface started successfully
+2025-07-16 11:03:28 info: Server berhasil berjalan pada port 3100
+2025-07-16 11:03:28 info: Environment: development
+2025-07-16 11:03:28 info: ✅ Web interface started successfully on port 3201
+2025-07-16 11:03:28 info: 🔗 Admin dashboard: http://localhost:3201/admin
+2025-07-16 11:03:28 info: 👤 Customer portal: http://localhost:3201/customer
+2025-07-16 11:03:28 info: 🔐 Login page: http://localhost:3201/auth/login
+2025-07-16 11:03:28 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 11:03:28 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 11:03:28 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 11:03:28 info: WhatsApp connected successfully
+2025-07-16 11:04:43 info: Attempting to start server on configured port: 3100
+2025-07-16 11:04:43 info: Mencoba memulai server pada port 3100...
+2025-07-16 11:04:43 info: Web interface started successfully
+2025-07-16 11:04:43 info: Server berhasil berjalan pada port 3100
+2025-07-16 11:04:43 info: Environment: development
+2025-07-16 11:04:43 info: ✅ Web interface started successfully on port 3201
+2025-07-16 11:04:43 info: 🔗 Admin dashboard: http://localhost:3201/admin
+2025-07-16 11:04:43 info: 👤 Customer portal: http://localhost:3201/customer
+2025-07-16 11:04:43 info: 🔐 Login page: http://localhost:3201/auth/login
+2025-07-16 11:04:44 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 11:04:44 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 11:04:44 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 11:04:44 info: WhatsApp connected successfully
+2025-07-16 11:04:59 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:04:59 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:05:06 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:05:06 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:05:12 info: Admin login successful: admin
+2025-07-16 11:05:17 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:05:21 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:05:21 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 11:05:31 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 11:07:23 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:07:27 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:07:32 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 11:07:33 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:07:34 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:07:52 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 11:08:52 info: Attempting to start server on configured port: 3100
+2025-07-16 11:08:52 info: Mencoba memulai server pada port 3100...
+2025-07-16 11:08:52 info: Web interface started successfully
+2025-07-16 11:08:52 info: Server berhasil berjalan pada port 3100
+2025-07-16 11:08:52 info: Environment: development
+2025-07-16 11:08:52 info: ✅ Web interface started successfully on port 3201
+2025-07-16 11:08:52 info: 🔗 Admin dashboard: http://localhost:3201/admin
+2025-07-16 11:08:52 info: 👤 Customer portal: http://localhost:3201/customer
+2025-07-16 11:08:52 info: 🔐 Login page: http://localhost:3201/auth/login
+2025-07-16 11:08:52 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 11:08:52 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 11:08:52 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 11:08:52 info: WhatsApp connected successfully
+2025-07-16 11:09:10 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:09:10 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:09:17 info: Admin login successful: admin
+2025-07-16 11:09:21 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:09:22 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 11:09:32 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 11:12:08 info: Attempting to start server on configured port: 3100
+2025-07-16 11:12:08 info: Mencoba memulai server pada port 3100...
+2025-07-16 11:12:08 info: Web interface started successfully
+2025-07-16 11:12:08 info: Server berhasil berjalan pada port 3100
+2025-07-16 11:12:08 info: Environment: development
+2025-07-16 11:12:08 info: ✅ Web interface started successfully on port 3201
+2025-07-16 11:12:08 info: 🔗 Admin dashboard: http://localhost:3201/admin
+2025-07-16 11:12:08 info: 👤 Customer portal: http://localhost:3201/customer
+2025-07-16 11:12:08 info: 🔐 Login page: http://localhost:3201/auth/login
+2025-07-16 11:12:08 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 11:12:08 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 11:12:08 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 11:12:08 info: WhatsApp connected successfully
+2025-07-16 11:12:32 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:12:32 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:12:39 info: Admin login successful: admin
+2025-07-16 11:12:43 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:12:47 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:12:48 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 11:12:58 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 11:15:58 info: Attempting to start server on configured port: 3100
+2025-07-16 11:15:58 info: Mencoba memulai server pada port 3100...
+2025-07-16 11:15:58 info: Web interface started successfully
+2025-07-16 11:15:58 info: Server berhasil berjalan pada port 3100
+2025-07-16 11:15:58 info: Environment: development
+2025-07-16 11:15:58 info: ✅ Web interface started successfully on port 3201
+2025-07-16 11:15:58 info: 🔗 Admin dashboard: http://localhost:3201/admin
+2025-07-16 11:15:58 info: 👤 Customer portal: http://localhost:3201/customer
+2025-07-16 11:15:58 info: 🔐 Login page: http://localhost:3201/auth/login
+2025-07-16 11:15:58 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 11:15:58 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 11:15:58 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 11:15:58 info: WhatsApp connected successfully
+2025-07-16 11:16:17 info: Attempting to start server on configured port: 3100
+2025-07-16 11:16:17 info: Mencoba memulai server pada port 3100...
+2025-07-16 11:16:17 info: Web interface started successfully
+2025-07-16 11:16:17 info: Server berhasil berjalan pada port 3100
+2025-07-16 11:16:17 info: Environment: development
+2025-07-16 11:16:17 info: ✅ Web interface started successfully on port 3201
+2025-07-16 11:16:17 info: 🔗 Admin dashboard: http://localhost:3201/admin
+2025-07-16 11:16:17 info: 👤 Customer portal: http://localhost:3201/customer
+2025-07-16 11:16:17 info: 🔐 Login page: http://localhost:3201/auth/login
+2025-07-16 11:16:17 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 11:16:17 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 11:16:17 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 11:16:17 info: WhatsApp connected successfully
+2025-07-16 11:16:32 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:16:32 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:16:40 info: Admin login successful: admin
+2025-07-16 11:16:44 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 11:16:45 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 11:16:55 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 11:21:21 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 11:21:31 error: Mikrotik connection error: Timed out after 10 seconds

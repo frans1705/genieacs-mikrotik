@@ -1490,10 +1490,13 @@ router.post('/api/whatsapp/refresh-qrcode', async (req, res) => {
 router.post('/api/whatsapp/delete-session', async (req, res) => {
     try {
         if (typeof whatsapp.deleteWhatsAppSession === 'function') {
-            await whatsapp.deleteWhatsAppSession();
+            const result = await whatsapp.deleteWhatsAppSession();
+            res.json(result);
+        } else {
+            res.status(500).json({ success: false, message: 'Function deleteWhatsAppSession not available' });
         }
-        res.json({ success: true });
     } catch (error) {
+        logger.error(`Error deleting WhatsApp session: ${error.message}`);
         res.status(500).json({ success: false, message: error.message });
     }
 });
