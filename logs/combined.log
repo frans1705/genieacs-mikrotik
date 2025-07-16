@@ -8401,3 +8401,51 @@ Or, if you meant to create an async function, pass `async: true` as an option.
 2025-07-16 11:16:55 error: Mikrotik connection error: Timed out after 10 seconds
 2025-07-16 11:21:21 info: No existing Mikrotik connection, attempting to connect...
 2025-07-16 11:21:31 error: Mikrotik connection error: Timed out after 10 seconds
+2025-07-16 13:21:29 info: Attempting to start server on configured port: 3002
+2025-07-16 13:21:29 info: 🚀 Attempting to start server on configured port: 3002
+2025-07-16 13:21:29 info: 📋 Port diambil dari settings.json - tidak ada fallback ke port alternatif
+2025-07-16 13:21:29 info: 🚀 Attempting to start web server on configured port: 3003
+2025-07-16 13:21:29 info: 📋 Port diambil dari settings.json - tidak ada fallback ke port alternatif
+2025-07-16 13:21:29 info: Web interface started successfully
+2025-07-16 13:21:29 info: ✅ Server berhasil berjalan pada port 3002
+2025-07-16 13:21:29 info: 🌐 Health check tersedia di: http://localhost:3002/health
+2025-07-16 13:21:29 info: 📊 Environment: development
+2025-07-16 13:21:29 info: ✅ Web interface started successfully on port 3003
+2025-07-16 13:21:29 info: 🔗 Admin dashboard: http://localhost:3003/admin
+2025-07-16 13:21:29 info: 👤 Customer portal: http://localhost:3003/customer
+2025-07-16 13:21:29 info: 🔐 Login page: http://localhost:3003/auth/login
+2025-07-16 13:21:29 info: 📊 Environment: development
+2025-07-16 13:21:29 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 13:21:29 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 13:21:29 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 13:21:29 info: WhatsApp connected successfully
+2025-07-16 13:22:23 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 13:22:23 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 13:22:37 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 13:22:37 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 13:26:33 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 13:26:35 error: Error connecting to Mikrotik: 
+2025-07-16 13:38:49 info: Attempting to start server on configured port: 3202
+2025-07-16 13:38:49 info: 🚀 Attempting to start server on configured port: 3202
+2025-07-16 13:38:49 info: 📋 Port diambil dari settings.json - tidak ada fallback ke port alternatif
+2025-07-16 13:38:49 info: 🚀 Attempting to start web server on configured port: 3203
+2025-07-16 13:38:49 info: 📋 Port diambil dari settings.json - tidak ada fallback ke port alternatif
+2025-07-16 13:38:49 info: Web interface started successfully
+2025-07-16 13:38:49 info: ✅ Server berhasil berjalan pada port 3202
+2025-07-16 13:38:49 info: 🌐 Health check tersedia di: http://localhost:3202/health
+2025-07-16 13:38:49 info: 📊 Environment: development
+2025-07-16 13:38:49 info: ✅ Web interface started successfully on port 3203
+2025-07-16 13:38:49 info: 🔗 Admin dashboard: http://localhost:3203/admin
+2025-07-16 13:38:49 info: 👤 Customer portal: http://localhost:3203/customer
+2025-07-16 13:38:49 info: 🔐 Login page: http://localhost:3203/auth/login
+2025-07-16 13:38:49 info: 📊 Environment: development
+2025-07-16 13:38:49 info: WhatsApp socket set in pppoe-notifications module
+2025-07-16 13:38:49 info: WhatsApp socket set in pppoe-commands module
+2025-07-16 13:38:49 info: WhatsApp socket set in genieacs-commands module
+2025-07-16 13:38:49 info: WhatsApp connected successfully
+2025-07-16 13:39:11 info: Auth settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 13:39:23 info: Admin login successful: admin
+2025-07-16 13:39:27 info: Settings loaded from E:\genieacs-mikrotik-bot\settings.json - company_header: ALIJAYA HOTSPOT, footer_info: Management RTRW-Net
+2025-07-16 13:39:28 info: No existing Mikrotik connection, attempting to connect...
+2025-07-16 13:39:30 error: Error connecting to Mikrotik: 
+2025-07-16 13:39:30 error: No Mikrotik connection available for PPPoE monitoring

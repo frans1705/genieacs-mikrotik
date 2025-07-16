@@ -18,7 +18,7 @@ const app = express();
 
 // Load port configuration from multiple sources
 function getWebPort() {
-    // Priority: 1. Environment variable, 2. settings.json, 3. default
+    // Priority: Environment variable > settings.json > default
     if (process.env.WEB_PORT) {
         return parseInt(process.env.WEB_PORT, 10);
     }
@@ -180,40 +180,35 @@ app.use((err, req, res, next) => {
     });
 });
 
-// Start server with port conflict handling
+// Start server with port conflict handling - ONLY use configured port
 function startWebServer() {
+    logger.info(`🚀 Attempting to start web server on configured port: ${PORT}`);
+    logger.info(`📋 Port diambil dari settings.json - tidak ada fallback ke port alternatif`);
+    
     try {
         const server = app.listen(PORT, () => {
             logger.info(`✅ Web interface started successfully on port ${PORT}`);
             logger.info(`🔗 Admin dashboard: http://localhost:${PORT}/admin`);
             logger.info(`👤 Customer portal: http://localhost:${PORT}/customer`);
             logger.info(`🔐 Login page: http://localhost:${PORT}/auth/login`);
+            logger.info(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
         });
 
         server.on('error', (err) => {
             if (err.code === 'EADDRINUSE') {
                 logger.error(`❌ Port ${PORT} is already in use!`);
-                logger.info(`💡 To fix this, you can:`);
-                logger.info(`   1. Set WEB_PORT environment variable: WEB_PORT=3200`);
-                logger.info(`   2. Add "web_port": 3200 to settings.json`);
-                logger.info(`   3. Stop the service using port ${PORT}`);
-
-                // Try alternative port
-                const alternativePort = PORT + 100;
-                logger.info(`🔄 Trying alternative port: ${alternativePort}`);
-
-                const altServer = app.listen(alternativePort, () => {
-                    logger.info(`✅ Web interface started on alternative port ${alternativePort}`);
-                    logger.info(`🔗 Admin dashboard: http://localhost:${alternativePort}/admin`);
-                    logger.info(`👤 Customer portal: http://localhost:${alternativePort}/customer`);
-                });
-
-                altServer.on('error', (altErr) => {
-                    logger.error(`❌ Failed to start web server on alternative port ${alternativePort}: ${altErr.message}`);
-                    logger.error(`💡 Please configure a different port in WEB_PORT environment variable or settings.json`);
-                });
+                logger.error(`🚫 Server will NOT start on alternative port - using ONLY configured port`);
+                logger.info(`💡 To fix this port conflict:`);
+                logger.info(`   1. Stop the service using port ${PORT}:`);
+                logger.info(`      • Windows: netstat -ano | findstr :${PORT}`);
+                logger.info(`      • Then: taskkill /PID <PID> /F`);
+                logger.info(`   2. Or change port in settings.json: "web_port": "3200"`);
+                logger.info(`   3. Or set environment variable: WEB_PORT=3200`);
+                logger.error(`🛑 Application will exit - please resolve port conflict`);
+                process.exit(1);
             } else {
                 logger.error(`❌ Failed to start web server: ${err.message}`);
+                process.exit(1);
             }
         });
 

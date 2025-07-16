@@ -467,9 +467,17 @@ async function connectToWhatsApp() {
                 // Kirim pesan ke admin bahwa bot telah terhubung
                 try {
                     // Pesan notifikasi
+                    // Get web port from settings
+                    const webPort = global.appSettings?.web_port || '3003';
+                    const webHost = global.appSettings?.web_host || 'localhost';
+                    
                     const notificationMessage = `📱 *BOT WHATSAPP ALIJAYA NETWORK*\n\n` +
                     `✅ *Status:* Bot telah berhasil terhubung\n` +
                     `📅 *Waktu:* ${connectedSince.toLocaleString()}\n\n` +
+                    `🌐 *Portal Web Aktif:*\n` +
+                    `• Admin: http://${webHost}:${webPort}/admin\n` +
+                    `• Customer: http://${webHost}:${webPort}/customer\n` +
+                    `• Login: http://${webHost}:${webPort}/auth/login\n\n` +
                     `💬 *Perintah Tersedia:*\n` +
                     `• Ketik *menu* untuk melihat daftar perintah\n` +
                     `• Ketik *admin* untuk menu khusus admin\n\n` +
@@ -3654,13 +3662,23 @@ async function sendWelcomeMessage(remoteJid, isAdmin = false) {
     try {
         console.log(`Mengirim pesan selamat datang ke ${remoteJid}, isAdmin: ${isAdmin}`);
         
+        // Get web port from settings
+        const webPort = global.appSettings?.web_port || '3003';
+        const webHost = global.appSettings?.web_host || 'localhost';
+        
         // Pesan selamat datang
         let welcomeMessage = `👋 *Selamat Datang di Bot WhatsApp ${process.env.COMPANY_HEADER || 'ISP Monitor'}*\n\n`;
         
         if (isAdmin) {
             welcomeMessage += `Halo Admin! Anda dapat menggunakan berbagai perintah untuk mengelola sistem.\n\n`;
+            welcomeMessage += `🌐 *Portal Web Admin:*\n`;
+            welcomeMessage += `• Dashboard: http://${webHost}:${webPort}/admin\n`;
+            welcomeMessage += `• Login: http://${webHost}:${webPort}/auth/admin\n\n`;
         } else {
             welcomeMessage += `Halo Pelanggan! Anda dapat menggunakan bot ini untuk mengelola perangkat Anda.\n\n`;
+            welcomeMessage += `🌐 *Portal Web Customer:*\n`;
+            welcomeMessage += `• Dashboard: http://${webHost}:${webPort}/customer\n`;
+            welcomeMessage += `• Login: http://${webHost}:${webPort}/auth/customer\n\n`;
         }
         
         welcomeMessage += `Ketik *menu* untuk melihat daftar perintah yang tersedia.\n\n`;

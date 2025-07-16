@@ -55,7 +55,7 @@ const settingsFromFile = loadSettings();
 // Variabel global untuk menyimpan semua pengaturan (prioritas: settings.json > .env > default)
 global.appSettings = {
   // Server
-  port: settingsFromFile.web_port || '3501',
+  port: settingsFromFile.main_port || settingsFromFile.web_port || '3501',
   host: settingsFromFile.web_host || 'localhost',
 
   // Admin
@@ -181,41 +181,39 @@ try {
     logger.error('Error initializing services:', error);
 }
 
-// Fungsi untuk memulai server dengan penanganan port yang sudah digunakan
+// Fungsi untuk memulai server - HANYA menggunakan port dari settings.json
 function startServer(portToUse) {
-    logger.info(`Mencoba memulai server pada port ${portToUse}...`);
+    logger.info(`🚀 Attempting to start server on configured port: ${portToUse}`);
+    logger.info(`📋 Port diambil dari settings.json - tidak ada fallback ke port alternatif`);
     
-    // Coba port alternatif jika port utama tidak tersedia
     try {
         const server = app.listen(portToUse, () => {
-            logger.info(`Server berhasil berjalan pada port ${portToUse}`);
-            logger.info(`Environment: ${process.env.NODE_ENV || 'development'}`);
-            // Update global.appSettings.port dengan port yang berhasil digunakan
+            logger.info(`✅ Server berhasil berjalan pada port ${portToUse}`);
+            logger.info(`🌐 Health check tersedia di: http://localhost:${portToUse}/health`);
+            logger.info(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
+            // Keep port consistent with configured value
             global.appSettings.port = portToUse.toString();
         }).on('error', (err) => {
             if (err.code === 'EADDRINUSE') {
-                logger.warn(`PERINGATAN: Port ${portToUse} sudah digunakan, mencoba port alternatif...`);
-                // Coba port alternatif (port + 1000)
-                const alternativePort = portToUse + 1000;
-                logger.info(`Mencoba port alternatif: ${alternativePort}`);
-                
-                // Buat server baru dengan port alternatif
-                const alternativeServer = app.listen(alternativePort, () => {
-                    logger.info(`Server berhasil berjalan pada port alternatif ${alternativePort}`);
-                    logger.info(`Environment: ${process.env.NODE_ENV || 'development'}`);
-                    // Update global.appSettings.port dengan port yang berhasil digunakan
-                    global.appSettings.port = alternativePort.toString();
-                }).on('error', (altErr) => {
-                    logger.error(`ERROR: Gagal memulai server pada port alternatif ${alternativePort}:`, altErr.message);
-                    process.exit(1);
-                });
+                logger.error(`❌ Port ${portToUse} is already in use!`);
+                logger.error(`🚫 Server will NOT start on alternative port - using ONLY configured port`);
+                logger.info(`💡 To fix this port conflict:`);
+                logger.info(`   1. Stop the service using port ${portToUse}:`);
+                logger.info(`      • Windows: netstat -ano | findstr :${portToUse}`);
+                logger.info(`      • Then: taskkill /PID <PID> /F`);
+                logger.info(`   2. Or change port in settings.json: "web_port": "3200"`);
+                logger.info(`   3. Or set environment variable: WEB_PORT=3200`);
+                logger.error(`🛑 Application will exit - please resolve port conflict`);
+                process.exit(1);
             } else {
-                logger.error('Error starting server:', err);
+                logger.error(`❌ Failed to start server: ${err.message}`);
                 process.exit(1);
             }
         });
+        
+        return server;
     } catch (error) {
-        logger.error(`Terjadi kesalahan saat memulai server:`, error);
+        logger.error(`❌ Terjadi kesalahan saat memulai server: ${error.message}`);
         process.exit(1);
     }
 }
