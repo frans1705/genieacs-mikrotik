@@ -63,18 +63,18 @@ global.appSettings = {
   adminPassword: settingsFromFile.admin_password || 'admin',
 
   // GenieACS
-  genieacsHost: settingsFromFile.genieacs_host || '192.168.8.89',
+  genieacsHost: settingsFromFile.genieacs_host || '192.168.99.103',
   genieacsPort: settingsFromFile.genieacs_port || '7557',
-  genieacsUrl: settingsFromFile.genieacs_url || `http://${settingsFromFile.genieacs_host || '192.168.8.89'}:${settingsFromFile.genieacs_port || '7557'}`,
+  genieacsUrl: settingsFromFile.genieacs_url || `http://${settingsFromFile.genieacs_host || '192.168.99.103'}:${settingsFromFile.genieacs_port || '7557'}`,
   genieacsUsername: settingsFromFile.genieacs_username || '',
   genieacsPassword: settingsFromFile.genieacs_password || '',
   genieApiUrl: settingsFromFile.genie_api_url || '',
 
   // Mikrotik
-  mikrotikHost: settingsFromFile.mikrotik_host || '192.168.8.1',
-  mikrotikPort: settingsFromFile.mikrotik_port || '8700',
-  mikrotikUser: settingsFromFile.mikrotik_user || 'admin',
-  mikrotikPassword: settingsFromFile.mikrotik_password || '',
+  mikrotikHost: settingsFromFile.mikrotik_host || '192.168.99.1',
+  mikrotikPort: settingsFromFile.mikrotik_port || '8728',
+  mikrotikUser: settingsFromFile.mikrotik_user || 'genieacs',
+  mikrotikPassword: settingsFromFile.mikrotik_password || '12345678',
 
   // WhatsApp
   adminNumber: settingsFromFile.admin_number || '',
