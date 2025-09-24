@@ -78,6 +78,8 @@ WHATSAPP_RESTART_ON_ERROR=true
 ### 3. Menjalankan Aplikasi
 
 ```bash
+npm start
+atau
 pm2 start app-whatsapp-only.js
 ```
 
