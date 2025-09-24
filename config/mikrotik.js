@@ -59,7 +59,7 @@ async function connectToMikrotik() {
         await Promise.race([
             connection.connect(),
             new Promise((_, reject) =>
-                setTimeout(() => reject(new Error('Connection timeout')), 10000)
+                setTimeout(() => reject(new Error('Connection timeout')), 60000)
             )
         ]);
 
