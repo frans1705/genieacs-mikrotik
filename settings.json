@@ -1,30 +1,30 @@
 {
   "admins": [
-    "6281947215703"
+    "6285174421705"
   ],
   "admin_enabled": true,
   "admin_username": "admin",
   "admin_password": "admin",
-  "genieacs_url": "http://192.168.8.89:7557",
+  "genieacs_url": "http://192.168.99.103:7557",
   "genieacs_username": "admin",
   "genieacs_password": "admin",
-  "mikrotik_host": "192.168.8.1",
+  "mikrotik_host": "192.168.99.1",
   "mikrotik_port": "8728",
-  "mikrotik_user": "admin",
-  "mikrotik_password": "admin",
-  "main_interface": "ether1-ISP",
+  "mikrotik_user": "genieacs",
+  "mikrotik_password": "12345678",
+  "main_interface": "ether1-IN",
   "pppoe_monitor_enable": true,
   "technician_numbers": [
-    "083807665xxx,082218094xxx"
+    "085174421705,081290717151"
   ],
-  "technician_group_id": "1203630297157xxx@g.us",
+  "technician_group_id": "120363231723960044@g.us",
   "whatsapp_session_path": "./whatsapp-session",
   "whatsapp_keep_alive": true,
   "whatsapp_restart_on_error": true,
   "pppoe_monitor_interval": "60000",
   "rx_power_warning": "-27",
   "rx_power_critical": "-30",
-  "company_header": "ALIJAYA HOTSPOT",
+  "company_header": "NANCY.NET",
   "footer_info": "Management RTRW-Net",
   "main_port": "3202",
   "web_port": "3203",
@@ -35,7 +35,7 @@
   "otp_length": "4",
   "enable_rx_power_warning": true,
   "enable_offline_warning": true,
-  "whatsapp_header": "*ALIJAYA HOTSPOT*",
+  "whatsapp_header": "*NANCY.NET*",
   "whatsapp_footer": "_Management RTRW-Net_",
   "whatsapp_separator": "━━━━━━━━━━━━━━━━━━━━━━━━"
 }
