@@ -74,7 +74,7 @@ global.appSettings = {
   mikrotikHost: settingsFromFile.mikrotik_host || '192.168.99.1',
   mikrotikPort: settingsFromFile.mikrotik_port || '8728',
   mikrotikUser: settingsFromFile.mikrotik_user || 'genieacs',
-  mikrotikPassword: settingsFromFile.mikrotik_password || '12345678',
+  mikrotikPassword: settingsFromFile.mikrotik_password || 'n4ncy.n3t',
 
   // WhatsApp
   adminNumber: settingsFromFile.admin_number || '',
