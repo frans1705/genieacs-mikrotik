@@ -1,21 +1,21 @@
 {
   "admins": [
-    "6285174421705"
+    "6281290717151"
   ],
   "admin_enabled": true,
   "admin_username": "admin",
-  "admin_password": "admin",
+  "admin_password": "n4ncy.n3t",
   "genieacs_url": "http://192.168.99.103:7557",
   "genieacs_username": "admin",
-  "genieacs_password": "admin",
+  "genieacs_password": "n4ncy.n3t",
   "mikrotik_host": "192.168.99.1",
   "mikrotik_port": "8728",
   "mikrotik_user": "genieacs",
-  "mikrotik_password": "12345678",
+  "mikrotik_password": "n4ncy.n3t",
   "main_interface": "ether1-IN",
   "pppoe_monitor_enable": true,
   "technician_numbers": [
-    "085174421705,081290717151"
+    "081299840717,081290717151"
   ],
   "technician_group_id": "120363231723960044@g.us",
   "whatsapp_session_path": "./whatsapp-session",
