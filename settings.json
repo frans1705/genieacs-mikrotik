@@ -1,6 +1,6 @@
 {
   "admins": [
-    "6281290717151"
+    "6285174421705"
   ],
   "admin_enabled": true,
   "admin_username": "admin",
@@ -15,7 +15,7 @@
   "main_interface": "ether1-IN",
   "pppoe_monitor_enable": true,
   "technician_numbers": [
-    "081299840717,081290717151"
+    "6281299840717,6281290717151"
   ],
   "technician_group_id": "120363231723960044@g.us",
   "whatsapp_session_path": "./whatsapp-session",
